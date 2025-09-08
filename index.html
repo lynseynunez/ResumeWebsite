@@ -21,7 +21,6 @@
       color: #fff;
     }
 
-    /* Header */
     header {
       width: 100%;
       padding: 1rem 2rem;
@@ -42,7 +41,6 @@
       text-decoration: none;
     }
 
-    /* Hero Section */
     .hero {
       display: flex;
       align-items: center;
@@ -63,8 +61,8 @@
     .hero-image {
       width: 100%;
       height: 100%;
+      max-width: none;
       object-fit: contain;
-      border-radius: 12px;
     }
 
     .hero-right {
@@ -75,7 +73,6 @@
       z-index: 2;
     }
 
-    /* Aurora Title */
     .title {
       font-weight: 700;
       font-size: var(--fs);
@@ -119,25 +116,21 @@
     .social-icon {
       width: 40px;
       height: 40px;
-      transition: transform 0.3s, filter 0.3s;
-      fill: #0af;
+      fill: #fff;
+      transition: transform 0.3s, fill 0.3s;
     }
 
     .social-link:hover .social-icon {
       transform: scale(1.1);
-      filter: drop-shadow(0 0 15px #0af)
-              drop-shadow(0 0 25px #33ff8c)
-              drop-shadow(0 0 35px #ffc640);
-      fill: #33ff8c;
+      fill: var(--clr-2); /* aurora green on hover */
     }
 
-    /* Responsive */
     @media(max-width:1024px){
       .hero { flex-direction: column; text-align: center; }
       .hero-left, .hero-right { width: 100%; }
       .title { font-size: 5rem; padding-left: 0; padding-bottom: 20px; }
       .subtitle { font-size: 1.2rem; padding-left: 0; }
-      .social-link { margin-left: 0; }
+      .social-link { margin-left: 0; margin-top: 1rem; }
     }
 
     @media(max-width:480px){
@@ -147,7 +140,6 @@
 </head>
 <body>
 
-<!-- Header -->
 <header>
   <div class="logo">Lynsey Nunez</div>
   <nav>
@@ -159,7 +151,6 @@
   </nav>
 </header>
 
-<!-- Hero Section -->
 <section class="hero">
   <div class="hero-left">
     <img src="images/lynseyheadshotai.png" alt="Lynsey Nunez" class="hero-image">
@@ -168,9 +159,7 @@
     <h1 class="title">Lynsey Nunez</h1>
     <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
     <a href="https://www.linkedin.com/in/lynseynunez" target="_blank" class="social-link">
-      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24h5V7H0v17zm7.5 0h5V14.5c0-2.75 3-2.97 3 0V24h5v-10.5c0-5.55-6-5.33-7.5-2.61V14.5h-5v9.5z"/>
-      </svg>
+      <img src="images/linkedinsvg.svg" alt="LinkedIn" class="social-icon">
     </a>
   </div>
 </section>
