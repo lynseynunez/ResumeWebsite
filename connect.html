@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect | Lynsey Nunez</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:#0e0e0e;
+    color:#f0f0f0;
+    scroll-behavior:smooth;
+  }
+  a { color:inherit; text-decoration:none; }
+  nav {
+    position:fixed; top:0; left:0; right:0;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    padding:1rem;
+    z-index:1000;
+  }
+  nav a { color:#f0f0f0; font-weight:600; transition:0.3s; }
+  nav a:hover { color:#0af; }
+
+  section {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    min-height:100vh;
+    padding:2rem;
+  }
+
+  .connect-image {
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid #0af;
+    margin-bottom:2rem;
+  }
+  .connect-image img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  h2 { font-size:2rem; margin-bottom:1rem; color:#0af; }
+  p { font-size:1.25rem; max-width:600px; margin-bottom:2rem; line-height:1.6; }
+  .linkedin-button {
+    display:inline-block;
+    padding:0.75rem 1.5rem;
+    border:2px solid #0af;
+    border-radius:0.5rem;
+    transition:all 0.3s;
+    font-weight:600;
+  }
+  .linkedin-button:hover {
+    background:#0af;
+    color:#0e0e0e;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="portfolio.html">My Design Portfolio</a>
+  <a href="resume.html">Resume</a>
+  <a href="connect.html">Connect</a>
+</nav>
+
+<section>
+  <div class="connect-image">
+    <img src="https://raw.githubusercontent.com/lynseynunez/ResumeWebsite/main/lynseyheadshotai.jpeg" alt="Lynsey Nunez Headshot">
+  </div>
+  <h2>Let's Connect</h2>
+  <p>I'm always open to discussing digital transformation, AI integration, and ways to optimize workflows for better business outcomes. Feel free to connect with me on LinkedIn!</p>
+  <a href="https://www.linkedin.com/in/lynseynunez/" target="_blank" class="linkedin-button">Connect on LinkedIn</a>
+</section>
+
+</body>
+</html>
