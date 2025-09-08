@@ -13,21 +13,6 @@ body {
   color:#fff;
 }
 
-/* Header */
-header {
-  width:100%;
-  padding:1rem 2rem;
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:100;
-  background:#111;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 10px rgba(0,0,0,0.5);
-}
-
 /* Hero Section */
 .hero {
   display:flex;
@@ -35,78 +20,69 @@ header {
   min-height:90vh;
   background-color:#0e0e0e;
   overflow:hidden;
-  padding-top:80px;
 }
 
 .hero-left {
   width:50%;
-  height:100%;
-  position:relative;
-  overflow:hidden;
 }
 
 .hero-image {
   width:100%;
-  height:100%;
-  object-fit:cover;
+  max-width:700px;
+  height:auto;
   display:block;
+  object-fit:cover;
+  box-shadow:0 0 40px rgba(0,0,0,0.5);
 }
 
 .hero-right {
   width:50%;
-  position:relative;
-  z-index:2;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
+  padding-left:2rem;
 }
 
-/* Hero Text */
-.title {
+.hero-right .title {
   font-family:'Corinthia', cursive;
-  font-weight:400;
   font-size:8rem;
   line-height:1;
   margin:0;
   padding-left:40px;
   padding-bottom:40px;
   background: linear-gradient(270deg, #0af, #33ff8c, #ffc640, #e54cff);
-  background-size: 600% 600%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientMove 10s ease infinite;
+  position: relative;
+  overflow: visible;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-@keyframes gradientMove {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #0af, 0 0 10px #33ff8c; }
+  50% { text-shadow: 0 0 15px #ffc640, 0 0 30px #e54cff; }
+  100% { text-shadow: 0 0 5px #0af, 0 0 10px #33ff8c; }
 }
 
-.subtitle {
+.hero-subtitle {
   font-size:1.5rem;
   line-height:1.6;
   margin-top:1rem;
   color:#ffffffcc;
-  padding-left:40px;
 }
 
-/* LinkedIn Icon */
+/* Social Icons */
+.social-links {
+  margin-top:2rem;
+  display:flex;
+  gap:1rem;
+}
+
 .social-link {
   display:inline-block;
-  margin-left:40px;
-  margin-top:1.5rem;
+  transition: all 0.3s ease;
 }
 
-.social-icon {
-  width:40px;
-  height:40px;
-  transition:transform 0.3s, box-shadow 0.3s;
-}
-
-.social-icon:hover {
-  transform:scale(1.1);
-  box-shadow:0 0 15px #0af, 0 0 25px #33ff8c, 0 0 35px #ffc640;
+.social-link:hover svg path {
+  filter: drop-shadow(0 0 15px #0af);
+  transform: scale(1.1);
 }
 
 /* Metrics Section */
@@ -117,23 +93,32 @@ header {
   padding:4rem 2rem;
   background:#111;
 }
+
 .metric {
   flex:1;
 }
-.metric h2 { font-size:3rem; color:#0af; }
-.metric p { font-size:1.1rem; margin-top:0.5rem; color:#fff; }
+
+.metric h2 {
+  font-size:3rem;
+  color:#0af;
+}
+
+.metric p {
+  font-size:1.1rem;
+  margin-top:0.5rem;
+  color:#fff;
+}
 
 /* Responsive */
 @media(max-width:1024px){
   .hero { flex-direction:column; text-align:center; }
-  .hero-left, .hero-right { width:100%; }
-  .title { font-size:5rem; padding-left:0; padding-bottom:20px; }
-  .subtitle { font-size:1.2rem; padding-left:0; }
-  .social-link { margin-left:0; }
+  .hero-left, .hero-right { width:100%; padding-left:0; }
+  .hero-right .title { font-size:5rem; }
+  .hero-subtitle { font-size:1.2rem; }
   .metrics { flex-direction:column; gap:2rem; }
 }
-@media(max-width:480px){ 
-  .title { font-size:3.5rem; } 
+@media(max-width:480px){
+  .hero-right .title { font-size:3.5rem; }
 }
 
 /* Count-up animation */
@@ -142,18 +127,6 @@ header {
 </head>
 <body>
 
-<!-- Header -->
-<header>
-  <div class="logo">Lynsey Nunez</div>
-  <nav>
-    <a href="index.html" style="color:#fff; margin-right:1rem;">Home</a>
-    <a href="case-studies.html" style="color:#fff; margin-right:1rem;">Case Studies</a>
-    <a href="portfolio.html" style="color:#fff; margin-right:1rem;">Portfolio</a>
-    <a href="resume.html" style="color:#fff; margin-right:1rem;">Resume</a>
-    <a href="connect.html" style="color:#fff;">Connect</a>
-  </nav>
-</header>
-
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-left">
@@ -161,10 +134,16 @@ header {
   </div>
   <div class="hero-right">
     <h1 class="title">Lynsey Nunez</h1>
-    <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="social-link">
-      <img src="images/linkedin-icon.png" alt="LinkedIn" class="social-icon">
-    </a>
+    <p class="hero-subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
+
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="social-link">
+        <!-- Inline SVG -->
+        <svg width="100" height="100" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#0af" d="M34,17C34,7.611,26.389,0,17,0S0,7.611,0,17c0,8.389,6.11,15,14,16v-11h-4v-5h4v-3c0-3.938,2-6,5-6 c1.417,0,3,0,3,0v4h-2c-1,0-1,0-1,1v4h4l-1,5h-3v11C27.889,32,34,25.389,34,17z"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </section>
 
