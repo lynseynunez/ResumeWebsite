@@ -1,266 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lynsey Nunez | Home</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Corinthia&display=swap" rel="stylesheet">
-<style>
-/* --- Base --- */
-body {
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:#0e0e0e;
-  color:#f0f0f0;
-  scroll-behavior:smooth;
-  overflow-x:hidden;
-}
-a { color:inherit; text-decoration:none; }
-
-/* --- Navigation --- */
-nav {
-  position:fixed;
-  top:0; left:0; right:0;
-  background:#111;
-  display:flex;
-  justify-content:center;
-  gap:2rem;
-  padding:1rem;
-  z-index:1000;
-}
-nav a { font-weight:600; transition:0.3s; }
-nav a:hover { color:#0af; }
-
-/* --- Loading Screen --- */
-#loading-screen {
-  position: fixed;
-  top:0; left:0; width:100%; height:100%;
-  background:#0e0e0e;
-  display:flex; align-items:center; justify-content:center;
-  z-index:9999; transition: opacity 0.5s ease;
-}
-#loading-screen.hidden { opacity:0; pointer-events:none; }
-.loader {
-  font-family:'Corinthia', cursive;
-  font-size:3rem;
-  color:#0af;
-  text-shadow: 0 0 10px rgba(0,170,255,0.5),0 0 20px rgba(0,255,255,0.3);
-  animation: shine 2.5s infinite linear;
-}
-@keyframes shine {
-  0% { text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
-  50% { text-shadow:0 0 10px rgba(0,170,255,0.8),0 0 20px rgba(0,255,255,0.4);}
-  100% { text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
-}
-
-/* --- Hero Section --- */
-.hero {
-  display:flex; align-items:center; justify-content:center; gap:3rem;
-  padding:6rem 2rem; min-height:90vh;
-  position:relative;
-  overflow:hidden;
-}
-.hero-image {
-  width:220px; height:220px; border-radius:50%; border:3px solid #0af;
-  object-fit:cover; box-shadow:0 4px 20px rgba(0,170,255,0.3); transition: transform 0.3s;
-  z-index:2;
-}
-.hero-image:hover { transform:scale(1.05); }
-
-/* Abstract animated shapes behind headshot */
-.hero::before {
-  content:"";
-  position:absolute;
-  width:300px; height:300px;
-  background:radial-gradient(circle at center, rgba(0,170,255,0.3), transparent 70%);
-  border-radius:50%;
-  top:50%; left:25%;
-  transform:translate(-50%,-50%) scale(0);
-  animation: pulse 6s infinite ease-in-out;
-  z-index:1;
-}
-@keyframes pulse {
-  0%,100% { transform:translate(-50%,-50%) scale(0.8); opacity:0.6; }
-  50% { transform:translate(-50%,-50%) scale(1.2); opacity:0.3; }
-}
-
-.hero-text h1.hero-name {
-  font-family:'Corinthia', cursive;
-  font-size:4rem; font-weight:400;
-  background:linear-gradient(90deg, rgba(0,170,255,0.8), rgba(0,255,255,0.8));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  animation: shine 2.5s infinite linear, slightMove 3s infinite ease-in-out;
-  display:inline-block;
-}
-@keyframes slightMove {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-3px); }
-}
-.hero-text p {
-  margin-top:1rem; font-size:1.25rem; line-height:1.6; max-width:600px;
-  opacity:0;
-  animation: fadeUp 1s forwards;
-  animation-delay:1s;
-}
-@keyframes fadeUp { 0%{opacity:0; transform:translateY(20px);} 100%{opacity:1; transform:translateY(0);} }
-
-.hero-text .cta-button {
-  margin-top:2rem; display:inline-block; padding:0.75rem 1.5rem;
-  border:2px solid #0af; border-radius:0.5rem; transition: all 0.3s; font-weight:600;
-}
-.hero-text .cta-button:hover { background:#0af; color:#0e0e0e; transform:scale(1.05); }
-
-/* --- Metrics Section --- */
-.metrics {
-  display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:4rem;
-}
-.metric-card {
-  background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center;
-  width:180px; transition: transform 0.3s, box-shadow 0.3s;
-  opacity:0; transform:translateY(20px);
-}
-.metric-card.visible {
-  opacity:1;
-  transform:translateY(0);
-  transition:0.6s;
-}
-.metric-card:hover {
-  transform: translateY(-5px);
-  box-shadow:0 4px 20px rgba(0,170,255,0.4);
-}
-.metric-card h3 { font-size:2rem; color:#0af; }
-.metric-card p { font-size:0.95rem; margin-top:0.5rem; }
-
-/* --- Service Cards --- */
-.service-cards {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:2rem; margin-top:4rem;
-}
-.service-card {
-  background:#1a1a1a; padding:1.5rem; border-radius:0.5rem;
-  transition: transform 0.3s, box-shadow 0.3s;
-  opacity:0; transform:translateY(20px);
-}
-.service-card.visible {
-  opacity:1;
-  transform:translateY(0);
-  transition:0.6s;
-}
-.service-card:hover {
-  transform:translateY(-5px);
-  box-shadow:0 4px 20px rgba(0,170,255,0.3);
-}
-.service-card h3 { color:#0af; margin-bottom:0.5rem; }
-
-/* --- Fade-in Animation --- */
-.fade-in { opacity:0; transform:translateY(20px); transition:0.6s; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
-</style>
-</head>
-<body>
-
-<!-- Loading Screen -->
-<div id="loading-screen">
-  <div class="loader">Lynsey Nunez</div>
-</div>
-
-<!-- Navigation -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="case-studies.html">Case Studies</a>
-  <a href="portfolio.html">My Design Portfolio</a>
-  <a href="resume.html">Resume</a>
-  <a href="connect.html">Connect</a>
-</nav>
-
 <!-- Hero Section -->
 <section class="hero fade-in">
-  <img src="images/lynseyheadshotai.jpeg" alt="Lynsey Nunez" class="hero-image">
-  <div class="hero-text">
+  <div class="hero-left">
+    <img src="images/lynseyheadshotai.jpeg" alt="Lynsey Nunez" class="hero-image">
+    <div class="hero-bg-gradient"></div>
+  </div>
+  <div class="hero-right">
     <h1 class="hero-name">Lynsey Nunez</h1>
     <p>Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
     <a href="case-studies.html" class="cta-button">Case Studies</a>
   </div>
 </section>
 
-<!-- Metrics Section -->
-<section class="metrics">
-  <div class="metric-card">
-    <h3 class="count" data-target="12">0</h3>
-    <p>Team Members Led</p>
-  </div>
-  <div class="metric-card">
-    <h3 class="count" data-target="300">0</h3>
-    <p>Websites Built</p>
-  </div>
-  <div class="metric-card">
-    <h3 class="count" data-target="40">0</h3>
-    <p>% Efficiency Boost</p>
-  </div>
-</section>
+<style>
+.hero {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:4rem 6rem;
+  min-height:90vh;
+  position:relative;
+  overflow:hidden;
+}
 
-<!-- Service Cards -->
-<section class="service-cards">
-  <div class="service-card">
-    <h3>AI & Automation</h3>
-    <p>Implemented AI-assisted tools to streamline repetitive tasks and boost efficiency.</p>
-  </div>
-  <div class="service-card">
-    <h3>Digital Platforms</h3>
-    <p>WordPress, Squarespace, Lofty CMS, HTML & CSS</p>
-  </div>
-  <div class="service-card">
-    <h3>Workflow & Process</h3>
-    <p>Optimized internal workflows, KPI tracking, and team processes.</p>
-  </div>
-  <div class="service-card">
-    <h3>Data & Reporting</h3>
-    <p>Reporting dashboards and SQL-based analysis for actionable insights.</p>
-  </div>
-</section>
+.hero-left {
+  position:relative;
+  width:50%;
+}
 
-<script>
-// --- Loading Screen ---
-window.addEventListener('load', () => {
-  document.getElementById('loading-screen').classList.add('hidden');
-});
+.hero-image {
+  width:100%;
+  max-width:500px;
+  height:auto;
+  border-radius:20px;
+  object-fit:cover;
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  box-shadow: 0 0 60px rgba(0,170,255,0.3);
+  transition: transform 0.3s;
+  z-index:2;
+}
+.hero-image:hover {
+  transform:scale(1.03);
+}
 
-// --- Count-Up Metrics ---
-const counters = document.querySelectorAll('.count');
-const options = { threshold: 0.5 };
-const observer = new IntersectionObserver(function(entries) {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      const counter = entry.target;
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const current = +counter.innerText;
-        const increment = target/100;
-        if(current < target){
-          counter.innerText = Math.ceil(current + increment);
-          setTimeout(updateCount, 20);
-        } else {
-          counter.innerText = target;
-        }
-      }
-      updateCount();
-      observer.unobserve(counter);
-    }
-  });
-}, options);
-counters.forEach(counter => observer.observe(counter));
+/* subtle background gradient behind image */
+.hero-bg-gradient {
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:linear-gradient(90deg, rgba(0,170,255,0.1), transparent);
+  z-index:1;
+  border-radius:20px;
+}
 
-// --- Scroll Fade-In ---
-const faders = document.querySelectorAll('.fade-in, .metric-card, .service-card');
-const appearOptions = { threshold: 0.3 };
-const appearOnScroll = new IntersectionObserver(function(entries, observer){
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-}, appearOptions);
-faders.forEach(fader => appearOnScroll.observe(fader));
-</script>
-</body>
-</html>
+.hero-right {
+  width:50%;
+  padding-left:3rem;
+}
+
+.hero-name {
+  font-family:'Corinthia', cursive;
+  font-size:6rem;
+  line-height:1;
+  margin-left:-0.3rem;
+  background:linear-gradient(90deg, rgba(0,170,255,0.8), rgba(0,255,255,0.8));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation: shine 2.5s infinite linear, slightMove 3s infinite ease-in-out;
+}
+
+.hero-right p {
+  margin-top:1rem;
+  font-size:1.25rem;
+  line-height:1.6;
+  max-width:600px;
+  opacity:0;
+  animation: fadeUp 1s forwards;
+  animation-delay:1s;
+}
+
+.hero-right .cta-button {
+  margin-top:2rem;
+  display:inline-block;
+  padding:0.75rem 1.5rem;
+  border:2px solid #0af;
+  border-radius:0.5rem;
+  transition: all 0.3s;
+  font-weight:600;
+}
+.hero-right .cta-button:hover {
+  background:#0af;
+  color:#0e0e0e;
+  transform:scale(1.05);
+}
+
+/* Animations */
+@keyframes shine {
+  0% { text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
+  50% { text-shadow:0 0 10px rgba(0,170,255,0.8),0 0 20px rgba(0,255,255,0.4);}
+  100% { text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
+}
+@keyframes slightMove {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes fadeUp {
+  0%{opacity:0; transform:translateY(20px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+/* Responsive */
+@media (max-width:1024px){
+  .hero { flex-direction:column; text-align:center; padding:3rem 2rem; }
+  .hero-left, .hero-right { width:100%; padding-left:0; }
+  .hero-name { font-size:4rem; margin-left:0; }
+  .hero-image { max-width:350px; }
+}
+@media (max-width:480px){
+  .hero-name { font-size:3rem; }
+  .hero-right p { font-size:1rem; }
+}
+</style>
