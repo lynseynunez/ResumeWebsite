@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Design Portfolio | Lynsey Nunez</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:#0e0e0e;
+    color:#f0f0f0;
+    scroll-behavior:smooth;
+  }
+  a { color:inherit; text-decoration:none; }
+  nav {
+    position:fixed; top:0; left:0; right:0;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    padding:1rem;
+    z-index:1000;
+  }
+  nav a { color:#f0f0f0; font-weight:600; transition:0.3s; }
+  nav a:hover { color:#0af; }
+
+  section {
+    padding:4rem 2rem;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  h2 { font-size:2rem; margin-bottom:2rem; color:#0af; text-align:center; }
+
+  .portfolio-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:2rem;
+  }
+
+  .portfolio-card {
+    background:#1a1a1a;
+    border-radius:0.5rem;
+    overflow:hidden;
+    transition:transform 0.3s, box-shadow 0.3s;
+    cursor:pointer;
+    border:2px solid #0af;
+  }
+  .portfolio-card:hover {
+    transform:scale(1.03);
+    box-shadow:0 0 15px #0af;
+  }
+  .portfolio-card img {
+    width:100%;
+    display:block;
+  }
+  .portfolio-card .portfolio-info {
+    padding:1rem;
+    text-align:center;
+  }
+  .portfolio-card .portfolio-info h3 {
+    margin:0;
+    font-size:1.25rem;
+    color:#0af;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="portfolio.html">My Design Portfolio</a>
+  <a href="resume.html">Resume</a>
+  <a href="connect.html">Connect</a>
+</nav>
+
+<section>
+  <h2>My Design Portfolio</h2>
+  <div class="portfolio-grid">
+
+    <a href="https://example1.com" target="_blank" class="portfolio-card">
+      <img src="https://via.placeholder.com/600x400.png?text=Website+1" alt="Website 1">
+      <div class="portfolio-info">
+        <h3>Website 1</h3>
+      </div>
+    </a>
+
+    <a href="https://example2.com" target="_blank" class="portfolio-card">
+      <img src="https://via.placeholder.com/600x400.png?text=Website+2" alt="Website 2">
+      <div class="portfolio-info">
+        <h3>Website 2</h3>
+      </div>
+    </a>
+
+    <a href="https://example3.com" target="_blank" class="portfolio-card">
+      <img src="https://via.placeholder.com/600x400.png?text=Website+3" alt="Website 3">
+      <div class="portfolio-info">
+        <h3>Website 3</h3>
+      </div>
+    </a>
+
+    <a href="https://example4.com" target="_blank" class="portfolio-card">
+      <img src="https://via.placeholder.com/600x400.png?text=Website+4" alt="Website 4">
+      <div class="portfolio-info">
+        <h3>Website 4</h3>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+</body>
+</html>
