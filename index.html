@@ -45,7 +45,7 @@
     /* Hero Section */
     .hero {
       display: flex;
-      align-items: stretch;
+      align-items: center;
       min-height: 90vh;
       padding-top: 80px;
       background-color: #0e0e0e;
@@ -54,6 +54,7 @@
 
     .hero-left {
       width: 50%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -63,7 +64,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 0;
+      border-radius: 12px;
     }
 
     .hero-right {
@@ -72,7 +73,6 @@
       flex-direction: column;
       justify-content: center;
       z-index: 2;
-      padding: 0 40px;
     }
 
     /* Aurora Title */
@@ -81,6 +81,7 @@
       font-size: var(--fs);
       line-height: 1.1;
       margin: 0;
+      padding-left: 40px;
       padding-bottom: 20px;
       color: transparent;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
@@ -105,33 +106,37 @@
       line-height: 1.6;
       margin-top: 0.5rem;
       color: #ffffffcc;
+      padding-left: 40px;
     }
 
     /* LinkedIn Icon */
     .social-link {
       display: inline-block;
+      margin-left: 40px;
       margin-top: 1.5rem;
     }
 
     .social-icon {
       width: 40px;
       height: 40px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, filter 0.3s;
+      fill: #0af;
     }
 
-    .social-icon:hover {
+    .social-link:hover .social-icon {
       transform: scale(1.1);
-      box-shadow: 0 0 15px #0af, 0 0 25px #33ff8c, 0 0 35px #ffc640;
+      filter: drop-shadow(0 0 15px #0af)
+              drop-shadow(0 0 25px #33ff8c)
+              drop-shadow(0 0 35px #ffc640);
+      fill: #33ff8c;
     }
 
     /* Responsive */
     @media(max-width:1024px){
       .hero { flex-direction: column; text-align: center; }
       .hero-left, .hero-right { width: 100%; }
-      .hero-image { height: auto; border-radius: 12px; }
-      .hero-right { padding: 20px; }
-      .title { font-size: 5rem; padding-bottom: 20px; }
-      .subtitle { font-size: 1.2rem; }
+      .title { font-size: 5rem; padding-left: 0; padding-bottom: 20px; }
+      .subtitle { font-size: 1.2rem; padding-left: 0; }
       .social-link { margin-left: 0; }
     }
 
@@ -163,7 +168,9 @@
     <h1 class="title">Lynsey Nunez</h1>
     <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
     <a href="https://www.linkedin.com/in/lynseynunez" target="_blank" class="social-link">
-      <img src="images/linkedinsvg.svg" alt="LinkedIn" class="social-icon">
+      <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 24h5V7H0v17zm7.5 0h5V14.5c0-2.75 3-2.97 3 0V24h5v-10.5c0-5.55-6-5.33-7.5-2.61V14.5h-5v9.5z"/>
+      </svg>
     </a>
   </div>
 </section>
