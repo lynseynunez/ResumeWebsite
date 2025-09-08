@@ -3,73 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lynsey Nunez | Digital Business Analyst</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Lynsey Nunez | Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Corinthia&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: #0e0e0e;
-    color: #f0f0f0;
-    scroll-behavior: smooth;
-  }
-  a { color: inherit; text-decoration: none; }
-  nav {
-    position: fixed;
-    top:0; left:0; right:0;
-    background:#111;
-    display:flex;
-    justify-content:center;
-    gap:2rem;
-    padding:1rem;
-    z-index:1000;
-  }
-  nav a { color:#f0f0f0; font-weight:600; transition:0.3s; }
-  nav a:hover { color:#0af; }
+/* --- Base --- */
+body {
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#0e0e0e;
+  color:#f0f0f0;
+  scroll-behavior:smooth;
+}
+a { color:inherit; text-decoration:none; }
 
-  header {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:100vh;
-    padding:2rem;
-  }
-  .hero-container {
-    display:flex;
-    align-items:center;
-    gap:3rem;
-    max-width:1200px;
-    width:100%;
-    flex-wrap:wrap;
-  }
-  .hero-image {
-    flex:1 1 300px;
-    max-width:400px;
-    border-radius:0.5rem;
-    overflow:hidden;
-    border: 2px solid #0af;
-  }
-  .hero-image img { width:100%; display:block; }
-  .hero-text {
-    flex:2 1 400px;
-  }
-  .hero-text h1 { font-size:3rem; margin:0; color:#0af; }
-  .hero-text p { font-size:1.25rem; margin:1rem 0; line-height:1.6; }
-  .hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem; }
-  .hero-buttons a { padding:0.75rem 1.5rem; border:2px solid #0af; border-radius:0.5rem; transition:all 0.3s; }
-  .hero-buttons a:hover { background:#0af; color:#0e0e0e; }
+/* --- Navigation --- */
+nav {
+  position:fixed;
+  top:0; left:0; right:0;
+  background:#111;
+  display:flex;
+  justify-content:center;
+  gap:2rem;
+  padding:1rem;
+  z-index:1000;
+}
+nav a { font-weight:600; transition:0.3s; }
+nav a:hover { color:#0af; }
 
-  section { padding:4rem 2rem; max-width:1200px; margin:0 auto; }
-  h2 { font-size:2rem; margin-bottom:1rem; color:#0af; }
+/* --- Loading Screen --- */
+#loading-screen {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:#0e0e0e;
+  display:flex; align-items:center; justify-content:center;
+  z-index:9999; transition: opacity 0.5s ease;
+}
+#loading-screen.hidden { opacity:0; pointer-events:none; }
+.loader {
+  font-family:'Corinthia', cursive;
+  font-size:3rem;
+  color:#0af;
+  text-shadow: 0 0 10px rgba(0,170,255,0.5),0 0 20px rgba(0,255,255,0.3);
+  animation: shine 2.5s infinite linear;
+}
+@keyframes shine {
+  0% { text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
+  50% { text-shadow:0 0 10px rgba(0,170,255,0.8),0 0 20px rgba(0,255,255,0.4);}
+  100% { text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
+}
 
-  /* Stats cards */
-  .stats { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:2rem; }
-  .stat { background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center; flex:1 1 150px; }
-  .stat h3 { font-size:2rem; margin:0 0 0.5rem 0; }
+/* --- Hero Section --- */
+.hero {
+  display:flex; align-items:center; justify-content:center; gap:3rem;
+  padding:6rem 2rem; min-height:90vh;
+}
+.hero-image {
+  width:220px; height:220px; border-radius:50%; border:3px solid #0af;
+  object-fit:cover; box-shadow:0 4px 15px rgba(0,170,255,0.3); transition: transform 0.3s;
+}
+.hero-image:hover { transform:scale(1.05); }
+.hero-text h1.hero-name {
+  font-family:'Corinthia', cursive;
+  font-size:4rem; font-weight:400;
+  background:linear-gradient(90deg, rgba(0,170,255,0.8), rgba(0,255,255,0.8));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation: shine 2.5s infinite linear;
+  display:inline-block;
+}
+.hero-text p {
+  margin-top:1rem; font-size:1.25rem; line-height:1.6; max-width:600px;
+}
+.hero-text .cta-button {
+  margin-top:2rem; display:inline-block; padding:0.75rem 1.5rem;
+  border:2px solid #0af; border-radius:0.5rem; transition: all 0.3s; font-weight:600;
+}
+.hero-text .cta-button:hover { background:#0af; color:#0e0e0e; }
+
+/* --- Metrics Section --- */
+.metrics {
+  display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:4rem;
+}
+.metric-card {
+  background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center;
+  width:180px; transition: transform 0.3s, box-shadow 0.3s;
+}
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow:0 4px 20px rgba(0,170,255,0.4);
+}
+.metric-card h3 { font-size:2rem; color:#0af; }
+.metric-card p { font-size:0.95rem; margin-top:0.5rem; }
+
+/* --- Service Cards --- */
+.service-cards {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2rem; margin-top:4rem;
+}
+.service-card {
+  background:#1a1a1a; padding:1.5rem; border-radius:0.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 4px 20px rgba(0,170,255,0.3);
+}
+.service-card h3 { color:#0af; margin-bottom:0.5rem; }
+
+/* --- Fade-in Animation --- */
+.fade-in { opacity:0; transform:translateY(20px); transition:0.6s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
 </style>
 </head>
 <body>
 
+<!-- Loading Screen -->
+<div id="loading-screen">
+  <div class="loader">Lynsey Nunez</div>
+</div>
+
+<!-- Navigation -->
 <nav>
   <a href="index.html">Home</a>
   <a href="case-studies.html">Case Studies</a>
@@ -78,80 +130,69 @@
   <a href="connect.html">Connect</a>
 </nav>
 
-<header>
-  <div class="hero-container">
-    <div class="hero-image">
-      <img src="https://raw.githubusercontent.com/lynseynunez/ResumeWebsite/main/lynseyheadshotai.jpeg" alt="Lynsey Nunez Headshot">
-    </div>
-    <div class="hero-text">
-      <h1>Lynsey Nunez</h1>
-      <p>Digital Business Analyst helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
-      <div class="hero-buttons">
-        <a href="case-studies.html">Case Studies</a>
-        <a href="portfolio.html">My Design Portfolio</a>
-        <a href="connect.html">Let's Connect</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section id="stats">
-  <h2>Key Impact</h2>
-  <div class="stats">
-    <div class="stat">
-      <h3 data-target="25">0</h3>
-      <p>AI-Enhanced Projects Delivered</p>
-    </div>
-    <div class="stat">
-      <h3 data-target="400">0</h3>
-      <p>Hours Saved Across Projects</p>
-    </div>
-    <div class="stat">
-      <h3 data-target="30000">0</h3>
-      <p>Cost Savings Delivered</p>
-    </div>
-    <div class="stat">
-      <h3 data-target="200">0</h3>
-      <p>Clients Supported</p>
-    </div>
-    <div class="stat">
-      <h3 data-target="12">0</h3>
-      <p>Team Members Mentored & Led</p>
-    </div>
+<!-- Hero Section -->
+<section class="hero fade-in">
+  <img src="images/lynseyheadshotai.jpeg" alt="Lynsey Nunez" class="hero-image">
+  <div class="hero-text">
+    <h1 class="hero-name">Lynsey Nunez</h1>
+    <p>Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
+    <a href="case-studies.html" class="cta-button">Case Studies</a>
   </div>
 </section>
 
+<!-- Metrics Section -->
+<section class="metrics fade-in">
+  <div class="metric-card">
+    <h3 class="count" data-target="12">0</h3>
+    <p>Team Members Led</p>
+  </div>
+  <div class="metric-card">
+    <h3 class="count" data-target="300">0</h3>
+    <p>Websites Built</p>
+  </div>
+  <div class="metric-card">
+    <h3 class="count" data-target="40">0</h3>
+    <p>% Efficiency Boost</p>
+  </div>
+</section>
+
+<!-- Service Cards -->
+<section class="service-cards fade-in">
+  <div class="service-card"><h3>AI & Automation</h3><p>Implemented AI-assisted tools to streamline repetitive tasks and boost efficiency.</p></div>
+  <div class="service-card"><h3>Digital Platforms</h3><p>Expertise in WordPress, Squarespace, Lofty CMS, and custom HTML/CSS integrations.</p></div>
+  <div class="service-card"><h3>Workflow & Process</h3><p>Optimized internal workflows, KPI tracking, and team processes for measurable results.</p></div>
+  <div class="service-card"><h3>Data & Reporting</h3><p>Generated actionable insights through reporting dashboards and SQL-based analysis.</p></div>
+</section>
+
 <script>
-function animateNumbers(elements) {
-  elements.forEach(el => {
-    const target = +el.getAttribute('data-target');
-    let count = 0;
-    const suffix = el.textContent.replace(/\d/g,'').trim();
-    const increment = target / 100;
-    const interval = setInterval(() => {
-      count += increment;
-      if(count >= target){
-        el.textContent = target.toLocaleString() + suffix;
-        clearInterval(interval);
-      } else {
-        el.textContent = Math.floor(count).toLocaleString() + suffix;
-      }
-    }, 20);
-  });
-}
+// Loading screen hide
+window.addEventListener('load', () => {
+  const loadingScreen = document.getElementById('loading-screen');
+  loadingScreen.classList.add('hidden');
+});
 
-const observer = new IntersectionObserver((entries, obs) => {
+// Fade-in on scroll
+const fadeElems = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if(entry.isIntersecting){
-      const stats = entry.target.querySelectorAll('[data-target]');
-      animateNumbers(stats);
-      obs.unobserve(entry.target);
-    }
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
   });
-}, {threshold:0.5});
+},{threshold:0.2});
+fadeElems.forEach(el => observer.observe(el));
 
-document.querySelectorAll('#stats').forEach(section=>{
-  observer.observe(section);
+// Animated counters
+const counters = document.querySelectorAll('.count');
+counters.forEach(counter => {
+  const updateCount = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target / 200;
+    if(count < target) {
+      counter.innerText = Math.ceil(count + increment);
+      requestAnimationFrame(updateCount);
+    } else { counter.innerText = target; }
+  };
+  updateCount();
 });
 </script>
 
