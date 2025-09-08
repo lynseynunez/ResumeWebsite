@@ -45,7 +45,7 @@
     /* Hero Section */
     .hero {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       min-height: 90vh;
       padding-top: 80px;
       background-color: #0e0e0e;
@@ -54,18 +54,16 @@
 
     .hero-left {
       width: 50%;
-      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .hero-image {
-      width: 80%;
-      max-width: 450px;
-      height: auto;
-      border-radius: 12px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      border-radius: 0;
     }
 
     .hero-right {
@@ -74,6 +72,7 @@
       flex-direction: column;
       justify-content: center;
       z-index: 2;
+      padding: 0 40px;
     }
 
     /* Aurora Title */
@@ -82,7 +81,6 @@
       font-size: var(--fs);
       line-height: 1.1;
       margin: 0;
-      padding-left: 40px;
       padding-bottom: 20px;
       color: transparent;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
@@ -107,13 +105,11 @@
       line-height: 1.6;
       margin-top: 0.5rem;
       color: #ffffffcc;
-      padding-left: 40px;
     }
 
     /* LinkedIn Icon */
     .social-link {
       display: inline-block;
-      margin-left: 40px;
       margin-top: 1.5rem;
     }
 
@@ -132,8 +128,10 @@
     @media(max-width:1024px){
       .hero { flex-direction: column; text-align: center; }
       .hero-left, .hero-right { width: 100%; }
-      .title { font-size: 5rem; padding-left: 0; padding-bottom: 20px; }
-      .subtitle { font-size: 1.2rem; padding-left: 0; }
+      .hero-image { height: auto; border-radius: 12px; }
+      .hero-right { padding: 20px; }
+      .title { font-size: 5rem; padding-bottom: 20px; }
+      .subtitle { font-size: 1.2rem; }
       .social-link { margin-left: 0; }
     }
 
