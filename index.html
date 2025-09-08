@@ -57,56 +57,33 @@ header {
   z-index:2;
 }
 
-/* Aurora-style animated name */
-.content { position: relative; }
+/* Hero Text */
 .title {
   font-family:'Corinthia', cursive;
   font-weight:400;
   font-size:8rem;
   line-height:1;
-  position: relative;
-  overflow: hidden;
-  color:#0af;
   margin:0;
-  z-index:2;
+  background: linear-gradient(270deg, #0af, #33ff8c, #ffc640, #e54cff);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 10s ease infinite;
 }
+
+@keyframes gradientMove {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+
 .subtitle {
   font-size:1.5rem;
   line-height:1.6;
   margin-top:1rem;
   color:#ffffffcc;
 }
-.aurora {
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:1;
-  mix-blend-mode: overlay;
-  pointer-events:none;
-}
-.aurora__item {
-  position:absolute;
-  width:60vw;
-  height:60vw;
-  background-color:#0af;
-  border-radius:37% 29% 27% 27% / 28% 25% 41% 37%;
-  filter:blur(1rem);
-  mix-blend-mode: overlay;
-}
-.aurora__item:nth-of-type(1) { top:-50%; animation: aurora-1 12s ease-in-out infinite alternate; }
-.aurora__item:nth-of-type(2) { right:0; top:0; background-color:#33ff8c; animation: aurora-2 12s ease-in-out infinite alternate; }
-.aurora__item:nth-of-type(3) { left:0; bottom:0; background-color:#ffc640; animation: aurora-3 8s ease-in-out infinite alternate; }
-.aurora__item:nth-of-type(4) { right:0; bottom:-50%; background-color:#e54cff; animation: aurora-4 24s ease-in-out infinite alternate; }
 
-/* Aurora Keyframes */
-@keyframes aurora-1 { 0%{top:0;right:0;}50%{top:100%;right:75%;}75%{top:100%;right:25%;}100%{top:0;right:0;} }
-@keyframes aurora-2 { 0%{top:-50%;left:0;}60%{top:100%;left:75%;}85%{top:100%;left:25%;}100%{top:-50%;left:0;} }
-@keyframes aurora-3 { 0%{bottom:0;left:0;}40%{bottom:100%;left:75%;}65%{bottom:40%;left:50%;}100%{bottom:0;left:0;} }
-@keyframes aurora-4 { 0%{bottom:-50%;right:0;}50%{bottom:0%;right:40%;}90%{bottom:50%;right:25%;}100%{bottom:-50%;right:0;} }
-
-/* CTA Button */
 .cta-button {
   display:inline-block;
   margin-top:2rem;
@@ -172,18 +149,9 @@ header {
     <img src="images/lynseyheadshotai.jpeg" alt="Lynsey Nunez" class="hero-image">
   </div>
   <div class="hero-right">
-    <div class="content">
-      <h1 class="title">Lynsey Nunez
-        <div class="aurora">
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-          <div class="aurora__item"></div>
-        </div>
-      </h1>
-      <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
-      <a href="case-studies.html" class="cta-button">Case Studies</a>
-    </div>
+    <h1 class="title">Lynsey Nunez</h1>
+    <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
+    <a href="case-studies.html" class="cta-button">Case Studies</a>
   </div>
 </section>
 
