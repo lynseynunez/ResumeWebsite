@@ -14,246 +14,140 @@
     scroll-behavior: smooth;
   }
   a { color: inherit; text-decoration: none; }
-  header {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    height: 100vh; text-align: center; background: linear-gradient(135deg,#1f1f1f,#0a0a0a);
+  nav {
+    position: fixed;
+    top:0; left:0; right:0;
+    background:#111;
+    display:flex;
+    justify-content:center;
+    gap:2rem;
+    padding:1rem;
+    z-index:1000;
   }
-  header h1 { font-size: 3rem; margin: 0; }
-  header p { font-size: 1.25rem; margin: 1rem 0; }
-  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content:center; }
-  .hero-buttons a { padding: 0.75rem 1.5rem; border: 2px solid #0af; border-radius: 0.5rem; transition: all 0.3s; }
-  .hero-buttons a:hover { background-color: #0af; color: #0e0e0e; }
+  nav a { color:#f0f0f0; font-weight:600; transition:0.3s; }
+  nav a:hover { color:#0af; }
 
-  section { padding: 4rem 2rem; max-width:1200px; margin:0 auto; }
-  h2 { font-size: 2rem; margin-bottom:1rem; color:#0af; }
-  .about p { font-size:1.125rem; line-height:1.6; }
-  .about ul { margin-top:1rem; padding-left:1.5rem; }
-  .about li { margin-bottom:0.5rem; }
+  header {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:2rem;
+  }
+  .hero-container {
+    display:flex;
+    align-items:center;
+    gap:3rem;
+    max-width:1200px;
+    width:100%;
+    flex-wrap:wrap;
+  }
+  .hero-image {
+    flex:1 1 300px;
+    max-width:400px;
+    border-radius:0.5rem;
+    overflow:hidden;
+    border: 2px solid #0af;
+  }
+  .hero-image img { width:100%; display:block; }
+  .hero-text {
+    flex:2 1 400px;
+  }
+  .hero-text h1 { font-size:3rem; margin:0; color:#0af; }
+  .hero-text p { font-size:1.25rem; margin:1rem 0; line-height:1.6; }
+  .hero-buttons { display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem; }
+  .hero-buttons a { padding:0.75rem 1.5rem; border:2px solid #0af; border-radius:0.5rem; transition:all 0.3s; }
+  .hero-buttons a:hover { background:#0af; color:#0e0e0e; }
 
-  .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-top:2rem; }
-  .service-card { background:#1a1a1a; padding:1.5rem; border-radius:0.5rem; transition: all 0.3s; }
-  .service-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,170,255,0.3); }
-  .service-card h3 { margin-top:0; color:#0af; }
-
-  .stats { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:2rem; }
-  .stat { background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center; flex:1 1 150px; }
-  .stat h3 { font-size:2rem; margin:0; color:#0af; }
-
-  .portfolio, .case-studies { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; margin-top:2rem; }
-  .portfolio-card, .case-card { background:#1a1a1a; border-radius:0.5rem; overflow:hidden; transition:all 0.3s; }
-  .portfolio-card:hover, .case-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,170,255,0.3); }
-  .portfolio-card img { width:100%; display:block; }
-  .portfolio-card a { display:block; padding:1rem; text-align:center; color:#f0f0f0; background:#111; }
-
-  .case-card .metrics { display:flex; justify-content:space-around; padding:1rem; flex-wrap:wrap; gap:0.5rem; background:#111; }
-  .metric { background:#0af; color:#0e0e0e; padding:0.5rem 1rem; border-radius:0.25rem; font-weight:600; font-size:0.875rem; }
-
-  .case-card-details { padding:1rem; display:none; }
-  .case-card.active .case-card-details { display:block; }
-  .case-card h3 { margin:0.5rem 0; color:#0af; cursor:pointer; }
-
-  .contact { text-align:center; }
-  .contact a { color:#0af; border-bottom:1px solid #0af; }
+  section { padding:4rem 2rem; max-width:1200px; margin:0 auto; }
+  h2 { font-size:2rem; margin-bottom:1rem; color:#0af; }
 </style>
 </head>
 <body>
 
+<nav>
+  <a href="index.html">Home</a>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="portfolio.html">My Design Portfolio</a>
+  <a href="resume.html">Resume</a>
+  <a href="connect.html">Connect</a>
+</nav>
+
 <header>
-  <h1>Lynsey Nunez</h1>
-  <p>Digital Business Analyst | AI-Driven Efficiency</p>
-  <div class="hero-buttons">
-    <a href="#case-studies">Case Studies</a>
-    <a href="#design-portfolio">My Design Portfolio</a>
-    <a href="#contact">Let's Connect</a>
+  <div class="hero-container">
+    <div class="hero-image">
+      <img src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/lynseyheadshotai.jpeg" alt="Lynsey Nunez Headshot">
+    </div>
+    <div class="hero-text">
+      <h1>Lynsey Nunez</h1>
+      <p>Digital Business Analyst helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
+      <div class="hero-buttons">
+        <a href="case-studies.html">Case Studies</a>
+        <a href="portfolio.html">My Design Portfolio</a>
+        <a href="connect.html">Let's Connect</a>
+      </div>
+    </div>
   </div>
 </header>
 
-<section id="about" class="about">
-  <h2>About Me</h2>
-  <p>I’m a Digital Business Analyst helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes. I combine technical expertise, strategic insight, and hands-on experience with websites and SaaS platforms to deliver measurable impact.</p>
-  <ul>
-    <li>Implement AI-driven automation to reduce repetitive tasks and boost efficiency</li>
-    <li>Optimize workflows and processes for maximum productivity</li>
-    <li>Translate technical solutions into actionable business strategies</li>
-    <li>Deliver actionable insights through data analysis and reporting</li>
-  </ul>
-</section>
-
-<section id="services">
-  <h2>Services</h2>
-  <div class="services">
-    <div class="service-card">
-      <h3>AI & Workflow Automation</h3>
-      <p>ChatGPT, Gemini, Zapier, IFTTT – automate tasks, generate content, and streamline digital operations.</p>
-    </div>
-    <div class="service-card">
-      <h3>Digital Process Optimization</h3>
-      <p>Analyze workflows, uncover inefficiencies, and implement improvements that maximize productivity.</p>
-    </div>
-    <div class="service-card">
-      <h3>Data & Performance Insights</h3>
-      <p>Build dashboards, track KPIs, and turn data into actionable business strategies.</p>
-    </div>
-    <div class="service-card">
-      <h3>Digital Platform Strategy</h3>
-      <p>Optimize WordPress, Squarespace, Lofty CMS, and Salesforce to support business goals.</p>
-    </div>
-    <div class="service-card">
-      <h3>Project & Team Management</h3>
-      <p>Plan, coordinate, and execute projects with cross-functional teams while creating scalable processes.</p>
-    </div>
-  </div>
-</section>
-
 <section id="stats">
   <h2>Key Impact</h2>
-  <div class="stats">
-    <div class="stat">
+  <div class="stats" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; margin-top:2rem;">
+    <div class="stat" style="background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center; flex:1 1 150px;">
       <h3 data-target="25">0</h3>
       <p>AI-Enhanced Projects Delivered</p>
     </div>
-    <div class="stat">
+    <div class="stat" style="background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center; flex:1 1 150px;">
       <h3 data-target="400">0</h3>
       <p>Hours Saved Across Projects</p>
     </div>
-    <div class="stat">
+    <div class="stat" style="background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center; flex:1 1 150px;">
       <h3 data-target="30000">0</h3>
       <p>Cost Savings Delivered</p>
     </div>
-    <div class="stat">
+    <div class="stat" style="background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center; flex:1 1 150px;">
       <h3 data-target="200">0</h3>
       <p>Clients Supported</p>
     </div>
-    <div class="stat">
+    <div class="stat" style="background:#1a1a1a; padding:2rem; border-radius:0.5rem; text-align:center; flex:1 1 150px;">
       <h3 data-target="12">0</h3>
       <p>Team Members Mentored & Led</p>
     </div>
   </div>
 </section>
 
-<section id="case-studies">
-  <h2>Case Studies</h2>
-  <div class="case-studies">
-    <div class="case-card">
-      <h3>AI-Powered Content Automation</h3>
-      <div class="metrics">
-        <span class="metric" data-target="40">0% Efficiency ↑</span>
-        <span class="metric" data-target="30000">$0 Saved</span>
-        <span class="metric" data-target="1">Scalable Ops</span>
-      </div>
-      <div class="case-card-details">
-        <p><strong>Background:</strong> Our content creation workflow was a significant bottleneck...</p>
-        <p><strong>Challenges:</strong> Inefficient workflow, scalability issues, fragmented process.</p>
-        <p><strong>Solutions:</strong> Implemented AI-powered content tool, standardized prompts, strategic team allocation.</p>
-        <p><strong>Outcomes:</strong> Cost savings $30K+, 40% efficiency increase, scalable operations.</p>
-      </div>
-    </div>
-    <div class="case-card">
-      <h3>Website Workflow Optimization</h3>
-      <div class="metrics">
-        <span class="metric" data-target="35">0% Faster</span>
-        <span class="metric" data-target="50">0+ Clients</span>
-      </div>
-      <div class="case-card-details">
-        <p><strong>Background:</strong> Repetitive manual CMS builds limited capacity.</p>
-        <p><strong>Solutions:</strong> AI-assisted CMS templates, standardized processes, automation tools.</p>
-        <p><strong>Outcomes:</strong> 35% faster completion, increased capacity, improved client satisfaction.</p>
-      </div>
-    </div>
-    <div class="case-card">
-      <h3>Custom Website Build</h3>
-      <div class="metrics">
-        <span class="metric" data-target="1">Advanced HTML/CSS</span>
-        <span class="metric" data-target="1">AI-Assisted</span>
-      </div>
-      <div class="case-card-details">
-        <p><strong>Background:</strong> Client needed a complex website beyond standard CMS capabilities.</p>
-        <p><strong>Solutions:</strong> Custom HTML/CSS, AI-generated content, iterative collaboration.</p>
-        <p><strong>Outcomes:</strong> Delivered on schedule, increased functionality, reduced maintenance time.</p>
-      </div>
-    </div>
-    <div class="case-card">
-      <h3>Data Dashboard Implementation</h3>
-      <div class="metrics">
-        <span class="metric" data-target="60">0% Faster Reports</span>
-        <span class="metric" data-target="1">Improved Decisions</span>
-      </div>
-      <div class="case-card-details">
-        <p><strong>Background:</strong> Leadership lacked real-time visibility into projects and teams.</p>
-        <p><strong>Solutions:</strong> SQL dashboards, centralized data, team training.</p>
-        <p><strong>Outcomes:</strong> 60% faster reporting, actionable insights, better resource allocation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="design-portfolio">
-  <h2>My Design Portfolio</h2>
-  <div class="portfolio">
-    <div class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400?text=Website+1" alt="Website 1">
-      <a href="#" target="_blank">View Live</a>
-    </div>
-    <div class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400?text=Website+2" alt="Website 2">
-      <a href="#" target="_blank">View Live</a>
-    </div>
-    <div class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400?text=Website+3" alt="Website 3">
-      <a href="#" target="_blank">View Live</a>
-    </div>
-    <div class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400?text=Website+4" alt="Website 4">
-      <a href="#" target="_blank">View Live</a>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <h2>Contact Me</h2>
-  <p>Let's work together! Reach out via <a href="mailto:youremail@example.com">email</a> or connect on <a href="#">LinkedIn</a>.</p>
-</section>
-
 <script>
-  // Expand Case Study details
-  document.querySelectorAll('.case-card h3').forEach(card => {
-    card.addEventListener('click', () => {
-      card.parentElement.classList.toggle('active');
-    });
-  });
-
-  // Number count-up animation
-  function animateNumbers(elements) {
-    elements.forEach(el => {
-      const target = +el.getAttribute('data-target');
-      let count = 0;
-      const suffix = el.textContent.replace(/\d/g,'').trim(); // keep symbols like %, $
-      const increment = target / 100;
-      const interval = setInterval(() => {
-        count += increment;
-        if(count >= target){
-          el.textContent = target.toLocaleString() + suffix;
-          clearInterval(interval);
-        } else {
-          el.textContent = Math.floor(count).toLocaleString() + suffix;
-        }
-      }, 20);
-    });
-  }
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const stats = entry.target.querySelectorAll('[data-target]');
-        animateNumbers(stats);
-        obs.unobserve(entry.target);
+function animateNumbers(elements) {
+  elements.forEach(el => {
+    const target = +el.getAttribute('data-target');
+    let count = 0;
+    const suffix = el.textContent.replace(/\d/g,'').trim();
+    const increment = target / 100;
+    const interval = setInterval(() => {
+      count += increment;
+      if(count >= target){
+        el.textContent = target.toLocaleString() + suffix;
+        clearInterval(interval);
+      } else {
+        el.textContent = Math.floor(count).toLocaleString() + suffix;
       }
-    });
-  }, {threshold:0.5});
-
-  document.querySelectorAll('#stats, .case-studies').forEach(section=>{
-    observer.observe(section);
+    }, 20);
   });
+}
+
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const stats = entry.target.querySelectorAll('[data-target]');
+      animateNumbers(stats);
+      obs.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.5});
+
+document.querySelectorAll('#stats').forEach(section=>{
+  observer.observe(section);
+});
 </script>
 
 </body>
