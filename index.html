@@ -13,76 +13,44 @@ body {
   color:#fff;
 }
 
-/* Loading Screen */
-#loading-screen {
-  position: fixed;
-  top:0; left:0; width:100%; height:100%;
-  display:flex; align-items:center; justify-content:center;
-  background:#0e0e0e;
-  z-index:9999;
-  flex-direction:column;
-}
-#loading-screen .loader {
-  font-family:'Corinthia', cursive;
-  font-size:3rem;
-  color:#0af;
-  text-shadow:0 0 10px rgba(0,170,255,0.5),0 0 20px rgba(0,255,255,0.3);
-  animation: shine 2.5s infinite linear;
-}
-@keyframes shine {
-  0%{text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
-  50%{text-shadow:0 0 10px rgba(0,170,255,0.8),0 0 20px rgba(0,255,255,0.4);}
-  100%{text-shadow:0 0 5px rgba(0,170,255,0.5),0 0 10px rgba(0,170,255,0.3);}
-}
-#loading-screen.hidden {opacity:0; pointer-events:none; transition:opacity 0.5s ease;}
-
 /* Hero Section */
 .hero {
   display:flex;
   align-items:center;
-  justify-content:space-between;
   min-height:90vh;
-  padding:4rem 6rem;
-  position:relative;
+  background-color:#0e0e0e;
   overflow:hidden;
 }
 
 .hero-left {
   width:50%;
-  position:relative;
 }
 
 .hero-image {
   width:100%;
-  max-width:600px;
+  max-width:700px;
   height:auto;
+  display:block;
   object-fit:cover;
-  border-radius:0;
   box-shadow:0 0 40px rgba(0,0,0,0.5);
-  mask-image:linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image:linear-gradient(to right, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
 }
 
 .hero-right {
   width:50%;
-  padding-left:3rem;
+  padding-left:2rem;
 }
 
 .hero-name {
   font-family:'Corinthia', cursive;
-  font-size:6rem;
+  font-size:8rem;
   line-height:1;
   margin:0;
   color:#0af;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background:linear-gradient(90deg, rgba(0,170,255,0.9), rgba(0,255,255,0.7));
   text-shadow:0 0 10px rgba(0,170,255,0.3);
-  animation: subtleShine 3s infinite ease-in-out;
 }
 
 .hero-subtitle {
-  font-size:1.25rem;
+  font-size:1.5rem;
   line-height:1.6;
   margin-top:1rem;
   color:#ffffffcc;
@@ -106,7 +74,7 @@ body {
   transform:scale(1.05);
 }
 
-/* Fade-in animations */
+/* Fade-in animation */
 .hero-right h1, .hero-right p, .cta-button {
   opacity:0;
   animation: fadeUp 1s forwards;
@@ -118,11 +86,6 @@ body {
 @keyframes fadeUp {
   0%{opacity:0; transform:translateY(20px);}
   100%{opacity:1; transform:translateY(0);}
-}
-
-@keyframes subtleShine {
-  0%,100% { text-shadow:0 0 10px rgba(0,170,255,0.3);}
-  50% { text-shadow:0 0 20px rgba(0,170,255,0.6);}
 }
 
 /* Metrics Section */
@@ -151,26 +114,21 @@ body {
 
 /* Responsive */
 @media(max-width:1024px){
-  .hero { flex-direction:column; text-align:center; padding:3rem 2rem; }
+  .hero { flex-direction:column; text-align:center; }
   .hero-left, .hero-right { width:100%; padding-left:0; }
-  .hero-name { font-size:4rem; }
-  .hero-subtitle { font-size:1rem; }
+  .hero-name { font-size:5rem; }
+  .hero-subtitle { font-size:1.2rem; }
   .metrics { flex-direction:column; gap:2rem; }
 }
 @media(max-width:480px){
-  .hero-name { font-size:3rem; }
+  .hero-name { font-size:3.5rem; }
 }
 
-/* Animated count-up numbers */
+/* Count-up animation */
 .metric h2 span { display:inline-block; }
 </style>
 </head>
 <body>
-
-<!-- Loading Screen -->
-<div id="loading-screen">
-  <div class="loader">Lynsey Nunez</div>
-</div>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -201,11 +159,6 @@ body {
 </section>
 
 <script>
-// Loading screen
-window.addEventListener('load', () => {
-  document.getElementById('loading-screen').classList.add('hidden');
-});
-
 // Count-up metrics
 const counters = document.querySelectorAll('.count');
 counters.forEach(counter => {
@@ -223,5 +176,6 @@ counters.forEach(counter => {
   updateCount();
 });
 </script>
+
 </body>
 </html>
