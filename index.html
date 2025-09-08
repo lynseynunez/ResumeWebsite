@@ -53,32 +53,60 @@ header {
 .hero-right {
   width:50%;
   padding-left:2rem;
+  position:relative;
+  z-index:2;
 }
 
-.hero-name {
+/* Aurora-style animated name */
+.content { position: relative; }
+.title {
   font-family:'Corinthia', cursive;
   font-weight:400;
   font-size:8rem;
   line-height:1;
-  margin:0;
+  position: relative;
+  overflow: hidden;
   color:#0af;
-  text-shadow: 0 0 20px rgba(0,170,255,0.5);
-  animation: glow 2.5s ease-in-out infinite alternate;
+  margin:0;
+  z-index:2;
 }
-
-@keyframes glow {
-  0% { text-shadow: 0 0 10px rgba(0,170,255,0.3); }
-  50% { text-shadow: 0 0 25px rgba(0,170,255,0.6); }
-  100% { text-shadow: 0 0 10px rgba(0,170,255,0.3); }
-}
-
-.hero-subtitle {
+.subtitle {
   font-size:1.5rem;
   line-height:1.6;
   margin-top:1rem;
   color:#ffffffcc;
 }
+.aurora {
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  mix-blend-mode: overlay;
+  pointer-events:none;
+}
+.aurora__item {
+  position:absolute;
+  width:60vw;
+  height:60vw;
+  background-color:#0af;
+  border-radius:37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter:blur(1rem);
+  mix-blend-mode: overlay;
+}
+.aurora__item:nth-of-type(1) { top:-50%; animation: aurora-1 12s ease-in-out infinite alternate; }
+.aurora__item:nth-of-type(2) { right:0; top:0; background-color:#33ff8c; animation: aurora-2 12s ease-in-out infinite alternate; }
+.aurora__item:nth-of-type(3) { left:0; bottom:0; background-color:#ffc640; animation: aurora-3 8s ease-in-out infinite alternate; }
+.aurora__item:nth-of-type(4) { right:0; bottom:-50%; background-color:#e54cff; animation: aurora-4 24s ease-in-out infinite alternate; }
 
+/* Aurora Keyframes */
+@keyframes aurora-1 { 0%{top:0;right:0;}50%{top:100%;right:75%;}75%{top:100%;right:25%;}100%{top:0;right:0;} }
+@keyframes aurora-2 { 0%{top:-50%;left:0;}60%{top:100%;left:75%;}85%{top:100%;left:25%;}100%{top:-50%;left:0;} }
+@keyframes aurora-3 { 0%{bottom:0;left:0;}40%{bottom:100%;left:75%;}65%{bottom:40%;left:50%;}100%{bottom:0;left:0;} }
+@keyframes aurora-4 { 0%{bottom:-50%;right:0;}50%{bottom:0%;right:40%;}90%{bottom:50%;right:25%;}100%{bottom:-50%;right:0;} }
+
+/* CTA Button */
 .cta-button {
   display:inline-block;
   margin-top:2rem;
@@ -90,25 +118,10 @@ header {
   font-weight:600;
   transition:all 0.3s;
 }
-
 .cta-button:hover {
   background:#0af;
   color:#0e0e0e;
   transform:scale(1.05);
-}
-
-/* Fade-in animation */
-.hero-right h1, .hero-right p, .cta-button {
-  opacity:0;
-  animation: fadeUp 1s forwards;
-}
-.hero-right h1 { animation-delay:0.3s; }
-.hero-right p { animation-delay:0.6s; }
-.cta-button { animation-delay:0.9s; }
-
-@keyframes fadeUp {
-  0%{opacity:0; transform:translateY(20px);}
-  100%{opacity:1; transform:translateY(0);}
 }
 
 /* Metrics Section */
@@ -119,33 +132,21 @@ header {
   padding:4rem 2rem;
   background:#111;
 }
-
 .metric {
   flex:1;
 }
-
-.metric h2 {
-  font-size:3rem;
-  color:#0af;
-}
-
-.metric p {
-  font-size:1.1rem;
-  margin-top:0.5rem;
-  color:#fff;
-}
+.metric h2 { font-size:3rem; color:#0af; }
+.metric p { font-size:1.1rem; margin-top:0.5rem; color:#fff; }
 
 /* Responsive */
 @media(max-width:1024px){
   .hero { flex-direction:column; text-align:center; }
   .hero-left, .hero-right { width:100%; padding-left:0; }
-  .hero-name { font-size:5rem; }
-  .hero-subtitle { font-size:1.2rem; }
+  .title { font-size:5rem; }
+  .subtitle { font-size:1.2rem; }
   .metrics { flex-direction:column; gap:2rem; }
 }
-@media(max-width:480px){
-  .hero-name { font-size:3.5rem; }
-}
+@media(max-width:480px){ .title { font-size:3.5rem; } }
 
 /* Count-up animation */
 .metric h2 span { display:inline-block; }
@@ -171,9 +172,18 @@ header {
     <img src="images/lynseyheadshotai.jpeg" alt="Lynsey Nunez" class="hero-image">
   </div>
   <div class="hero-right">
-    <h1 class="hero-name">Lynsey Nunez</h1>
-    <p class="hero-subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
-    <a href="case-studies.html" class="cta-button">Case Studies</a>
+    <div class="content">
+      <h1 class="title">Lynsey Nunez
+        <div class="aurora">
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+          <div class="aurora__item"></div>
+        </div>
+      </h1>
+      <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
+      <a href="case-studies.html" class="cta-button">Case Studies</a>
+    </div>
   </div>
 </section>
 
