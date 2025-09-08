@@ -52,9 +52,11 @@ header {
 
 .hero-right {
   width:50%;
-  padding-left:20px;
   position:relative;
   z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
 }
 
 /* Hero Text */
@@ -84,11 +86,14 @@ header {
   line-height:1.6;
   margin-top:1rem;
   color:#ffffffcc;
+  padding-left:40px;
 }
 
+/* CTA Button */
 .cta-button {
   display:inline-block;
   margin-top:2rem;
+  margin-left:40px;
   padding:0.75rem 1.5rem;
   border:2px solid #0af;
   border-radius:0.5rem;
@@ -120,12 +125,15 @@ header {
 /* Responsive */
 @media(max-width:1024px){
   .hero { flex-direction:column; text-align:center; }
-  .hero-left, .hero-right { width:100%; padding-left:0; }
-  .title { font-size:5rem; }
-  .subtitle { font-size:1.2rem; }
+  .hero-left, .hero-right { width:100%; }
+  .title { font-size:5rem; padding-left:0; padding-bottom:20px; }
+  .subtitle { font-size:1.2rem; padding-left:0; }
+  .cta-button { margin-left:0; }
   .metrics { flex-direction:column; gap:2rem; }
 }
-@media(max-width:480px){ .title { font-size:3.5rem; } }
+@media(max-width:480px){ 
+  .title { font-size:3.5rem; } 
+}
 
 /* Count-up animation */
 .metric h2 span { display:inline-block; }
@@ -148,7 +156,7 @@ header {
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-left">
-    <img src="images/lynseyheadshotai.jpeg" alt="Lynsey Nunez" class="hero-image">
+    <img src="images/lynseyheadshotai.png" alt="Lynsey Nunez" class="hero-image">
   </div>
   <div class="hero-right">
     <h1 class="title">Lynsey Nunez</h1>
