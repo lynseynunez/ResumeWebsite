@@ -60,6 +60,8 @@ header nav a {
   padding-top: 80px;
   background-color: #0e0e0e;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-left {
@@ -84,6 +86,7 @@ header nav a {
   z-index: 2;
   position: relative;
   padding-right:40px;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* Aurora Title */
@@ -150,10 +153,22 @@ header nav a {
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
 
+/* Overview Container for scroll effect */
+.overview-container {
+  position: relative;
+  padding: 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.2s ease-out;
+}
+
 /* Overview / Bento Section */
 .overview {
-  padding: 6rem 2rem;
   background: #0e0e0e;
+  border-radius: 1rem;
+  padding: 2rem;
   text-align: center;
 }
 
@@ -177,10 +192,9 @@ header nav a {
   grid-template-columns: repeat(12, 1fr);
   grid-auto-rows: auto;
   gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
+/* Cards */
 .card {
   background: #1a1a1a;
   border-radius: 1rem;
@@ -306,60 +320,62 @@ header nav a {
   </div>
 </section>
 
-<section class="overview">
-  <h2 class="overview-title">Driving Business Growth Through Technology</h2>
-  <div class="overview-grid">
-    <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
-      <div class="card-content">
-        <div class="card-icon">⚙️</div>
-        <h3>Process Optimization</h3>
-        <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
+<div class="overview-container">
+  <section class="overview">
+    <h2 class="overview-title">Driving Business Growth Through Technology</h2>
+    <div class="overview-grid">
+      <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
+        <div class="card-content">
+          <div class="card-icon">⚙️</div>
+          <h3>Process Optimization</h3>
+          <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
+        </div>
+      </div>
+      <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
+        <div class="card-content">
+          <div class="card-icon">🤖</div>
+          <h3>AI Integration</h3>
+          <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
+        </div>
+      </div>
+      <div class="card card-row2" style="--hover-color: var(--clr-3);">
+        <div class="card-content">
+          <div class="card-icon">📊</div>
+          <h3>Data Analysis</h3>
+          <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
+        </div>
+      </div>
+      <div class="card card-row2" style="--hover-color: var(--clr-1);">
+        <div class="card-content">
+          <div class="card-icon">🌐</div>
+          <h3>Digital Platforms</h3>
+          <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
+        </div>
+      </div>
+      <div class="card card-row3" style="--hover-color: var(--clr-2);">
+        <div class="card-content">
+          <div class="card-icon">📝</div>
+          <h3>Documentation</h3>
+          <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
+        </div>
+      </div>
+      <div class="card card-row3" style="--hover-color: var(--clr-3);">
+        <div class="card-content">
+          <div class="card-icon">🚀</div>
+          <h3>Strategy & Planning</h3>
+          <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
+        </div>
+      </div>
+      <div class="card card-row3" style="--hover-color: var(--clr-1);">
+        <div class="card-content">
+          <div class="card-icon">🤝</div>
+          <h3>Collaboration</h3
+          <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
+        </div>
       </div>
     </div>
-    <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
-      <div class="card-content">
-        <div class="card-icon">🤖</div>
-        <h3>AI Integration</h3>
-        <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
-      </div>
-    </div>
-    <div class="card card-row2" style="--hover-color: var(--clr-3);">
-      <div class="card-content">
-        <div class="card-icon">📊</div>
-        <h3>Data Analysis</h3>
-        <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
-      </div>
-    </div>
-    <div class="card card-row2" style="--hover-color: var(--clr-1);">
-      <div class="card-content">
-        <div class="card-icon">🌐</div>
-        <h3>Digital Platforms</h3>
-        <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
-      </div>
-    </div>
-    <div class="card card-row3" style="--hover-color: var(--clr-2);">
-      <div class="card-content">
-        <div class="card-icon">📝</div>
-        <h3>Documentation</h3>
-        <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
-      </div>
-    </div>
-    <div class="card card-row3" style="--hover-color: var(--clr-3);">
-      <div class="card-content">
-        <div class="card-icon">🚀</div>
-        <h3>Strategy & Planning</h3>
-        <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
-      </div>
-    </div>
-    <div class="card card-row3" style="--hover-color: var(--clr-1);">
-      <div class="card-content">
-        <div class="card-icon">🤝</div>
-        <h3>Collaboration</h3>
-        <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <script>
 // Sticky header background on scroll
@@ -369,6 +385,30 @@ window.addEventListener('scroll', function() {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
+  }
+
+  // Scroll-driven hero fade
+  const heroRight = document.querySelector('.hero-right');
+  const scrollY = window.scrollY;
+  const fadeStart = 0;
+  const fadeEnd = 300;
+  if (scrollY < fadeEnd) {
+    const opacity = 1 - scrollY / fadeEnd;
+    const translateY = scrollY / 3; 
+    heroRight.style.opacity = opacity;
+    heroRight.style.transform = `translateY(${translateY}px)`;
+  } else {
+    heroRight.style.opacity = 0;
+  }
+
+  // Move overview container over hero
+  const overviewContainer = document.querySelector('.overview-container');
+  const heroHeight = document.querySelector('.hero').offsetHeight;
+  if (scrollY > 0) {
+    const moveUp = Math.min(scrollY, heroHeight);
+    overviewContainer.style.transform = `translateY(${-moveUp}px)`;
+  } else {
+    overviewContainer.style.transform = `translateY(0)`;
   }
 });
 
