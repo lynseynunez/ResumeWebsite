@@ -18,6 +18,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   background: #0e0e0e;
   color: #fff;
+  scroll-behavior: smooth;
 }
 
 /* Header */
@@ -28,16 +29,26 @@ header {
   top: 0;
   left: 0;
   z-index: 100;
-  background: #111;
+  background: transparent;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+header.scrolled {
+  background: #0e0e0e;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+header nav {
+  display: flex;
+  gap: 1rem;
 }
 
 header nav a {
+  white-space: nowrap;
   color: #fff;
-  margin-right: 1rem;
   text-decoration: none;
 }
 
@@ -45,7 +56,7 @@ header nav a {
 .hero {
   display: flex;
   align-items: center;
-  min-height: 90vh;
+  min-height: 65vh;
   padding-top: 80px;
   background-color: #0e0e0e;
   overflow: hidden;
@@ -80,7 +91,6 @@ header nav a {
   font-weight: 700;
   font-size: var(--fs);
   line-height: 1.1;
-  letter-spacing: -8px;
   margin: 0;
   padding-left: 40px;
   padding-bottom: 20px;
@@ -124,7 +134,7 @@ header nav a {
   display: inline-block;
   font-weight: 700;
   font-size: 2.5rem;
-  color: #fff;
+  color: #ffffffcc;
   transition: transform 0.3s ease;
   cursor: pointer;
 }
@@ -140,24 +150,140 @@ header nav a {
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
 
+/* Overview / Bento Section */
+.overview {
+  padding: 6rem 2rem;
+  background: #0e0e0e;
+  text-align: center;
+}
+
+.overview-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: transparent;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: auroraMove 12s ease-in-out infinite alternate;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: auto;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--hover-color, rgba(159,50,237,0.2)), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 1rem;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px var(--hover-color);
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.7rem;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+  color: #ffffff;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #ffffffcc;
+}
+
+/* Row Layouts */
+.card-row1-wide { grid-column: span 7; }
+.card-row1-small { grid-column: span 5; }
+.card-row2 { grid-column: span 6; }
+.card-row3 { grid-column: span 4; }
+
 /* Responsive */
+@media(max-width:1024px){
+  .overview-grid { grid-template-columns: repeat(6, 1fr); }
+  .card-row1-wide,
+  .card-row1-small,
+  .card-row2,
+  .card-row3 { grid-column: span 6; }
+}
+
+@media(max-width:768px){
+  .overview-grid { grid-template-columns: 1fr; }
+  .card { grid-column: span 1; }
+}
+
 @media(max-width:1024px){
   .hero { flex-direction: column; text-align: center; }
   .hero-left, .hero-right { width: 100%; }
   .title { font-size: 5rem; padding-left: 0; padding-bottom: 20px; }
-  .subtitle { font-size: 1.2rem; padding-left: 0; }
+  .subtitle { font-size: 1.2rem; padding-left: 0; width: 90%; }
   .social-link { margin-left: 0; }
 }
 
 @media(max-width:480px){
   .title { font-size: 3.5rem; }
+  .overview-title { font-size: 2.5rem; }
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo"></div>
   <nav>
     <a href="index.html">Home</a>
     <a href="case-studies.html">Case Studies</a>
@@ -179,6 +305,98 @@ header nav a {
     </a>
   </div>
 </section>
+
+<section class="overview">
+  <h2 class="overview-title">Driving Business Growth Through Technology</h2>
+  <div class="overview-grid">
+    <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
+      <div class="card-content">
+        <div class="card-icon">⚙️</div>
+        <h3>Process Optimization</h3>
+        <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
+      </div>
+    </div>
+    <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
+      <div class="card-content">
+        <div class="card-icon">🤖</div>
+        <h3>AI Integration</h3>
+        <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
+      </div>
+    </div>
+    <div class="card card-row2" style="--hover-color: var(--clr-3);">
+      <div class="card-content">
+        <div class="card-icon">📊</div>
+        <h3>Data Analysis</h3>
+        <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
+      </div>
+    </div>
+    <div class="card card-row2" style="--hover-color: var(--clr-1);">
+      <div class="card-content">
+        <div class="card-icon">🌐</div>
+        <h3>Digital Platforms</h3>
+        <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
+      </div>
+    </div>
+    <div class="card card-row3" style="--hover-color: var(--clr-2);">
+      <div class="card-content">
+        <div class="card-icon">📝</div>
+        <h3>Documentation</h3>
+        <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
+      </div>
+    </div>
+    <div class="card card-row3" style="--hover-color: var(--clr-3);">
+      <div class="card-content">
+        <div class="card-icon">🚀</div>
+        <h3>Strategy & Planning</h3>
+        <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
+      </div>
+    </div>
+    <div class="card card-row3" style="--hover-color: var(--clr-1);">
+      <div class="card-content">
+        <div class="card-icon">🤝</div>
+        <h3>Collaboration</h3>
+        <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Sticky header background on scroll
+window.addEventListener('scroll', function() {
+  const header = document.querySelector('header');
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// Reveal cards with staggered delay
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 200);
+    }
+  });
+}, { threshold: 0.1 });
+
+cards.forEach(card => observer.observe(card));
+
+// Mouse-following glow effect
+cards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--x', x + '%');
+    card.style.setProperty('--y', y + '%');
+  });
+});
+</script>
 
 </body>
 </html>
