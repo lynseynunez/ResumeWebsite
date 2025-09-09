@@ -56,7 +56,7 @@ header nav a {
 .hero-container {
   position: relative;
   width: 100%;
-  min-height: 65vh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -74,8 +74,7 @@ header nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 65vh;
-  padding-top: 80px;
+  height: 100%;
   position: relative;
   z-index: 2;
   transition: transform 0.5s ease, opacity 0.5s ease;
@@ -113,6 +112,7 @@ header nav a {
   margin: 0;
   padding-left: 40px;
   padding-bottom: 20px;
+  letter-spacing: -8px;
   color: transparent;
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
               radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
@@ -168,6 +168,36 @@ header nav a {
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
 
+/* Scroll Arrow */
+.scroll-arrow {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  z-index: 3;
+  cursor: pointer;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.scroll-arrow svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(10px); }
+  60% { transform: translateX(-50%) translateY(5px); }
+}
+
 /* Overview / Bento Section */
 .overview-wrapper {
   position: relative;
@@ -175,6 +205,7 @@ header nav a {
   max-width: 1200px;
   margin: -50px auto 0 auto;
   padding: 0 40px 6rem 40px;
+  background: #0e0e0e;
 }
 
 .overview {
@@ -280,19 +311,16 @@ header nav a {
   .card-row1-small,
   .card-row2,
   .card-row3 { grid-column: span 6; }
-}
-
-@media(max-width:768px){
-  .overview-grid { grid-template-columns: 1fr; }
-  .card { grid-column: span 1; }
-}
-
-@media(max-width:1024px){
   .hero { flex-direction: column; text-align: center; }
   .hero-left, .hero-right { width: 100%; }
   .title { font-size: 5rem; padding-left: 0; padding-bottom: 20px; }
   .subtitle { font-size: 1.2rem; padding-left: 0; width: 90%; }
   .social-link { margin-left: 0; }
+}
+
+@media(max-width:768px){
+  .overview-grid { grid-template-columns: 1fr; }
+  .card { grid-column: span 1; }
 }
 
 @media(max-width:480px){
@@ -328,112 +356,115 @@ header nav a {
     </div>
   </section>
 
-  <div class="overview-wrapper">
-    <section class="overview">
-      <h2 class="overview-title">Driving Business Growth Through Technology</h2>
-      <div class="overview-grid">
-        <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
-          <div class="card-content">
-            <div class="card-icon">⚙️</div>
-            <h3>Process Optimization</h3>
-            <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
-          </div>
-        </div>
-        <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
-          <div class="card-content">
-            <div class="card-icon">🤖</div>
-            <h3>AI Integration</h3>
-            <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
-          </div>
-        </div>
-        <div class="card card-row2" style="--hover-color: var(--clr-3);">
-          <div class="card-content">
-            <div class="card-icon">📊</div>
-            <h3>Data Analysis</h3>
-            <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
-          </div>
-        </div>
-        <div class="card card-row2" style="--hover-color: var(--clr-1);">
-          <div class="card-content">
-            <div class="card-icon">🌐</div>
-            <h3>Digital Platforms</h3>
-            <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
-          </div>
-        </div>
-        <div class="card card-row3" style="--hover-color: var(--clr-2);">
-          <div class="card-content">
-            <div class="card-icon">📝</div>
-            <h3>Documentation</h3>
-            <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
-          </div>
-        </div>
-        <div class="card card-row3" style="--hover-color: var(--clr-3);">
-          <div class="card-content">
-            <div class="card-icon">🚀</div>
-            <h3>Strategy & Planning</h3>
-            <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
-          </div>
-        </div>
-        <div class="card card-row3" style="--hover-color: var(--clr-1);">
-          <div class="card-content">
-            <div class="card-icon">🤝</div>
-            <h3>Collaboration</h3>
-            <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
-          </div>
+  <div class="scroll-arrow">
+    <svg viewBox="0 0 24 24">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</div>
+
+<div class="overview-wrapper">
+  <section class="overview">
+    <h2 class="overview-title">Driving Business Growth Through Technology</h2>
+    <div class="overview-grid">
+      <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
+        <div class="card-content">
+          <div class="card-icon">⚙️</div>
+          <h3>Process Optimization</h3>
+          <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
         </div>
       </div>
-    </section>
-  </div>
+      <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
+        <div class="card-content">
+          <div class="card-icon">🤖</div>
+          <h3>AI Integration</h3>
+          <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
+        </div>
+      </div>
+      <div class="card card-row2" style="--hover-color: var(--clr-3);">
+        <div class="card-content">
+          <div class="card-icon">📊</div>
+          <h3>Data Analysis</h3>
+          <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
+        </div>
+      </div>
+      <div class="card card-row2" style="--hover-color: var(--clr-1);">
+        <div class="card-content">
+          <div class="card-icon">🌐</div>
+          <h3>Digital Platforms</h3>
+          <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
+        </div>
+      </div>
+      <div class="card card-row3" style="--hover-color: var(--clr-2);">
+        <div class="card-content">
+          <div class="card-icon">📝</div>
+          <h3>Documentation</h3>
+          <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
+        </div>
+      </div>
+      <div class="card card-row3" style="--hover-color: var(--clr-3);">
+        <div class="card-content">
+          <div class="card-icon">🚀</div>
+          <h3>Strategy & Planning</h3>
+          <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
+        </div>
+      </div>
+      <div class="card card-row3" style="--hover-color: var(--clr-1);">
+        <div class="card-content">
+          <div class="card-icon">🤝</div>
+          <h3>Collaboration</h3>
+          <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <script>
 // Sticky header background on scroll
 window.addEventListener('scroll', function() {
   const header = document.querySelector('header');
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+  if (window.scrollY > 50) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
 });
 
 // Reveal cards with staggered delay
 const cards = document.querySelectorAll('.card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, index * 200);
-    }
+    if (entry.isIntersecting) setTimeout(() => { entry.target.classList.add('visible'); }, index * 200);
   });
 }, { threshold: 0.1 });
-
 cards.forEach(card => observer.observe(card));
 
 // Mouse-following glow effect
-cards.forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    card.style.setProperty('--x', x + '%');
-    card.style.setProperty('--y', y + '%');
-  });
-});
+cards.forEach(card => card.addEventListener('mousemove', (e) => {
+  const rect = card.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  card.style.setProperty('--x', x + '%');
+  card.style.setProperty('--y', y + '%');
+}));
 
-// Scroll fade for hero layer
+// Scroll fade for hero layer and arrow
 const hero = document.querySelector('.hero');
+const scrollArrow = document.querySelector('.scroll-arrow');
+const heroContainer = document.querySelector('.hero-container');
+
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
-  const fadeEnd = 300;
-  if(scrollTop < fadeEnd) {
+  const fadeEnd = heroContainer.offsetHeight;
+
+  if(scrollTop < fadeEnd){
     const opacity = 1 - scrollTop / fadeEnd;
     const translateY = -scrollTop / 2;
     hero.style.opacity = opacity;
     hero.style.transform = `translateY(${translateY}px)`;
+    scrollArrow.style.opacity = opacity;
+    scrollArrow.style.transform = `translateX(-50%) translateY(${translateY}px)`;
   } else {
     hero.style.opacity = 0;
+    scrollArrow.style.opacity = 0;
   }
 });
 
@@ -442,15 +473,14 @@ const canvas = document.getElementById('heroParticles');
 const ctx = canvas.getContext('2d');
 let particles = [];
 let w = canvas.width = window.innerWidth;
-let h = canvas.height = document.querySelector('.hero-container').offsetHeight;
+let h = canvas.height = heroContainer.offsetHeight;
 
 window.addEventListener('resize', () => {
   w = canvas.width = window.innerWidth;
-  h = canvas.height = document.querySelector('.hero-container').offsetHeight;
+  h = canvas.height = heroContainer.offsetHeight;
 });
 
 const colors = ['#5271FF', '#9F32ED', '#E6198F'];
-
 for (let i=0; i<100; i++){
   particles.push({
     x: Math.random()*w,
@@ -464,12 +494,6 @@ for (let i=0; i<100; i++){
 
 function animateParticles(){
   ctx.clearRect(0,0,w,h);
-  let gradient = ctx.createLinearGradient(0,0,0,h);
-  gradient.addColorStop(0,'rgba(0,0,0,0)');
-  gradient.addColorStop(1,'rgba(0,0,0,1)');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0,0,w,h);
-
   particles.forEach(p=>{
     ctx.beginPath();
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
