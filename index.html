@@ -22,7 +22,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Header */
 header {
   width: 100%;
   padding: 1rem 2rem;
@@ -61,16 +60,26 @@ header nav a {
   overflow: hidden;
 }
 
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 65vh;
   padding-top: 80px;
-  background-color: #0e0e0e;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   transition: transform 0.5s ease, opacity 0.5s ease;
+  background-color: transparent;
 }
 
 .hero-left {
@@ -97,7 +106,6 @@ header nav a {
   padding-right:40px;
 }
 
-/* Aurora Title */
 .title {
   font-weight: 700;
   font-size: var(--fs);
@@ -132,7 +140,6 @@ header nav a {
   width: 75%;
 }
 
-/* LinkedIn "in" button */
 .social-link {
   display: inline-block;
   margin-left: 40px;
@@ -262,13 +269,11 @@ header nav a {
   color: #ffffffcc;
 }
 
-/* Row Layouts */
 .card-row1-wide { grid-column: span 7; }
 .card-row1-small { grid-column: span 5; }
 .card-row2 { grid-column: span 6; }
 .card-row3 { grid-column: span 4; }
 
-/* Responsive */
 @media(max-width:1024px){
   .overview-grid { grid-template-columns: repeat(6, 1fr); }
   .card-row1-wide,
@@ -309,6 +314,7 @@ header nav a {
 </header>
 
 <div class="hero-container">
+  <canvas id="heroParticles" class="hero-canvas"></canvas>
   <section class="hero">
     <div class="hero-left">
       <img src="images/lynseyheadshotai.png" alt="Lynsey Nunez" class="hero-image">
@@ -420,7 +426,6 @@ cards.forEach(card => {
 const hero = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
-  const fadeStart = 0;
   const fadeEnd = 300;
   if(scrollTop < fadeEnd) {
     const opacity = 1 - scrollTop / fadeEnd;
@@ -431,6 +436,53 @@ window.addEventListener('scroll', () => {
     hero.style.opacity = 0;
   }
 });
+
+// Particle background for hero
+const canvas = document.getElementById('heroParticles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = document.querySelector('.hero-container').offsetHeight;
+
+window.addEventListener('resize', () => {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = document.querySelector('.hero-container').offsetHeight;
+});
+
+const colors = ['#5271FF', '#9F32ED', '#E6198F'];
+
+for (let i=0; i<100; i++){
+  particles.push({
+    x: Math.random()*w,
+    y: Math.random()*h,
+    r: Math.random()*2 + 1,
+    color: colors[Math.floor(Math.random()*colors.length)],
+    dx: (Math.random()-0.5)/2,
+    dy: (Math.random()-0.5)/2
+  });
+}
+
+function animateParticles(){
+  ctx.clearRect(0,0,w,h);
+  let gradient = ctx.createLinearGradient(0,0,0,h);
+  gradient.addColorStop(0,'rgba(0,0,0,0)');
+  gradient.addColorStop(1,'rgba(0,0,0,1)');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0,0,w,h);
+
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if(p.x<0||p.x>w)p.dx*=-1;
+    if(p.y<0||p.y>h)p.dy*=-1;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
 </script>
 
 </body>
