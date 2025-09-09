@@ -19,6 +19,7 @@ body {
   background: #0e0e0e;
   color: #fff;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -53,15 +54,23 @@ header nav a {
 }
 
 /* Hero Section */
+.hero-container {
+  position: relative;
+  width: 100%;
+  min-height: 65vh;
+  overflow: hidden;
+}
+
 .hero {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 65vh;
   padding-top: 80px;
   background-color: #0e0e0e;
-  overflow: hidden;
   position: relative;
   z-index: 1;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .hero-left {
@@ -86,7 +95,6 @@ header nav a {
   z-index: 2;
   position: relative;
   padding-right:40px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* Aurora Title */
@@ -153,22 +161,16 @@ header nav a {
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
 
-/* Overview Container for scroll effect */
-.overview-container {
+/* Overview / Bento Section */
+.overview-wrapper {
   position: relative;
-  padding: 0 40px;
-  max-width: 1200px;
-  margin: 0 auto;
   z-index: 2;
-  transform: translateY(0);
-  transition: transform 0.2s ease-out;
+  max-width: 1200px;
+  margin: -50px auto 0 auto;
+  padding: 0 40px 6rem 40px;
 }
 
-/* Overview / Bento Section */
 .overview {
-  background: #0e0e0e;
-  border-radius: 1rem;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -194,7 +196,6 @@ header nav a {
   gap: 1.5rem;
 }
 
-/* Cards */
 .card {
   background: #1a1a1a;
   border-radius: 1rem;
@@ -307,74 +308,76 @@ header nav a {
   </nav>
 </header>
 
-<section class="hero">
-  <div class="hero-left">
-    <img src="images/lynseyheadshotai.png" alt="Lynsey Nunez" class="hero-image">
-  </div>
-  <div class="hero-right">
-    <h1 class="title">Lynsey Nunez</h1>
-    <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
-    <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link">
-      <span class="social-in">in</span>
-    </a>
-  </div>
-</section>
-
-<div class="overview-container">
-  <section class="overview">
-    <h2 class="overview-title">Driving Business Growth Through Technology</h2>
-    <div class="overview-grid">
-      <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
-        <div class="card-content">
-          <div class="card-icon">⚙️</div>
-          <h3>Process Optimization</h3>
-          <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
-        </div>
-      </div>
-      <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
-        <div class="card-content">
-          <div class="card-icon">🤖</div>
-          <h3>AI Integration</h3>
-          <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
-        </div>
-      </div>
-      <div class="card card-row2" style="--hover-color: var(--clr-3);">
-        <div class="card-content">
-          <div class="card-icon">📊</div>
-          <h3>Data Analysis</h3>
-          <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
-        </div>
-      </div>
-      <div class="card card-row2" style="--hover-color: var(--clr-1);">
-        <div class="card-content">
-          <div class="card-icon">🌐</div>
-          <h3>Digital Platforms</h3>
-          <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
-        </div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-2);">
-        <div class="card-content">
-          <div class="card-icon">📝</div>
-          <h3>Documentation</h3>
-          <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
-        </div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-3);">
-        <div class="card-content">
-          <div class="card-icon">🚀</div>
-          <h3>Strategy & Planning</h3>
-          <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
-        </div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-1);">
-        <div class="card-content">
-          <div class="card-icon">🤝</div>
-          <h3>Collaboration</h3
-          <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
-        </div>
-      </div>
+<div class="hero-container">
+  <section class="hero">
+    <div class="hero-left">
+      <img src="images/lynseyheadshotai.png" alt="Lynsey Nunez" class="hero-image">
+    </div>
+    <div class="hero-right">
+      <h1 class="title">Lynsey Nunez</h1>
+      <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
+      <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link">
+        <span class="social-in">in</span>
+      </a>
     </div>
   </section>
+
+  <div class="overview-wrapper">
+    <section class="overview">
+      <h2 class="overview-title">Driving Business Growth Through Technology</h2>
+      <div class="overview-grid">
+        <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
+          <div class="card-content">
+            <div class="card-icon">⚙️</div>
+            <h3>Process Optimization</h3>
+            <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
+          </div>
+        </div>
+        <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
+          <div class="card-content">
+            <div class="card-icon">🤖</div>
+            <h3>AI Integration</h3>
+            <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
+          </div>
+        </div>
+        <div class="card card-row2" style="--hover-color: var(--clr-3);">
+          <div class="card-content">
+            <div class="card-icon">📊</div>
+            <h3>Data Analysis</h3>
+            <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
+          </div>
+        </div>
+        <div class="card card-row2" style="--hover-color: var(--clr-1);">
+          <div class="card-content">
+            <div class="card-icon">🌐</div>
+            <h3>Digital Platforms</h3>
+            <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
+          </div>
+        </div>
+        <div class="card card-row3" style="--hover-color: var(--clr-2);">
+          <div class="card-content">
+            <div class="card-icon">📝</div>
+            <h3>Documentation</h3>
+            <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
+          </div>
+        </div>
+        <div class="card card-row3" style="--hover-color: var(--clr-3);">
+          <div class="card-content">
+            <div class="card-icon">🚀</div>
+            <h3>Strategy & Planning</h3>
+            <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
+          </div>
+        </div>
+        <div class="card card-row3" style="--hover-color: var(--clr-1);">
+          <div class="card-content">
+            <div class="card-icon">🤝</div>
+            <h3>Collaboration</h3>
+            <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 <script>
@@ -385,30 +388,6 @@ window.addEventListener('scroll', function() {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
-  }
-
-  // Scroll-driven hero fade
-  const heroRight = document.querySelector('.hero-right');
-  const scrollY = window.scrollY;
-  const fadeStart = 0;
-  const fadeEnd = 300;
-  if (scrollY < fadeEnd) {
-    const opacity = 1 - scrollY / fadeEnd;
-    const translateY = scrollY / 3; 
-    heroRight.style.opacity = opacity;
-    heroRight.style.transform = `translateY(${translateY}px)`;
-  } else {
-    heroRight.style.opacity = 0;
-  }
-
-  // Move overview container over hero
-  const overviewContainer = document.querySelector('.overview-container');
-  const heroHeight = document.querySelector('.hero').offsetHeight;
-  if (scrollY > 0) {
-    const moveUp = Math.min(scrollY, heroHeight);
-    overviewContainer.style.transform = `translateY(${-moveUp}px)`;
-  } else {
-    overviewContainer.style.transform = `translateY(0)`;
   }
 });
 
@@ -435,6 +414,22 @@ cards.forEach(card => {
     card.style.setProperty('--x', x + '%');
     card.style.setProperty('--y', y + '%');
   });
+});
+
+// Scroll fade for hero layer
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const fadeStart = 0;
+  const fadeEnd = 300;
+  if(scrollTop < fadeEnd) {
+    const opacity = 1 - scrollTop / fadeEnd;
+    const translateY = -scrollTop / 2;
+    hero.style.opacity = opacity;
+    hero.style.transform = `translateY(${translateY}px)`;
+  } else {
+    hero.style.opacity = 0;
+  }
 });
 </script>
 
