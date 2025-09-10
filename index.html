@@ -346,14 +346,22 @@ header nav a {
   width: 50%;
   max-height: 90vh;
   object-fit: contain;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.resume-image.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 1024px) {
   .resume-section {
-    flex-direction: column; /* stack images on smaller screens */
+    flex-direction: column;
   }
   .resume-image {
-    width: 90%;            /* smaller width for mobile */
+    width: 90%;
     max-height: 80vh;
     margin-bottom: 20px;
   }
@@ -465,16 +473,21 @@ window.addEventListener('scroll', function() {
   else header.classList.remove('scrolled');
 });
 
-// Reveal cards
-const cards = document.querySelectorAll('.card');
+// Reveal cards + resume images
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
-    if (entry.isIntersecting) setTimeout(() => { entry.target.classList.add('visible'); }, index * 200);
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, index * 200);
+    }
   });
 }, { threshold: 0.1 });
-cards.forEach(card => observer.observe(card));
 
-// Mouse-follow glow
+document.querySelectorAll('.card, .resume-image').forEach(el => observer.observe(el));
+
+// Mouse-follow glow for cards
+const cards = document.querySelectorAll('.card');
 cards.forEach(card => card.addEventListener('mousemove', (e) => {
   const rect = card.getBoundingClientRect();
   const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -487,7 +500,6 @@ cards.forEach(card => card.addEventListener('mousemove', (e) => {
 const hero = document.querySelector('.hero');
 const scrollArrow = document.querySelector('.scroll-arrow');
 const heroContainer = document.querySelector('.hero-container');
-
 const overviewWrapper = document.querySelector('.overview-wrapper');
 const resumeSection = document.querySelector('.resume-section');
 
@@ -496,7 +508,7 @@ window.addEventListener('scroll', () => {
 
   // Hero fade
   const heroFadeEnd = heroContainer.offsetHeight;
-  if(scrollTop < heroFadeEnd){
+  if (scrollTop < heroFadeEnd) {
     const opacity = 1 - scrollTop / heroFadeEnd;
     const translateY = -scrollTop / 2;
     hero.style.opacity = opacity;
@@ -508,18 +520,18 @@ window.addEventListener('scroll', () => {
     scrollArrow.style.opacity = 0;
   }
 
-  // Driving Business -> Resume fade
-  const fadeStart = overviewWrapper.offsetTop + overviewWrapper.offsetHeight - window.innerHeight/2;
+  // Driving Business -> Resume fade background
+  const fadeStart = overviewWrapper.offsetTop + overviewWrapper.offsetHeight - window.innerHeight / 2;
   const fadeEnd = resumeSection.offsetTop;
-  if(scrollTop >= fadeStart && scrollTop <= fadeEnd){
+  if (scrollTop >= fadeStart && scrollTop <= fadeEnd) {
     const t = (scrollTop - fadeStart) / (fadeEnd - fadeStart);
-    const r = Math.round(14 + (248-14)*t);
-    const g = Math.round(14 + (248-14)*t);
-    const b = Math.round(14 + (248-14)*t);
+    const r = Math.round(14 + (248 - 14) * t);
+    const g = Math.round(14 + (248 - 14) * t);
+    const b = Math.round(14 + (248 - 14) * t);
     document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
-  } else if(scrollTop < fadeStart){
+  } else if (scrollTop < fadeStart) {
     document.body.style.backgroundColor = 'rgb(14,14,14)';
-  } else if(scrollTop > fadeEnd){
+  } else if (scrollTop > fadeEnd) {
     document.body.style.backgroundColor = 'rgb(248,248,248)';
   }
 });
@@ -537,28 +549,28 @@ window.addEventListener('resize', () => {
 });
 
 const colors = ['#5271FF', '#9F32ED', '#E6198F'];
-for (let i=0; i<100; i++){
+for (let i = 0; i < 100; i++) {
   particles.push({
-    x: Math.random()*w,
-    y: Math.random()*h,
-    r: Math.random()*2 + 1,
-    color: colors[Math.floor(Math.random()*colors.length)],
-    dx: (Math.random()-0.5)/2,
-    dy: (Math.random()-0.5)/2
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 2 + 1,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    dx: (Math.random() - 0.5) / 2,
+    dy: (Math.random() - 0.5) / 2
   });
 }
 
-function animateParticles(){
-  ctx.clearRect(0,0,w,h);
-  particles.forEach(p=>{
+function animateParticles() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => {
     ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fillStyle = p.color;
     ctx.fill();
     p.x += p.dx;
     p.y += p.dy;
-    if(p.x<0||p.x>w)p.dx*=-1;
-    if(p.y<0||p.y>h)p.dy*=-1;
+    if (p.x < 0 || p.x > w) p.dx *= -1;
+    if (p.y < 0 || p.y > h) p.dy *= -1;
   });
   requestAnimationFrame(animateParticles);
 }
