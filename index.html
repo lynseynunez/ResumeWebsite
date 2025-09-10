@@ -336,16 +336,18 @@ header nav a {
   background: transparent;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  align-items: flex-start;
+  flex-direction: row; /* side by side */
+  gap: 20px;
   z-index: 2;
 }
 
 .resume-image {
-  max-width: 90%;
-  max-height: 90%;
-  margin-bottom: 2rem;
+  width: 50%; /* each takes half of the section */
+  max-height: 90vh;
+  object-fit: contain;
 }
+
 </style>
 </head>
 <body>
