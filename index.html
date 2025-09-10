@@ -108,7 +108,7 @@ header nav a {
 
 .title {
   font-weight: 700;
-  font-size: var(--fs);
+  font-size: 9rem;
   line-height: 1.1;
   margin: 0;
   padding-left: 40px;
@@ -139,7 +139,7 @@ header nav a {
   padding-left: 40px;
   padding-right:40px;
   text-align: justify;
-  width: 75%;
+  width: 85%;
 }
 
 .social-link {
@@ -207,6 +207,8 @@ header nav a {
   max-width: 1200px;
   margin: -50px auto 0 auto;
   padding: 0 40px 6rem 40px;
+padding-top: 400px;
+
 }
 
 .overview {
@@ -214,7 +216,7 @@ header nav a {
 }
 
 .overview-title {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 700;
   margin-bottom: 3rem;
   color: transparent;
@@ -333,17 +335,23 @@ header nav a {
 .resume-section {
   min-height: 100vh;
   padding: 80px 40px;
-  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+padding-top: 400px;
+}
+
+.resume-images {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: row;
   gap: 20px;
-  z-index: 2;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
 .resume-image {
-  width: 50%;
+  width: 45%;
   max-height: 90vh;
   object-fit: contain;
   opacity: 0;
@@ -357,13 +365,13 @@ header nav a {
 }
 
 @media (max-width: 1024px) {
-  .resume-section {
+  .resume-images {
     flex-direction: column;
+    gap: 20px;
   }
   .resume-image {
     width: 90%;
     max-height: 80vh;
-    margin-bottom: 20px;
   }
 }
 
@@ -461,9 +469,15 @@ header nav a {
 </div>
 
 <div class="resume-section">
-  <img src="images/Lynseyresumepg1.png" class="resume-image" alt="Resume Page 1">
-  <img src="images/Lynseyresumepg2.png" class="resume-image" alt="Resume Page 2">
+  <h2 class="overview-title" style="margin-bottom: 3rem; text-align: center;">Experience &amp; Expertise</h2>
+  <div class="resume-images">
+    <img src="images/Lynseyresumepg1.png" class="resume-image" alt="Resume Page 1">
+    <img src="images/Lynseyresumepg2.png" class="resume-image" alt="Resume Page 2">
+  </div>
 </div>
+
+
+
 
 <script>
 // Sticky header
