@@ -20,6 +20,7 @@ body {
   color: #fff;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  transition: background-color 0.3s linear;
 }
 
 header {
@@ -206,7 +207,6 @@ header nav a {
   max-width: 1200px;
   margin: -50px auto 0 auto;
   padding: 0 40px 6rem 40px;
-  background: #0e0e0e;
 }
 
 .overview {
@@ -328,6 +328,24 @@ header nav a {
   .title { font-size: 3.5rem; }
   .overview-title { font-size: 2.5rem; }
 }
+
+/* Resume Section */
+.resume-section {
+  min-height: 100vh;
+  padding: 80px 40px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.resume-image {
+  max-width: 90%;
+  max-height: 90%;
+  margin-bottom: 2rem;
+}
 </style>
 </head>
 <body>
@@ -421,15 +439,20 @@ header nav a {
   </section>
 </div>
 
+<div class="resume-section">
+  <img src="images/Lynseyresumepg1.png" class="resume-image" alt="Resume Page 1">
+  <img src="images/Lynseyresumepg2.png" class="resume-image" alt="Resume Page 2">
+</div>
+
 <script>
-// Sticky header background on scroll
+// Sticky header
 window.addEventListener('scroll', function() {
   const header = document.querySelector('header');
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
 
-// Reveal cards with staggered delay
+// Reveal cards
 const cards = document.querySelectorAll('.card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
@@ -438,7 +461,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 cards.forEach(card => observer.observe(card));
 
-// Mouse-following glow effect
+// Mouse-follow glow
 cards.forEach(card => card.addEventListener('mousemove', (e) => {
   const rect = card.getBoundingClientRect();
   const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -447,17 +470,21 @@ cards.forEach(card => card.addEventListener('mousemove', (e) => {
   card.style.setProperty('--y', y + '%');
 }));
 
-// Scroll fade for hero layer and arrow
+// Hero fade
 const hero = document.querySelector('.hero');
 const scrollArrow = document.querySelector('.scroll-arrow');
 const heroContainer = document.querySelector('.hero-container');
 
+const overviewWrapper = document.querySelector('.overview-wrapper');
+const resumeSection = document.querySelector('.resume-section');
+
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
-  const fadeEnd = heroContainer.offsetHeight;
 
-  if(scrollTop < fadeEnd){
-    const opacity = 1 - scrollTop / fadeEnd;
+  // Hero fade
+  const heroFadeEnd = heroContainer.offsetHeight;
+  if(scrollTop < heroFadeEnd){
+    const opacity = 1 - scrollTop / heroFadeEnd;
     const translateY = -scrollTop / 2;
     hero.style.opacity = opacity;
     hero.style.transform = `translateY(${translateY}px)`;
@@ -467,9 +494,24 @@ window.addEventListener('scroll', () => {
     hero.style.opacity = 0;
     scrollArrow.style.opacity = 0;
   }
+
+  // Driving Business -> Resume fade
+  const fadeStart = overviewWrapper.offsetTop + overviewWrapper.offsetHeight - window.innerHeight/2;
+  const fadeEnd = resumeSection.offsetTop;
+  if(scrollTop >= fadeStart && scrollTop <= fadeEnd){
+    const t = (scrollTop - fadeStart) / (fadeEnd - fadeStart);
+    const r = Math.round(14 + (248-14)*t);
+    const g = Math.round(14 + (248-14)*t);
+    const b = Math.round(14 + (248-14)*t);
+    document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
+  } else if(scrollTop < fadeStart){
+    document.body.style.backgroundColor = 'rgb(14,14,14)';
+  } else if(scrollTop > fadeEnd){
+    document.body.style.backgroundColor = 'rgb(248,248,248)';
+  }
 });
 
-// Particle background for hero
+// Hero particles
 const canvas = document.getElementById('heroParticles');
 const ctx = canvas.getContext('2d');
 let particles = [];
