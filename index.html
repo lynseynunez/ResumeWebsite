@@ -79,7 +79,6 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
   font-size:9rem;
   line-height:1.1;
   margin:0;
-  padding-left:40px;
   padding-bottom:20px;
   letter-spacing: -8px;
   color: transparent;
@@ -98,14 +97,27 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
   line-height:1.6;
   margin-top:0.5rem;
   color:#ffffffcc;
-  padding-left:40px;
   padding-right:40px;
   text-align:justify;
   width:85%;
 }
 
-.social-link { display:inline-block; margin-left:40px; margin-top:1.5rem; width:auto; height:auto; }
-.social-in { display:inline-block; font-weight:700; font-size:2.5rem; color:#ffffffcc; transition: transform .3s ease; cursor:pointer; }
+.social-link { 
+display:inline-block; 
+margin-left:40px; 
+margin-top:1.5rem; 
+width:auto; 
+height:auto; 
+}
+.social-in { 
+display:inline-block; 
+font-weight:700; 
+font-size:2.5rem; 
+color:#ffffffcc; 
+transition: transform .3s ease; 
+cursor:pointer; 
+margin-left: -40px;
+}
 .social-link:hover .social-in {
   transform: scale(1.5);
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
@@ -199,6 +211,7 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
   -webkit-background-clip:text; background-clip:text;
   animation: auroraMove 12s ease-in-out infinite alternate;
   z-index:2;
+padding-left: 0px;
 }
 
 .recommendations-grid {
@@ -208,33 +221,81 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
   justify-content:center;
   position:relative;
   z-index:2;
-  max-width:1200px;
+  max-width:1420px;
   width:100%;
 }
 
 /* Card style for recommendations (photo, name, title, quote) */
 .recommendation-card {
-  width: 300px;
+  width: 400px;
   padding:1.25rem;
   border-radius:1rem;
   background: rgba(22,22,22,0.9);
   box-shadow: 0 8px 24px rgba(0,0,0,0.5);
   color:#fff;
-  text-align:left;
+  text-align:center;
   backdrop-filter: blur(6px);
   opacity: 0;
   transform: translateY(30px);
   transition: opacity .8s ease, transform .8s ease;
   display:flex;
-  gap:12px;
-  align-items:flex-start;
+  flex-direction: column;
+  align-items:center;
   line-height:1.3;
+  gap:10px;
+}
+.recommendation-card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at var(--x,50%) var(--y,50%), var(--hover-color, rgba(159,50,237,0.2)), transparent 50%);
+  opacity:0;
+  transition: opacity .3s ease;
+  z-index:0;
+  pointer-events:none;
+  border-radius:1rem;
+}
+
+.recommendation-card:hover::before {
+  opacity:1;
+}
+
+.recommendation-card:hover {
+  transform:translateY(-10px);
+  box-shadow:0 15px 30px var(--hover-color);
+}
+
+.recommendations-title {
+  font-size: 5rem; /* match overview / resume titles */
+  font-weight: 700;
+  line-height: 1.1; /* prevents letters from stacking */
+  margin-bottom: 3rem;
+  color: transparent;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: auroraMove 12s ease-in-out infinite alternate;
+  text-align: center;
 }
 .recommendation-card.visible { opacity:1; transform:translateY(0); }
 .recommendation-card img { width:64px; height:64px; border-radius:50%; object-fit:cover; flex-shrink:0; }
 .recommendation-card .meta { display:flex; flex-direction:column; }
 .recommendation-card h4 { margin:0; font-size:1.05rem; }
 .recommendation-card p.title { margin:4px 0 8px; color:#aab; font-size:.9rem; }
+.recommendation-card h4,
+.recommendation-card p.title {
+  letter-spacing: normal;
+  line-height: 1.2;
+  word-wrap: break-word;
+}
+.recommendation-card .meta p:not(.title) {
+  text-align: justify;
+  margin: 0 auto;
+  max-width: 90%;
+}
 
 /* light float animation (subtle) */
 @keyframes floatCard { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-10px) } }
@@ -261,6 +322,17 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
   .title { font-size:3.5rem; }
   .overview-title { font-size:2.5rem; }
 }
+@media(max-width:1024px) {
+  .recommendations-title {
+    font-size: 4rem;
+  }
+}
+@media(max-width:480px) {
+  .recommendations-title {
+    font-size: 3rem;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -341,7 +413,7 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
   <h2 class="recommendations-title">Professional Recommendations</h2>
   <div class="recommendations-grid">
     <!-- Mary Yang -->
-    <div class="recommendation-card" style="animation-delay:0.0s">
+    <div class="recommendation-card" style="animation-delay:0.0s; --hover-color: var(--clr-1)">
       <img src="images/MaryRec.jpeg" alt="Mary Yang">
       <div class="meta">
         <h4>Mary Yang</h4>
@@ -351,7 +423,7 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
     </div>
 
     <!-- Bethany Bannister -->
-    <div class="recommendation-card" style="animation-delay:.15s">
+    <div class="recommendation-card" style="animation-delay:.15s; --hover-color: var(--clr-2)">
       <img src="images/BethanyRec.jpeg" alt="Bethany Bannister">
       <div class="meta">
         <h4>Bethany Bannister</h4>
@@ -361,7 +433,7 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
     </div>
 
     <!-- Kody Sweet -->
-    <div class="recommendation-card" style="animation-delay:.3s">
+    <div class="recommendation-card" style="animation-delay:.3s; --hover-color: var(--clr-3)">
       <img src="images/KodyRec.jpeg" alt="Kody Sweet">
       <div class="meta">
         <h4>Kody Sweet</h4>
@@ -371,7 +443,7 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
     </div>
 
     <!-- Sophia Jones -->
-    <div class="recommendation-card" style="animation-delay:.45s">
+    <div class="recommendation-card" style="animation-delay:.45s; --hover-color: var(--clr-1)">
       <img src="images/SophiaRec.jpeg" alt="Sophia Jones">
       <div class="meta">
         <h4>Sophia Jones</h4>
@@ -381,7 +453,7 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
     </div>
 
     <!-- Gabie Godina -->
-    <div class="recommendation-card" style="animation-delay:.6s">
+    <div class="recommendation-card" style="animation-delay:.6s; --hover-color: var(--clr-2)">
       <img src="images/GabieRec.jpeg" alt="Gabie Godina">
       <div class="meta">
         <h4>Gabie Godina</h4>
@@ -391,7 +463,7 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
     </div>
 
     <!-- Jorge Ayala -->
-    <div class="recommendation-card" style="animation-delay:.75s">
+    <div class="recommendation-card" style="animation-delay:.75s; --hover-color: var(--clr-3)">
       <img src="images/JorgeRec.jpeg" alt="Jorge Ayala">
       <div class="meta">
         <h4>Jorge Ayala</h4>
@@ -426,6 +498,16 @@ document.querySelectorAll('.card, .resume-image, .recommendation-card').forEach(
 // ---------- Mouse-follow glow for cards ----------
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => card.addEventListener('mousemove', (e) => {
+  const rect = card.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  card.style.setProperty('--x', x + '%');
+  card.style.setProperty('--y', y + '%');
+}));
+
+// ---------- Mouse-follow glow for recommendation cards ----------
+const recCardsHover = document.querySelectorAll('.recommendation-card');
+recCardsHover.forEach(card => card.addEventListener('mousemove', (e) => {
   const rect = card.getBoundingClientRect();
   const x = ((e.clientX - rect.left) / rect.width) * 100;
   const y = ((e.clientY - rect.top) / rect.height) * 100;
