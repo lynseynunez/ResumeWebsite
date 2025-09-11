@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Lynsey Nunez</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -13,6 +13,7 @@
   --fs: clamp(3rem, 8vw, 7rem);
 }
 
+/* ---------- base / body ---------- */
 body {
   margin: 0;
   font-family: 'DM Sans', sans-serif;
@@ -23,6 +24,7 @@ body {
   transition: background-color 0.3s linear;
 }
 
+/* ---------- header ---------- */
 header {
   width: 100%;
   padding: 1rem 2rem;
@@ -36,344 +38,229 @@ header {
   align-items: center;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
 header.scrolled {
   background: #0e0e0e;
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
+header nav { display:flex; gap:1rem; }
+header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
 
-header nav {
-  display: flex;
-  gap: 1rem;
-}
-
-header nav a {
-  white-space: nowrap;
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Hero Section */
+/* ---------- Hero ---------- */
 .hero-container {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-padding-bottom: 400px;
+  padding-bottom: 400px;
 }
-
 .hero-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:1;
+  pointer-events:none;
 }
-
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  position: relative;
-  z-index: 2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  position:relative;
+  z-index:2;
   transition: transform 0.5s ease, opacity 0.5s ease;
   background-color: transparent;
 }
-
-.hero-left {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.hero-right {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 2;
-  position: relative;
-  padding-right:40px;
-}
+.hero-left { width:50%; height:100%; display:flex; align-items:center; justify-content:center; }
+.hero-image { width:100%; height:100%; object-fit:contain; }
+.hero-right { width:50%; display:flex; flex-direction:column; justify-content:center; z-index:2; position:relative; padding-right:40px; }
 
 .title {
-  font-weight: 700;
-  font-size: 9rem;
-  line-height: 1.1;
-  margin: 0;
-  padding-left: 40px;
-  padding-bottom: 20px;
+  font-weight:700;
+  font-size:9rem;
+  line-height:1.1;
+  margin:0;
+  padding-left:40px;
+  padding-bottom:20px;
   letter-spacing: -8px;
   color: transparent;
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
               radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
               radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-  background-size: 200% 200%;
-  background-position: 0% 0%;
-  -webkit-background-clip: text;
-  background-clip: text;
+  background-size:200% 200%;
+  -webkit-background-clip:text;
+  background-clip:text;
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
-
-@keyframes auroraMove {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 100%; }
-}
+@keyframes auroraMove { 0%{background-position:0% 0%} 50%{background-position:100% 50%} 100%{background-position:0% 100%} }
 
 .subtitle {
-  font-size: 1.6rem;
-  line-height: 1.6;
-  margin-top: 0.5rem;
-  color: #ffffffcc;
-  padding-left: 40px;
+  font-size:1.6rem;
+  line-height:1.6;
+  margin-top:0.5rem;
+  color:#ffffffcc;
+  padding-left:40px;
   padding-right:40px;
-  text-align: justify;
-  width: 85%;
+  text-align:justify;
+  width:85%;
 }
 
-.social-link {
-  display: inline-block;
-  margin-left: 40px;
-  margin-top: 1.5rem;
-  width: auto;
-  height: auto;
-}
-
-.social-in {
-  display: inline-block;
-  font-weight: 700;
-  font-size: 2.5rem;
-  color: #ffffffcc;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
+.social-link { display:inline-block; margin-left:40px; margin-top:1.5rem; width:auto; height:auto; }
+.social-in { display:inline-block; font-weight:700; font-size:2.5rem; color:#ffffffcc; transition: transform .3s ease; cursor:pointer; }
 .social-link:hover .social-in {
   transform: scale(1.5);
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
               radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
               radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: auroraMove 12s ease-in-out infinite alternate;
+  -webkit-background-clip:text; background-clip:text; color:transparent; animation: auroraMove 12s ease-in-out infinite alternate;
 }
 
-/* Scroll Arrow */
+/* ---------- Scroll Arrow ---------- */
 .scroll-arrow {
-  position: absolute;
-  bottom: 430px;
-  left: 50%;
+  position:absolute;
+  bottom:430px;
+  left:50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 80px;
-  z-index: 3;
-  cursor: pointer;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  width:80px; height:80px;
+  z-index:3;
+  cursor:pointer;
+  transition: transform .5s ease, opacity .5s ease;
 }
-
-.scroll-arrow svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  animation: bounce 1.5s infinite;
-}
-
+.scroll-arrow svg { width:100%; height:100%; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; animation:bounce 1.5s infinite; }
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); }
   40% { transform: translateX(-50%) translateY(10px); }
   60% { transform: translateX(-50%) translateY(5px); }
 }
 
-/* Overview / Bento Section */
-.overview-wrapper {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: -50px auto 0 auto;
-  padding: 0 40px 6rem 40px;
-
-}
-
-.overview {
-  text-align: center;
-}
-
+/* ---------- Overview / Bento ---------- */
+.overview-wrapper { position:relative; z-index:2; max-width:1200px; margin:-50px auto 0 auto; padding:0 40px 6rem 40px; }
+.overview { text-align:center; }
 .overview-title {
-  font-size: 5rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
+  font-size:5rem; font-weight:700; margin-bottom:3rem;
   color: transparent;
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
               radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
               radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-  background-size: 200% 200%;
-  background-position: 0% 0%;
-  -webkit-background-clip: text;
-  background-clip: text;
+  background-size:200% 200%;
+  -webkit-background-clip:text; background-clip:text;
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
-
-.overview-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: auto;
-  gap: 1.5rem;
-}
-
-.card {
-  background: #1a1a1a;
-  border-radius: 1rem;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.card-content {
-  position: relative;
-  z-index: 2;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--hover-color, rgba(159,50,237,0.2)), transparent 50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-  pointer-events: none;
-  border-radius: 1rem;
-}
-
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px var(--hover-color);
-}
-
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.7rem;
-  color: #fff;
-  transition: color 0.3s ease;
-}
-
-.card:hover h3 {
-  color: #ffffff;
-}
-
-.card p {
-  font-size: 1rem;
-  color: #ffffffcc;
-}
-
+.overview-grid { display:grid; grid-template-columns: repeat(12,1fr); grid-auto-rows:auto; gap:1.5rem; }
+.card { background:#1a1a1a; border-radius:1rem; padding:2rem; display:flex; flex-direction:column; justify-content:flex-start; transition: transform .3s ease, box-shadow .3s ease; position:relative; overflow:hidden; opacity:0; transform:translateY(30px); }
+.card-content { position:relative; z-index:2; }
+.card::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at var(--x,50%) var(--y,50%), var(--hover-color, rgba(159,50,237,0.2)), transparent 50%); opacity:0; transition:opacity .3s ease; z-index:1; pointer-events:none; border-radius:1rem; }
+.card.visible { opacity:1; transform:translateY(0); }
+.card:hover::before { opacity:1; }
+.card:hover { transform:translateY(-10px); box-shadow:0 15px 30px var(--hover-color); }
+.card-icon { font-size:2rem; margin-bottom:1rem; }
+.card h3 { font-size:1.4rem; margin-bottom:.7rem; color:#fff; transition:color .3s ease; }
+.card p { font-size:1rem; color:#ffffffcc; }
 .card-row1-wide { grid-column: span 7; }
 .card-row1-small { grid-column: span 5; }
 .card-row2 { grid-column: span 6; }
 .card-row3 { grid-column: span 4; }
 
-@media(max-width:1024px){
-  .overview-grid { grid-template-columns: repeat(6, 1fr); }
-  .card-row1-wide,
-  .card-row1-small,
-  .card-row2,
-  .card-row3 { grid-column: span 6; }
-  .hero { flex-direction: column; text-align: center; }
-  .hero-left, .hero-right { width: 100%; }
-  .title { font-size: 5rem; padding-left: 0; padding-bottom: 20px; }
-  .subtitle { font-size: 1.2rem; padding-left: 0; width: 90%; }
-  .social-link { margin-left: 0; }
-}
-
-@media(max-width:768px){
-  .overview-grid { grid-template-columns: 1fr; }
-  .card { grid-column: span 1; }
-}
-
-@media(max-width:480px){
-  .title { font-size: 3.5rem; }
-  .overview-title { font-size: 2.5rem; }
-}
-
-/* Resume Section */
+/* ---------- Resume Section ---------- */
 .resume-section {
   min-height: 100vh;
   padding: 80px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-padding-top: 400px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  padding-top:400px;
+}
+.resume-images { display:flex; justify-content:center; width:90%; flex-wrap:nowrap; }
+.resume-image { width:45%; max-height:75vh; object-fit:contain; opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
+.resume-image.visible { opacity:1; transform:translateY(0); }
+
+/* ---------- Recommendations Section (new) ---------- */
+.recommendations-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  overflow:hidden;
+  background: transparent; /* body handles color fade */
+}
+.recommendations-canvas {
+  position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;
+}
+.recommendations-title {
+  font-size: 3.5rem;
+  font-weight:700;
+  margin-bottom:2.5rem;
+  color: transparent;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  -webkit-background-clip:text; background-clip:text;
+  animation: auroraMove 12s ease-in-out infinite alternate;
+  z-index:2;
 }
 
-.resume-images {
-  display: flex;
-  justify-content: center;
-  width: 90%;
-  flex-wrap: nowrap;
+.recommendations-grid {
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+  max-width:1200px;
+  width:100%;
 }
 
-.resume-image {
-  width: 45%;
-  max-height: 75vh;
-  object-fit: contain;
+/* Card style for recommendations (photo, name, title, quote) */
+.recommendation-card {
+  width: 300px;
+  padding:1.25rem;
+  border-radius:1rem;
+  background: rgba(22,22,22,0.9);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  color:#fff;
+  text-align:left;
+  backdrop-filter: blur(6px);
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity .8s ease, transform .8s ease;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  line-height:1.3;
 }
+.recommendation-card.visible { opacity:1; transform:translateY(0); }
+.recommendation-card img { width:64px; height:64px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+.recommendation-card .meta { display:flex; flex-direction:column; }
+.recommendation-card h4 { margin:0; font-size:1.05rem; }
+.recommendation-card p.title { margin:4px 0 8px; color:#aab; font-size:.9rem; }
 
-.resume-image.visible {
-  opacity: 1;
-  transform: translateY(0);
+/* light float animation (subtle) */
+@keyframes floatCard { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-10px) } }
+.recommendation-card { animation: floatCard 8s ease-in-out infinite; animation-delay: .2s; }
+
+/* responsive adjustments */
+@media(max-width:1024px) {
+  .overview-grid { grid-template-columns: repeat(6,1fr); }
+  .card-row1-wide, .card-row1-small, .card-row2, .card-row3 { grid-column: span 6; }
+  .hero { flex-direction:column; text-align:center; }
+  .hero-left, .hero-right { width:100%; }
+  .title { font-size:5rem; padding-left:0; padding-bottom:20px; }
+  .subtitle { font-size:1.2rem; padding-left:0; width:90%; }
+  .social-link { margin-left:0; }
+  .resume-images { flex-direction:column; gap:20px; }
+  .resume-image { width:90%; max-height:80vh; }
+  .recommendation-card { width: 90%; }
 }
-
-@media (max-width: 1024px) {
-  .resume-images {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .resume-image {
-    width: 90%;
-    max-height: 80vh;
-  }
+@media(max-width:768px) {
+  .overview-grid { grid-template-columns: 1fr; }
+  .card { grid-column: span 1; }
 }
-
+@media(max-width:480px){
+  .title { font-size:3.5rem; }
+  .overview-title { font-size:2.5rem; }
+}
 </style>
 </head>
 <body>
@@ -388,6 +275,7 @@ padding-top: 400px;
   </nav>
 </header>
 
+<!-- HERO -->
 <div class="hero-container">
   <canvas id="heroParticles" class="hero-canvas"></canvas>
   <section class="hero">
@@ -403,103 +291,139 @@ padding-top: 400px;
     </div>
   </section>
 
-  <div class="scroll-arrow">
-    <svg viewBox="0 0 24 24">
-      <polyline points="6 9 12 15 18 9"></polyline>
-    </svg>
+  <div class="scroll-arrow" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
   </div>
 </div>
 
+<!-- OVERVIEW -->
 <div class="overview-wrapper">
   <section class="overview">
     <h2 class="overview-title">Driving Business Growth Through Technology</h2>
     <div class="overview-grid">
       <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
-        <div class="card-content">
-          <div class="card-icon">⚙️</div>
-          <h3>Process Optimization</h3>
-          <p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p>
-        </div>
+        <div class="card-content"><div class="card-icon">⚙️</div><h3>Process Optimization</h3><p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p></div>
       </div>
       <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
-        <div class="card-content">
-          <div class="card-icon">🤖</div>
-          <h3>AI Integration</h3>
-          <p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p>
-        </div>
+        <div class="card-content"><div class="card-icon">🤖</div><h3>AI Integration</h3><p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p></div>
       </div>
       <div class="card card-row2" style="--hover-color: var(--clr-3);">
-        <div class="card-content">
-          <div class="card-icon">📊</div>
-          <h3>Data Analysis</h3>
-          <p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p>
-        </div>
+        <div class="card-content"><div class="card-icon">📊</div><h3>Data Analysis</h3><p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p></div>
       </div>
       <div class="card card-row2" style="--hover-color: var(--clr-1);">
-        <div class="card-content">
-          <div class="card-icon">🌐</div>
-          <h3>Digital Platforms</h3>
-          <p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p>
-        </div>
+        <div class="card-content"><div class="card-icon">🌐</div><h3>Digital Platforms</h3><p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p></div>
       </div>
       <div class="card card-row3" style="--hover-color: var(--clr-2);">
-        <div class="card-content">
-          <div class="card-icon">📝</div>
-          <h3>Documentation</h3>
-          <p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p>
-        </div>
+        <div class="card-content"><div class="card-icon">📝</div><h3>Documentation</h3><p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p></div>
       </div>
       <div class="card card-row3" style="--hover-color: var(--clr-3);">
-        <div class="card-content">
-          <div class="card-icon">🚀</div>
-          <h3>Strategy & Planning</h3>
-          <p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p>
-        </div>
+        <div class="card-content"><div class="card-icon">🚀</div><h3>Strategy & Planning</h3><p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p></div>
       </div>
       <div class="card card-row3" style="--hover-color: var(--clr-1);">
-        <div class="card-content">
-          <div class="card-icon">🤝</div>
-          <h3>Collaboration</h3>
-          <p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p>
-        </div>
+        <div class="card-content"><div class="card-icon">🤝</div><h3>Collaboration</h3><p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p></div>
       </div>
     </div>
   </section>
 </div>
 
+<!-- RESUME -->
 <div class="resume-section">
-  <h2 class="overview-title" style="margin-bottom: 3rem; text-align: center;">Experience &amp; Expertise</h2>
+  <h2 class="overview-title" style="margin-bottom:3rem; text-align:center;">Experience &amp; Expertise</h2>
   <div class="resume-images">
     <img src="images/Lynseyresumepg1.png" class="resume-image" alt="Resume Page 1">
     <img src="images/Lynseyresumepg2.png" class="resume-image" alt="Resume Page 2">
   </div>
 </div>
 
+<!-- RECOMMENDATIONS (new) -->
+<div class="recommendations-section">
+  <canvas id="recommendationsParticles" class="recommendations-canvas"></canvas>
+  <h2 class="recommendations-title">Professional Recommendations</h2>
+  <div class="recommendations-grid">
+    <!-- Mary Yang -->
+    <div class="recommendation-card" style="animation-delay:0.0s">
+      <img src="images/MaryRec.jpeg" alt="Mary Yang">
+      <div class="meta">
+        <h4>Mary Yang</h4>
+        <p class="title">Billing Specialist</p>
+        <p>“I have worked with Lynsey back at Storable and she was my manager on the Website Implementation team. I highly recommend her as she is not only knowledgeable but also a wonderful and kind manager to work with. She always made sure everyone was heard and always made sure that she was available if we ever had any questions or needed any kind of help. She made sure the whole team was always up to date weekly and initiated a new plan to update the QA process role to help make the implementation process more efficient while minimizing errors.”</p>
+      </div>
+    </div>
 
+    <!-- Bethany Bannister -->
+    <div class="recommendation-card" style="animation-delay:.15s">
+      <img src="images/BethanyRec.jpeg" alt="Bethany Bannister">
+      <div class="meta">
+        <h4>Bethany Bannister</h4>
+        <p class="title">Data Assistant</p>
+        <p>“While Lynsey and I worked in different departments at Storable, I had occasion to meet with her every so often regarding the website implementation team, the process, and discuss projects within her department. Lynsey was not always incredibly helpful in a directional sense, but she was quick to respond when Support needed her most. On a personal level, the encouragement Lynsey gave to me meant the world to me… Lynsey is not only incredibly skilled, but she has the capability of managing a team with empathy while ensuring the job is done to a client’s high standards.”</p>
+      </div>
+    </div>
+
+    <!-- Kody Sweet -->
+    <div class="recommendation-card" style="animation-delay:.3s">
+      <img src="images/KodyRec.jpeg" alt="Kody Sweet">
+      <div class="meta">
+        <h4>Kody Sweet</h4>
+        <p class="title">Software Implementation Director</p>
+        <p>“I highly recommend Lynsey Nunez as a Website Implementation Manager. During our time together, I observed that Lynsey displayed an impressive understanding of web development principles and best practices within the industry. Lynsey's meticulous attention to detail and remarkable organizational abilities were vital in coordinating with cross-functional teams and effectively managing complex projects from inception to completion.”</p>
+      </div>
+    </div>
+
+    <!-- Sophia Jones -->
+    <div class="recommendation-card" style="animation-delay:.45s">
+      <img src="images/SophiaRec.jpeg" alt="Sophia Jones">
+      <div class="meta">
+        <h4>Sophia Jones</h4>
+        <p class="title">Talent Acquisition Lead</p>
+        <p>“I had the pleasure of recruiting Lynsey during our time at Storable and also worked with her as a hiring manager once she was hired. Lynsey is a passionate manager, and backs her team 100%. She made a huge impact on process and documentation during her time at Storable and was active in the company culture. I would welcome the chance to work with Lynsey again.”</p>
+      </div>
+    </div>
+
+    <!-- Gabie Godina -->
+    <div class="recommendation-card" style="animation-delay:.6s">
+      <img src="images/GabieRec.jpeg" alt="Gabie Godina">
+      <div class="meta">
+        <h4>Gabie Godina</h4>
+        <p class="title">Onboarding Success Manager, Team Lead</p>
+        <p>“Lynsey is such a pleasure to work with. She’s proactive, professional, intelligent, customer focused and a great leader. I am thankful to have her a part of our team!”</p>
+      </div>
+    </div>
+
+    <!-- Jorge Ayala -->
+    <div class="recommendation-card" style="animation-delay:.75s">
+      <img src="images/JorgeRec.jpeg" alt="Jorge Ayala">
+      <div class="meta">
+        <h4>Jorge Ayala</h4>
+        <p class="title">Business Strategy Analyst</p>
+        <p>“It was a pleasure to work with Lynsey while standing up a new product for Hyundai. I could always depend on her to handle difficult tasks that sometimes did not have a clear solution. She would embrace the challenge, perform any needed research, and provide a solution, always with a smile. Lynsey had a strong work ethic… I’m confident that she will continue to be a valuable asset and use her skills to deliver quality results.”</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script>
-// Sticky header
+// ---------- STICKY HEADER ----------
 window.addEventListener('scroll', function() {
   const header = document.querySelector('header');
   if (window.scrollY > 50) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
 
-// Reveal cards + resume images
+// ---------- INTERSECTION OBSERVER for reveals ----------
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, index * 200);
+      setTimeout(() => { entry.target.classList.add('visible'); }, index * 150);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.12 });
 
-document.querySelectorAll('.card, .resume-image').forEach(el => observer.observe(el));
+// observe cards, resume images, recommendation cards
+document.querySelectorAll('.card, .resume-image, .recommendation-card').forEach(el => observer.observe(el));
 
-// Mouse-follow glow for cards
+// ---------- Mouse-follow glow for cards ----------
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => card.addEventListener('mousemove', (e) => {
   const rect = card.getBoundingClientRect();
@@ -509,17 +433,19 @@ cards.forEach(card => card.addEventListener('mousemove', (e) => {
   card.style.setProperty('--y', y + '%');
 }));
 
-// Hero fade
+// ---------- DOM references for fades & particles ----------
 const hero = document.querySelector('.hero');
 const scrollArrow = document.querySelector('.scroll-arrow');
 const heroContainer = document.querySelector('.hero-container');
 const overviewWrapper = document.querySelector('.overview-wrapper');
 const resumeSection = document.querySelector('.resume-section');
+const recSection = document.querySelector('.recommendations-section');
 
+// ---------- SCROLL: hero fade, overview->resume fade, resume->rec fade ----------
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
 
-  // Hero fade
+  // hero fade
   const heroFadeEnd = heroContainer.offsetHeight;
   if (scrollTop < heroFadeEnd) {
     const opacity = 1 - scrollTop / heroFadeEnd;
@@ -533,35 +459,48 @@ window.addEventListener('scroll', () => {
     scrollArrow.style.opacity = 0;
   }
 
-  // Driving Business -> Resume fade background
+  // Combined background fades:
+  // 1) overview -> resume : dark (14) -> white (248)
+  // 2) resume -> recommendations : white (248) -> dark (14)
   const fadeStart = overviewWrapper.offsetTop + overviewWrapper.offsetHeight - window.innerHeight / 2;
   const fadeEnd = resumeSection.offsetTop;
-  if (scrollTop >= fadeStart && scrollTop <= fadeEnd) {
-    const t = (scrollTop - fadeStart) / (fadeEnd - fadeStart);
-    const r = Math.round(14 + (248 - 14) * t);
-    const g = Math.round(14 + (248 - 14) * t);
-    const b = Math.round(14 + (248 - 14) * t);
-    document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
-  } else if (scrollTop < fadeStart) {
-    document.body.style.backgroundColor = 'rgb(14,14,14)';
-  } else if (scrollTop > fadeEnd) {
+
+  const recFadeStart = resumeSection.offsetTop + resumeSection.offsetHeight - window.innerHeight / 2;
+  const recFadeEnd = recSection ? recSection.offsetTop : recFadeStart + 300;
+
+  if (scrollTop < fadeStart) {
+    document.body.style.backgroundColor = 'black';
+  } else if (scrollTop >= fadeStart && scrollTop <= fadeEnd) {
+    const t = (scrollTop - fadeStart) / (fadeEnd - fadeStart || 1);
+    const v = Math.round(14 + (248 - 14) * t);
+    document.body.style.backgroundColor = `rgb(${v},${v},${v})`;
+  } else if (scrollTop > fadeEnd && scrollTop < recFadeStart) {
     document.body.style.backgroundColor = 'rgb(248,248,248)';
+  } else if (scrollTop >= recFadeStart && scrollTop <= recFadeEnd) {
+    const t2 = (scrollTop - recFadeStart) / (recFadeEnd - recFadeStart || 1);
+    const v2 = Math.round(248 - (248 - 14) * t2);
+    document.body.style.backgroundColor = `rgb(${v2},${v2},${v2})`;
+  } else if (scrollTop > recFadeEnd) {
+    document.body.style.backgroundColor = 'rgb(14,14,14)';
   }
 });
 
-// Hero particles
+// ---------- HERO PARTICLES ----------
 const canvas = document.getElementById('heroParticles');
 const ctx = canvas.getContext('2d');
 let particles = [];
 let w = canvas.width = window.innerWidth;
 let h = canvas.height = heroContainer.offsetHeight;
 
+const colors = ['#5271FF', '#9F32ED', '#E6198F']; // shared palette
+
 window.addEventListener('resize', () => {
   w = canvas.width = window.innerWidth;
   h = canvas.height = heroContainer.offsetHeight;
+  // recommendation canvas resize handled below too
+  resizeRecCanvas();
 });
 
-const colors = ['#5271FF', '#9F32ED', '#E6198F'];
 for (let i = 0; i < 100; i++) {
   particles.push({
     x: Math.random() * w,
@@ -575,6 +514,14 @@ for (let i = 0; i < 100; i++) {
 
 function animateParticles() {
   ctx.clearRect(0, 0, w, h);
+
+  // subtle gradient overlay so particles sit into the hero and fade to black at bottom
+  const g = ctx.createLinearGradient(0,0,0,h);
+  g.addColorStop(0, 'rgba(0,0,0,0)');
+  g.addColorStop(1, 'rgba(0,0,0,0.7)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,w,h);
+
   particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -588,6 +535,80 @@ function animateParticles() {
   requestAnimationFrame(animateParticles);
 }
 animateParticles();
+
+// ---------- RECOMMENDATIONS PARTICLES ----------
+const recCanvas = document.getElementById('recommendationsParticles');
+const recCtx = recCanvas.getContext('2d');
+let recParticles = [];
+let rw = recCanvas.width = window.innerWidth;
+let rh = recCanvas.height = recSection ? recSection.offsetHeight : window.innerHeight;
+
+function resizeRecCanvas() {
+  rw = recCanvas.width = window.innerWidth;
+  rh = recCanvas.height = recSection ? recSection.offsetHeight : window.innerHeight;
+  // rebuild a moderate number of particles to adapt to new size
+  recParticles = [];
+  for (let i = 0; i < 70; i++) {
+    recParticles.push({
+      x: Math.random() * rw,
+      y: Math.random() * rh,
+      r: Math.random() * 2 + 1,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      dx: (Math.random() - 0.5) / 2,
+      dy: (Math.random() - 0.5) / 2
+    });
+  }
+}
+resizeRecCanvas();
+window.addEventListener('resize', resizeRecCanvas);
+
+function animateRecParticles() {
+  recCtx.clearRect(0, 0, rw, rh);
+
+  // draw a subtle fade overlay so particles sit in black background
+  const g2 = recCtx.createLinearGradient(0,0,0,rh);
+  g2.addColorStop(0, 'rgba(0,0,0,0.0)');
+  g2.addColorStop(1, 'rgba(0,0,0,1)');
+  recCtx.fillStyle = g2;
+  recCtx.fillRect(0,0,rw,rh);
+
+  recParticles.forEach(p => {
+    recCtx.beginPath();
+    recCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    recCtx.fillStyle = p.color;
+    recCtx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > rw) p.dx *= -1;
+    if (p.y < 0 || p.y > rh) p.dy *= -1;
+  });
+  requestAnimationFrame(animateRecParticles);
+}
+animateRecParticles();
+
+// ---------- make recommendation cards appear staggered when section enters ----------
+// if you want a different timing, adjust delayBase
+const recCards = document.querySelectorAll('.recommendation-card');
+const recInObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // stagger reveal
+      recCards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), i * 160);
+      });
+      recInObserver.disconnect();
+    }
+  });
+}, { threshold: 0.08 });
+
+if (recSection) recInObserver.observe(recSection);
+
+// (optional) arrow click to smooth-scroll down one viewport
+document.querySelectorAll('.scroll-arrow').forEach(el => {
+  el.addEventListener('click', () => {
+    window.scrollTo({ top: window.innerHeight - 20, behavior: 'smooth' });
+  });
+});
 </script>
 
 </body>
