@@ -1,163 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Studies | Lynsey Nunez</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Case Studies - Lynsey Nunez</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin:0;
-    font-family:'Inter',sans-serif;
-    background:#0e0e0e;
-    color:#f0f0f0;
-    scroll-behavior:smooth;
-  }
-  a { color:inherit; text-decoration:none; }
-  nav {
-    position:fixed; top:0; left:0; right:0;
-    background:#111;
-    display:flex;
-    justify-content:center;
-    gap:2rem;
-    padding:1rem;
-    z-index:1000;
-  }
-  nav a { color:#f0f0f0; font-weight:600; transition:0.3s; }
-  nav a:hover { color:#0af; }
+:root {
+  --clr-1: #5271FF;
+  --clr-2: #9F32ED;
+  --clr-3: #E6198F;
+  --fs: clamp(3rem, 8vw, 7rem);
+}
 
-  section {
-    padding:4rem 2rem;
-    max-width:1200px;
-    margin:0 auto;
-  }
-  h2 { font-size:2rem; margin-bottom:2rem; color:#0af; }
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: #0e0e0e;
+  color: #fff;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
-  .case-studies {
-    display:grid;
-    gap:2rem;
-  }
+/* ---------- Header ---------- */
+header {
+  width: 100%;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
+}
+header nav {
+  display: flex;
+  gap: 1rem;
+}
+header nav a {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(30, 30, 30, 0.7);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(-40px);
+}
+header nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x,50%) var(--y,50%),
+    rgba(82,113,255,0.4),
+    rgba(159,50,237,0.3),
+    rgba(230,25,143,0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+header nav a:hover::before { opacity: 1; }
+header nav a:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(159,50,237,0.4);
+}
+header nav a span { position: relative; z-index: 1; }
+header nav a.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: floatLink 6s ease-in-out infinite;
+}
+@keyframes floatLink {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+header.hidden {
+  opacity: 0;
+  transform: translateY(-30px);
+  pointer-events: none;
+}
 
-  .case-card {
-    background:#1a1a1a;
-    border-radius:0.5rem;
-    padding:1.5rem;
-    cursor:pointer;
-    transition:0.3s;
-  }
-  .case-card:hover { background:#222; }
+/* ---------- Hero Section ---------- */
+.hero {
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-canvas {
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:0;
+  pointer-events:none;
+}
+.hero h1 {
+  font-size: var(--fs);
+  font-weight: 700;
+  color: transparent;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: auroraMove 12s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 2;
+}
 
-  .case-card h3 {
-    margin:0 0 0.5rem 0;
-    color:#0af;
-  }
+/* ---------- Quick Navigation Menu ---------- */
+.quick-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  flex-wrap: wrap;
+}
+.quick-nav a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  background: rgba(30,30,30,0.8);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.quick-nav a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(159,50,237,0.5);
+}
 
-  .details {
-    display:none;
-    margin-top:1rem;
-    line-height:1.5;
-  }
+/* ---------- Case Studies ---------- */
+.case-study {
+  max-width: 1000px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background: rgba(22,22,22,0.9);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.case-study.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.case-study h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: transparent;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: auroraMove 12s ease-in-out infinite alternate;
+}
+.case-study h3 {
+  font-size: 1.4rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
 
-  .case-card.active .details { display:block; }
+/* ---------- Footer (copied from index) ---------- */
+.site-footer {
+  background: rgba(14,14,14,0.85);
+  backdrop-filter: blur(10px);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 50%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 50%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 50%);
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none;
+}
+.site-footer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  background-size: 200% 200%;
+  animation: auroraMove 12s ease-in-out infinite alternate;
+  z-index: 2;
+}
+.footer-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.footer-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: auroraMove 12s ease-in-out infinite alternate;
+}
+.footer-tagline {
+  color: #ffffffcc;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.footer-links a {
+  color: #ffffffcc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color .3s ease;
+}
+.footer-links a:hover { color: #fff; }
+.social-link-footer {
+  display: inline-block;
+  margin: 0 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffffcc;
+  text-decoration: none !important;
+  transition: transform .3s ease, color .3s ease;
+}
+.social-link-footer:hover {
+  transform: scale(1.3);
+  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.footer-copy {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #888;
+}
 
-  .metrics {
-    display:flex;
-    flex-wrap:wrap;
-    gap:1rem;
-    margin-top:1rem;
-  }
-  .metric {
-    background:#0af;
-    color:#0e0e0e;
-    padding:0.5rem 1rem;
-    border-radius:0.25rem;
-    font-weight:600;
-    font-size:0.875rem;
-  }
+/* ---------- Animations ---------- */
+@keyframes auroraMove {
+  0%{background-position:0% 0%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 100%}
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="case-studies.html">Case Studies</a>
-  <a href="portfolio.html">My Design Portfolio</a>
-  <a href="resume.html">Resume</a>
-  <a href="connect.html">Connect</a>
-</nav>
+<header>
+  <nav>
+    <a href="index.html"><span>Home</span></a>
+    <a href="case-studies.html"><span>Case Studies</span></a>
+    <a href="portfolio.html"><span>Portfolio</span></a>
+    <a href="resume.html"><span>Resume</span></a>
+    <a href="connect.html"><span>Connect</span></a>
+  </nav>
+</header>
 
-<section>
-  <h2>Case Studies</h2>
-  <div class="case-studies">
-
-    <div class="case-card">
-      <h3>AI-Powered Content Automation</h3>
-      <div class="metrics">
-        <span class="metric" data-target="40">0%</span>
-        <span class="metric" data-target="30000">0</span>
-        <span class="metric" data-target="1">0</span>
-      </div>
-      <div class="details">
-        <p><strong>Background:</strong> Manual content creation process relied heavily on contractors, causing delays and higher costs.</p>
-        <p><strong>Solutions:</strong> Implemented AI-powered content tool, standardized prompts, optimized team focus for strategic work.</p>
-        <p><strong>Outcomes:</strong> 40% efficiency gain, $30K saved annually, scalable operations.</p>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <h3>Website Workflow Optimization</h3>
-      <div class="metrics">
-        <span class="metric" data-target="35">0%</span>
-        <span class="metric" data-target="50">0</span>
-      </div>
-      <div class="details">
-        <p><strong>Background:</strong> Manual CMS builds slowed project delivery and reduced efficiency.</p>
-        <p><strong>Solutions:</strong> Introduced AI-assisted templates, standardized processes, and workflow improvements.</p>
-        <p><strong>Outcomes:</strong> 35% faster project completion, 50 clients supported, improved client satisfaction.</p>
-      </div>
-    </div>
-
-  </div>
+<section class="hero">
+  <canvas id="heroParticles" class="hero-canvas"></canvas>
+  <h1>Case Studies</h1>
 </section>
 
+<div class="quick-nav">
+  <a href="#case1">Website Professional Services</a>
+  <a href="#case2">AI-Assisted Problem Solving</a>
+  <a href="#case3">Business Case Development</a>
+</div>
+
+<!-- Case Study 1 -->
+<div id="case1" class="case-study">
+  <h2>Case Study: Building Website Professional Services</h2>
+  <h3>Overview</h3>
+  <p>Created and managed Website Professional Services from scratch as a solo contributor, building end-to-end processes, pricing, and tracking systems.</p>
+  <h3>Challenge</h3>
+  <p>No structured or monetized approach existed, leading to inefficiencies, lack of visibility, and missed revenue.</p>
+  <h3>Approach</h3>
+  <p>Market research to benchmark competitors’ tiers and pricing. Designed tiered packages. Built workflows/SOPs across Confluence, Zendesk, and SharePoint. Developed Excel tracking system. Created pitch deck advocating expansion. Applied AI diagnostics to solve process/technical issues.</p>
+  <h3>Impact</h3>
+  <p>Established a replicable, revenue-generating service, improved workflows and visibility, and demonstrated ability to convert stakeholder needs into strategies.</p>
+</div>
+
+<!-- Case Study 2 -->
+<div id="case2" class="case-study">
+  <h2>Case Study: AI-Assisted Problem Solving Across Roles</h2>
+  <h3>Overview</h3>
+  <p>Applied AI tools across multiple roles to resolve technical/process challenges and improve workflows.</p>
+  <h3>Challenge</h3>
+  <p>Teams faced recurring errors (CRM DKIM failures, Zendesk triggers, Jira misuse, SaaS content bottlenecks) with engineering escalations deprioritized.</p>
+  <h3>Approach</h3>
+  <p>AI diagnostics on email headers uncovered DKIM mismatches. AI troubleshooting identified Zendesk trigger workarounds. Flagged Jira misuse with new classification guidelines.</p>
+  <h3>Impact</h3>
+  <p>Produced actionable technical recommendations, prevented client communication breakdowns, and demonstrated ability to bridge business, technical, and AI tools.</p>
+</div>
+
+<!-- Case Study 3 -->
+<div id="case3" class="case-study">
+  <h2>Case Study: Stakeholder Communication & Business Case Development</h2>
+  <h3>Overview</h3>
+  <p>Identified the need to scale Website Professional Services, developed a strategic pitch deck, and reframed the offering as a revenue-generating business line.</p>
+  <h3>Challenge</h3>
+  <p>Company lacked scalability and monetization strategy; service worked for one person but required leadership buy-in for growth.</p>
+  <h3>Approach</h3>
+  <p>Market research and competitor benchmarking. Designed tiered service packages. Created mockups and process diagrams for scalability. Structured pitch deck highlighting revenue, resourcing, risk mitigation. Presented tailored findings to leadership.</p>
+  <h3>Impact</h3>
+  <p>Positioned services as a scalable revenue-generating line, demonstrated strategic communication skills, and showcased business case development ability.</p>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <h2 class="footer-name">Lynsey Nunez</h2>
+    <p class="footer-tagline">Helping companies leverage AI and digital platforms to streamline operations and growth.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="resume.html">Resume</a>
+      <a href="connect.html">Connect</a>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link-footer">in</a>
+    </div>
+    <p class="footer-copy">© 2025 Lynsey Nunez. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
-document.querySelectorAll('.case-card h3').forEach(card => {
-  card.addEventListener('click', () => {
-    card.parentElement.classList.toggle('active');
+// Header fade/hide
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (window.scrollY > 120) header.classList.add("hidden");
+  else header.classList.remove("hidden");
+});
+
+// Animate nav links
+const navLinks = document.querySelectorAll('header nav a');
+navLinks.forEach((link, i) => {
+  setTimeout(() => link.classList.add('visible'), i * 150);
+  link.addEventListener('mousemove', (e) => {
+    const rect = link.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    link.style.setProperty('--x', x + '%');
+    link.style.setProperty('--y', y + '%');
   });
 });
 
-function animateNumbers(elements) {
-  elements.forEach(el => {
-    const target = +el.getAttribute('data-target');
-    let count = 0;
-    const increment = target / 100;
-    const interval = setInterval(() => {
-      count += increment;
-      if(count >= target){
-        el.textContent = target.toLocaleString();
-        clearInterval(interval);
-      } else {
-        el.textContent = Math.floor(count).toLocaleString();
-      }
-    }, 20);
+// Case study reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.case-study').forEach(el => observer.observe(el));
+
+// Hero particles
+const canvas = document.getElementById('heroParticles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = document.querySelector('.hero').offsetHeight;
+const colors = ['#5271FF', '#9F32ED', '#E6198F'];
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = document.querySelector('.hero').offsetHeight;
+}
+window.addEventListener('resize', resize);
+
+for (let i = 0; i < 70; i++) {
+  particles.push({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 2 + 1,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    dx: (Math.random() - 0.5) / 2,
+    dy: (Math.random() - 0.5) / 2
   });
 }
-
-const observer = new IntersectionObserver((entries, obs) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      const stats = entry.target.querySelectorAll('[data-target]');
-      animateNumbers(stats);
-      obs.unobserve(entry.target);
-    }
+function animateParticles() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > w) p.dx *= -1;
+    if (p.y < 0 || p.y > h) p.dy *= -1;
   });
-}, {threshold:0.5});
-
-document.querySelectorAll('.case-studies').forEach(section=>{
-  observer.observe(section);
-});
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
 </script>
-
 </body>
 </html>
