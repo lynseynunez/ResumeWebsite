@@ -1,115 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Design Portfolio | Lynsey Nunez</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin:0;
-    font-family:'Inter',sans-serif;
-    background:#0e0e0e;
-    color:#f0f0f0;
-    scroll-behavior:smooth;
-  }
-  a { color:inherit; text-decoration:none; }
-  nav {
-    position:fixed; top:0; left:0; right:0;
-    background:#111;
-    display:flex;
-    justify-content:center;
-    gap:2rem;
-    padding:1rem;
-    z-index:1000;
-  }
-  nav a { color:#f0f0f0; font-weight:600; transition:0.3s; }
-  nav a:hover { color:#0af; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio - Lynsey Nunez</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --clr-1: #5271FF;
+      --clr-2: #9F32ED;
+      --clr-3: #E6198F;
+      --fs: clamp(3rem, 8vw, 7rem);
+    }
 
-  section {
-    padding:4rem 2rem;
-    max-width:1200px;
-    margin:0 auto;
-  }
-  h2 { font-size:2rem; margin-bottom:2rem; color:#0af; text-align:center; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-  .portfolio-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-    gap:2rem;
-  }
+    /* ---------- header ---------- */
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-  .portfolio-card {
-    background:#1a1a1a;
-    border-radius:0.5rem;
-    overflow:hidden;
-    transition:transform 0.3s, box-shadow 0.3s;
-    cursor:pointer;
-    border:2px solid #0af;
-  }
-  .portfolio-card:hover {
-    transform:scale(1.03);
-    box-shadow:0 0 15px #0af;
-  }
-  .portfolio-card img {
-    width:100%;
-    display:block;
-  }
-  .portfolio-card .portfolio-info {
-    padding:1rem;
-    text-align:center;
-  }
-  .portfolio-card .portfolio-info h3 {
-    margin:0;
-    font-size:1.25rem;
-    color:#0af;
-  }
-</style>
+    header.hidden {
+      opacity: 0;
+      transform: translateY(-30px);
+      pointer-events: none;
+    }
+
+    header nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    header nav a {
+      position: relative;
+      padding: 0.5rem 1rem;
+      border-radius: 0.75rem;
+      background: rgba(30, 30, 30, 0.7);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header nav a:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(159,50,237,0.4);
+    }
+
+    /* ---------- hero ---------- */
+    .portfolio-hero-container {
+      position: relative;
+      width: 100%;
+      height: 60vh; /* match case studies */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .portfolio-hero-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .portfolio-hero .title {
+      font-size: var(--fs);
+      font-weight: 700;
+      margin: 0 0 1.5rem 0;
+      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: auroraMove 12s ease-in-out infinite alternate;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes auroraMove {
+      0% { background-position: 0% 0% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 100% }
+    }
+
+    /* ---------- filter buttons ---------- */
+    .filter-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      margin-top: 0.5rem;
+    }
+
+    .filter-buttons button {
+      background: rgba(30, 30, 30, 0.85);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.75rem;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .filter-buttons button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(159,50,237,0.4);
+      background: rgba(50, 50, 50, 0.9);
+    }
+
+    /* ---------- portfolio grid ---------- */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1600px;
+      margin: -2rem auto 4rem auto; /* pull grid up */
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .portfolio-item {
+      background: #1a1a1a;
+      border-radius: 1rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+
+    .portfolio-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .portfolio-item h4 {
+      margin: 0.5rem 0 0.25rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .portfolio-item p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+
+    /* ---------- footer (same as index) ---------- */
+    .site-footer {
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(10px);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .site-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 50%),
+                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 50%),
+                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 50%);
+      opacity: 0.1;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .site-footer::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+      background-size: 200% 200%;
+      animation: auroraMove 12s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+    .footer-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .footer-name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: auroraMove 12s ease-in-out infinite alternate;
+    }
+    .footer-tagline {
+      color: #ffffffcc;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    .footer-links a {
+      color: #ffffffcc;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color .3s ease;
+    }
+    .footer-links a:hover { color: #fff; }
+    .social-link-footer {
+      display: inline-block;
+      margin: 0 0.5rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ffffffcc;
+      text-decoration: none !important;
+      transition: transform .3s ease, color .3s ease;
+    }
+    .social-link-footer:hover {
+      transform: scale(1.3);
+      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .footer-copy {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="case-studies.html">Case Studies</a>
-  <a href="portfolio.html">My Design Portfolio</a>
-  <a href="resume.html">Resume</a>
-  <a href="connect.html">Connect</a>
-</nav>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="LynseyNunezResume_DBA_2025.pdf" download>Resume</a>
+    <a href="connect.html">Connect</a>
+  </nav>
+</header>
 
-<section>
-  <h2>My Design Portfolio</h2>
-  <div class="portfolio-grid">
+<div class="portfolio-hero-container">
+  <canvas id="portfolioParticles" class="portfolio-hero-canvas"></canvas>
+  <section class="portfolio-hero">
+    <h1 class="title">Portfolio</h1>
+    <div class="filter-buttons">
+      <button data-filter="all">View All</button>
+      <button data-filter="agent">Agent Site</button>
+      <button data-filter="team">Team Site</button>
+    </div>
+  </section>
+</div>
 
-    <a href="https://example1.com" target="_blank" class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400.png?text=Website+1" alt="Website 1">
-      <div class="portfolio-info">
-        <h3>Website 1</h3>
-      </div>
+<div class="portfolio-grid">
+  <div class="portfolio-item" data-category="agent">
+    <a href="https://livesonomamarin.com/" target="_blank">
+      <img src="images/project1.jpg" alt="Michael Belluomini Real Estate">
     </a>
-
-    <a href="https://example2.com" target="_blank" class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400.png?text=Website+2" alt="Website 2">
-      <div class="portfolio-info">
-        <h3>Website 2</h3>
-      </div>
-    </a>
-
-    <a href="https://example3.com" target="_blank" class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400.png?text=Website+3" alt="Website 3">
-      <div class="portfolio-info">
-        <h3>Website 3</h3>
-      </div>
-    </a>
-
-    <a href="https://example4.com" target="_blank" class="portfolio-card">
-      <img src="https://via.placeholder.com/600x400.png?text=Website+4" alt="Website 4">
-      <div class="portfolio-info">
-        <h3>Website 4</h3>
-      </div>
-    </a>
-
+    <h4>Michael Belluomini Real Estate</h4>
+    <p>Agent Site</p>
   </div>
-</section>
+  <div class="portfolio-item" data-category="team">
+    <a href="https://www.ruizgrp.com/" target="_blank">
+      <img src="images/project2.png" alt="Ruiz Group Real Estate">
+    </a>
+    <h4>Ruiz Group Real Estate</h4>
+    <p>Team Site</p>
+  </div>
+  <div class="portfolio-item" data-category="agent">
+    <a href="https://www.pinkrealestateagent.com/" target="_blank">
+      <img src="images/project3.png" alt="Angela Duncan Real Estate">
+    </a>
+    <h4>Angela Duncan Real Estate</h4>
+    <p>Agent Site</p>
+  </div>
+  <div class="portfolio-item" data-category="agent">
+    <a href="https://bensonsellsflorida.com/" target="_blank">
+      <img src="images/project4.png" alt="Stephen Benson Real Estate">
+    </a>
+    <h4>Stephen Benson Real Estate</h4>
+    <p>Agent Site</p>
+  </div>
+  <div class="portfolio-item" data-category="agent">
+    <a href="https://danbinng.com/" target="_blank">
+      <img src="images/project5.png" alt="Dan Binng Real Estate">
+    </a>
+    <h4>Dan Binng Real Estate</h4>
+    <p>Agent Site</p>
+  </div>
+  <div class="portfolio-item" data-category="team">
+    <a href="https://edyknowsaustin.com/" target="_blank">
+      <img src="images/project6.png" alt="Edy Knows Austin (EKA Realty Group)">
+    </a>
+    <h4>Edy Knows Austin (EKA Realty Group)</h4>
+    <p>Team Site</p>
+  </div>
+  <div class="portfolio-item" data-category="agent">
+    <a href="https://anastasiyarichards.com/" target="_blank">
+      <img src="images/project7.png" alt="Anastasiya Richards Real Estate">
+    </a>
+    <h4>Anastasiya Richards Real Estate</h4>
+    <p>Agent Site</p>
+  </div>
+  <div class="portfolio-item" data-category="team">
+    <a href="https://domainrealty.com/" target="_blank">
+      <img src="images/project8.png" alt="Domain Realty">
+    </a>
+    <h4>Domain Realty</h4>
+    <p>Team Site</p>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <h2 class="footer-name">Lynsey Nunez</h2>
+    <p class="footer-tagline">Helping companies leverage AI and digital platforms to streamline operations and growth.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="LynseyNunezResume_DBA_2025.pdf" download>Resume</a>
+      <a href="connect.html">Connect</a>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link-footer">in</a>
+    </div>
+    <p class="footer-copy">© 2025 Lynsey Nunez. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // header fade
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    if (window.scrollY > 120) {
+      header.classList.add("hidden");
+    } else {
+      header.classList.remove("hidden");
+    }
+  });
+
+  // portfolio filtering
+  const buttons = document.querySelectorAll(".filter-buttons button");
+  const items = document.querySelectorAll(".portfolio-item");
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
+      items.forEach(item => {
+        item.style.display =
+          filter === "all" || item.dataset.category === filter
+            ? "block"
+            : "none";
+      });
+    });
+  });
+
+  // particles
+  const canvas = document.getElementById("portfolioParticles");
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  let w = (canvas.width = window.innerWidth);
+  let h = (canvas.height = document.querySelector(".portfolio-hero-container").offsetHeight);
+  const colors = ["#5271FF", "#9F32ED", "#E6198F"];
+
+  function resizeCanvas() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = document.querySelector(".portfolio-hero-container").offsetHeight;
+  }
+  window.addEventListener("resize", resizeCanvas);
+
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 2 + 1,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      dx: (Math.random() - 0.5) / 2,
+      dy: (Math.random() - 0.5) / 2
+    });
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > w) p.dx *= -1;
+      if (p.y < 0 || p.y > h) p.dy *= -1;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+</script>
 
 </body>
 </html>
