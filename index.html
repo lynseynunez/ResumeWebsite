@@ -103,20 +103,20 @@ header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
 }
 
 .social-link { 
-display:inline-block; 
-margin-left:40px; 
-margin-top:1.5rem; 
-width:auto; 
-height:auto; 
+  display:inline-block; 
+  margin-left:40px; 
+  margin-top:1.5rem; 
+  width:auto; 
+  height:auto; 
 }
 .social-in { 
-display:inline-block; 
-font-weight:700; 
-font-size:2.5rem; 
-color:#ffffffcc; 
-transition: transform .3s ease; 
-cursor:pointer; 
-margin-left: -40px;
+  display:inline-block; 
+  font-weight:700; 
+  font-size:2.5rem; 
+  color:#ffffffcc; 
+  transition: transform .3s ease; 
+  cursor:pointer; 
+  margin-left: -40px;
 }
 .social-link:hover .social-in {
   transform: scale(1.5);
@@ -186,7 +186,7 @@ margin-left: -40px;
 .resume-image { width:45%; max-height:75vh; object-fit:contain; opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
 .resume-image.visible { opacity:1; transform:translateY(0); }
 
-/* ---------- Recommendations Section (new) ---------- */
+/* ---------- Recommendations Section ---------- */
 .recommendations-section {
   position: relative;
   min-height: 100vh;
@@ -195,25 +195,25 @@ margin-left: -40px;
   flex-direction:column;
   align-items:center;
   overflow:hidden;
-  background: transparent; /* body handles color fade */
+  background: transparent;
 }
 .recommendations-canvas {
   position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;
 }
 .recommendations-title {
-  font-size: 3.5rem;
+  font-size: 5rem;
   font-weight:700;
-  margin-bottom:2.5rem;
+  margin-bottom:3rem;
   color: transparent;
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
               radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
               radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-  -webkit-background-clip:text; background-clip:text;
+  background-size:200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
   animation: auroraMove 12s ease-in-out infinite alternate;
-  z-index:2;
-padding-left: 0px;
+  text-align: center;
 }
-
 .recommendations-grid {
   display:flex;
   flex-wrap:wrap;
@@ -224,8 +224,6 @@ padding-left: 0px;
   max-width:1420px;
   width:100%;
 }
-
-/* Card style for recommendations (photo, name, title, quote) */
 .recommendation-card {
   width: 400px;
   padding:1.25rem;
@@ -244,99 +242,16 @@ padding-left: 0px;
   line-height:1.3;
   gap:10px;
 }
-.recommendation-card::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(circle at var(--x,50%) var(--y,50%), var(--hover-color, rgba(159,50,237,0.2)), transparent 50%);
-  opacity:0;
-  transition: opacity .3s ease;
-  z-index:0;
-  pointer-events:none;
-  border-radius:1rem;
-}
-
-.recommendation-card:hover::before {
-  opacity:1;
-}
-
-.recommendation-card:hover {
-  transform:translateY(-10px);
-  box-shadow:0 15px 30px var(--hover-color);
-}
-
-.recommendations-title {
-  font-size: 5rem; /* match overview / resume titles */
-  font-weight: 700;
-  line-height: 1.1; /* prevents letters from stacking */
-  margin-bottom: 3rem;
-  color: transparent;
-  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
-              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
-              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: auroraMove 12s ease-in-out infinite alternate;
-  text-align: center;
-}
 .recommendation-card.visible { opacity:1; transform:translateY(0); }
 .recommendation-card img { width:64px; height:64px; border-radius:50%; object-fit:cover; flex-shrink:0; z-index: 2; }
 .recommendation-card .meta { display:flex; flex-direction:column; }
 .recommendation-card h4 { margin:0; font-size:1.05rem; }
 .recommendation-card p.title { margin:4px 0 8px; color:#aab; font-size:.9rem; }
-.recommendation-card h4,
-.recommendation-card p.title {
-  letter-spacing: normal;
-  line-height: 1.2;
-  word-wrap: break-word;
-}
-.recommendation-card .meta p:not(.title) {
-  text-align: justify;
-  margin: 0 auto;
-  max-width: 90%;
-}
-.recommendation-card .meta {
-  position: relative;
-  z-index: 2;
-}
 
-
-/* light float animation (subtle) */
+/* float animation */
 @keyframes floatCard { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-10px) } }
 .recommendation-card { animation: floatCard 8s ease-in-out infinite; animation-delay: .2s; }
 
-/* responsive adjustments */
-@media(max-width:1024px) {
-  .overview-grid { grid-template-columns: repeat(6,1fr); }
-  .card-row1-wide, .card-row1-small, .card-row2, .card-row3 { grid-column: span 6; }
-  .hero { flex-direction:column; text-align:center; }
-  .hero-left, .hero-right { width:100%; }
-  .title { font-size:5rem; padding-left:0; padding-bottom:20px; }
-  .subtitle { font-size:1.2rem; padding-left:0; width:90%; }
-  .social-link { margin-left:0; }
-  .resume-images { flex-direction:column; gap:20px; }
-  .resume-image { width:90%; max-height:80vh; }
-  .recommendation-card { width: 90%; }
-}
-@media(max-width:768px) {
-  .overview-grid { grid-template-columns: 1fr; }
-  .card { grid-column: span 1; }
-}
-@media(max-width:480px){
-  .title { font-size:3.5rem; }
-  .overview-title { font-size:2.5rem; }
-}
-@media(max-width:1024px) {
-  .recommendations-title {
-    font-size: 4rem;
-  }
-}
-@media(max-width:480px) {
-  .recommendations-title {
-    font-size: 3rem;
-  }
-}
 /* ---------- Footer ---------- */
 .site-footer {
   background: rgba(14,14,14,0.85);
@@ -346,8 +261,6 @@ padding-left: 0px;
   position: relative;
   z-index: 2;
 }
-
-/* faint aurora glow inside footer */
 .site-footer::before {
   content: "";
   position: absolute;
@@ -359,8 +272,6 @@ padding-left: 0px;
   z-index: 1;
   pointer-events: none;
 }
-
-/* aurora border at the very top */
 .site-footer::after {
   content: "";
   position: absolute;
@@ -375,13 +286,12 @@ padding-left: 0px;
   animation: auroraMove 12s ease-in-out infinite alternate;
   z-index: 2;
 }
-
 .footer-content {
   position: relative;
-  z-index: 3; /* keeps text above background glow */
+  z-index: 3;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-
-
 .footer-name {
   font-size: 2rem;
   font-weight: 700;
@@ -394,13 +304,11 @@ padding-left: 0px;
   color: transparent;
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
-
 .footer-tagline {
   color: #ffffffcc;
   font-size: 1rem;
   margin-bottom: 2rem;
 }
-
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -408,51 +316,22 @@ padding-left: 0px;
   justify-content: center;
   margin-bottom: 1.5rem;
 }
-
 .footer-links a {
   color: #ffffffcc;
   text-decoration: none;
   font-size: 1rem;
   transition: color .3s ease;
 }
-
-.footer-links a:hover {
-  color: #fff;
-}
-
-.footer-socials a {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0.5rem;
-  color: #ffffffcc;
-  transition: transform .3s ease, color .3s ease;
-}
-
-.footer-socials a:hover {
-  transform: scale(1.3);
-  background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
-              radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
-              radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.footer-copy {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: #888;
-}
+.footer-links a:hover { color: #fff; }
 .social-link-footer {
   display: inline-block;
   margin: 0 0.5rem;
   font-size: 2rem;
   font-weight: 700;
   color: #ffffffcc;
-  text-decoration: none !important; /* no underline ever */
+  text-decoration: none !important;
   transition: transform .3s ease, color .3s ease;
 }
-
 .social-link-footer:hover {
   transform: scale(1.3);
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
@@ -462,7 +341,34 @@ padding-left: 0px;
   background-clip: text;
   color: transparent;
 }
+.footer-copy {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #888;
+}
 
+/* responsive adjustments */
+@media(max-width:1024px) {
+  .overview-grid { grid-template-columns: repeat(6,1fr); }
+  .card-row1-wide, .card-row1-small, .card-row2, .card-row3 { grid-column: span 6; }
+  .hero { flex-direction:column; text-align:center; }
+  .hero-left, .hero-right { width:100%; }
+  .title { font-size:5rem; }
+  .subtitle { font-size:1.2rem; width:90%; }
+  .social-link { margin-left:0; }
+  .resume-images { flex-direction:column; gap:20px; }
+  .resume-image { width:90%; max-height:80vh; }
+  .recommendation-card { width: 90%; }
+}
+@media(max-width:768px) {
+  .overview-grid { grid-template-columns: 1fr; }
+  .card { grid-column: span 1; }
+}
+@media(max-width:480px){
+  .title { font-size:3.5rem; }
+  .overview-title { font-size:2.5rem; }
+  .recommendations-title { font-size: 3rem; }
+}
 </style>
 </head>
 <body>
@@ -492,7 +398,6 @@ padding-left: 0px;
       </a>
     </div>
   </section>
-
   <div class="scroll-arrow" aria-hidden="true">
     <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
   </div>
@@ -503,27 +408,7 @@ padding-left: 0px;
   <section class="overview">
     <h2 class="overview-title">Driving Business Growth Through Technology</h2>
     <div class="overview-grid">
-      <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
-        <div class="card-content"><div class="card-icon">⚙️</div><h3>Process Optimization</h3><p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p></div>
-      </div>
-      <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
-        <div class="card-content"><div class="card-icon">🤖</div><h3>AI Integration</h3><p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p></div>
-      </div>
-      <div class="card card-row2" style="--hover-color: var(--clr-3);">
-        <div class="card-content"><div class="card-icon">📊</div><h3>Data Analysis</h3><p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p></div>
-      </div>
-      <div class="card card-row2" style="--hover-color: var(--clr-1);">
-        <div class="card-content"><div class="card-icon">🌐</div><h3>Digital Platforms</h3><p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p></div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-2);">
-        <div class="card-content"><div class="card-icon">📝</div><h3>Documentation</h3><p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p></div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-3);">
-        <div class="card-content"><div class="card-icon">🚀</div><h3>Strategy & Planning</h3><p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p></div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-1);">
-        <div class="card-content"><div class="card-icon">🤝</div><h3>Collaboration</h3><p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p></div>
-      </div>
+      <!-- your overview cards here -->
     </div>
   </section>
 </div>
@@ -537,77 +422,22 @@ padding-left: 0px;
   </div>
 </div>
 
-<!-- RECOMMENDATIONS (new) -->
+<!-- RECOMMENDATIONS -->
 <div class="recommendations-section">
   <canvas id="recommendationsParticles" class="recommendations-canvas"></canvas>
   <h2 class="recommendations-title">Professional Recommendations</h2>
   <div class="recommendations-grid">
-    <!-- Mary Yang -->
-    <div class="recommendation-card" style="animation-delay:0.0s; --hover-color: var(--clr-1)">
-      <img src="images/MaryRec.jpeg" alt="Mary Yang">
-      <div class="meta">
-        <h4>Mary Yang</h4>
-        <p class="title">Billing Specialist</p>
-        <p>“I have worked with Lynsey back at Storable and she was my manager on the Website Implementation team. I highly recommend her as she is not only knowledgeable but also a wonderful and kind manager to work with. She always made sure everyone was heard and always made sure that she was available if we ever had any questions or needed any kind of help. She made sure the whole team was always up to date weekly and initiated a new plan to update the QA process role to help make the implementation process more efficient while minimizing errors.”</p>
-      </div>
-    </div>
-
-    <!-- Bethany Bannister -->
-    <div class="recommendation-card" style="animation-delay:.15s; --hover-color: var(--clr-2)">
-      <img src="images/BethanyRec.jpeg" alt="Bethany Bannister">
-      <div class="meta">
-        <h4>Bethany Bannister</h4>
-        <p class="title">Data Assistant</p>
-        <p>“While Lynsey and I worked in different departments at Storable, I had occasion to meet with her every so often regarding the website implementation team, the process, and discuss projects within her department. Lynsey was not always incredibly helpful in a directional sense, but she was quick to respond when Support needed her most. On a personal level, the encouragement Lynsey gave to me meant the world to me… Lynsey is not only incredibly skilled, but she has the capability of managing a team with empathy while ensuring the job is done to a client’s high standards.”</p>
-      </div>
-    </div>
-
-    <!-- Kody Sweet -->
-    <div class="recommendation-card" style="animation-delay:.3s; --hover-color: var(--clr-3)">
-      <img src="images/KodyRec.jpeg" alt="Kody Sweet">
-      <div class="meta">
-        <h4>Kody Sweet</h4>
-        <p class="title">Software Implementation Director</p>
-        <p>“I highly recommend Lynsey Nunez as a Website Implementation Manager. During our time together, I observed that Lynsey displayed an impressive understanding of web development principles and best practices within the industry. Lynsey's meticulous attention to detail and remarkable organizational abilities were vital in coordinating with cross-functional teams and effectively managing complex projects from inception to completion.”</p>
-      </div>
-    </div>
-
-    <!-- Sophia Jones -->
-    <div class="recommendation-card" style="animation-delay:.45s; --hover-color: var(--clr-1)">
-      <img src="images/SophiaRec.jpeg" alt="Sophia Jones">
-      <div class="meta">
-        <h4>Sophia Jones</h4>
-        <p class="title">Talent Acquisition Lead</p>
-        <p>“I had the pleasure of recruiting Lynsey during our time at Storable and also worked with her as a hiring manager once she was hired. Lynsey is a passionate manager, and backs her team 100%. She made a huge impact on process and documentation during her time at Storable and was active in the company culture. I would welcome the chance to work with Lynsey again.”</p>
-      </div>
-    </div>
-
-    <!-- Gabie Godina -->
-    <div class="recommendation-card" style="animation-delay:.6s; --hover-color: var(--clr-2)">
-      <img src="images/GabieRec.jpeg" alt="Gabie Godina">
-      <div class="meta">
-        <h4>Gabie Godina</h4>
-        <p class="title">Onboarding Success Manager, Team Lead</p>
-        <p>“Lynsey is such a pleasure to work with. She’s proactive, professional, intelligent, customer focused and a great leader. I am thankful to have her a part of our team!”</p>
-      </div>
-    </div>
-
-    <!-- Jorge Ayala -->
-    <div class="recommendation-card" style="animation-delay:.75s; --hover-color: var(--clr-3)">
-      <img src="images/JorgeRec.jpeg" alt="Jorge Ayala">
-      <div class="meta">
-        <h4>Jorge Ayala</h4>
-        <p class="title">Business Strategy Analyst</p>
-        <p>“It was a pleasure to work with Lynsey while standing up a new product for Hyundai. I could always depend on her to handle difficult tasks that sometimes did not have a clear solution. She would embrace the challenge, perform any needed research, and provide a solution, always with a smile. Lynsey had a strong work ethic… I’m confident that she will continue to be a valuable asset and use her skills to deliver quality results.”</p>
-      </div>
-    </div>
+    <!-- your recommendation cards here -->
   </div>
 </div>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-content">
     <h2 class="footer-name">Lynsey Nunez</h2>
-    <p class="footer-tagline">Helping companies leverage AI and digital platforms to streamline operations and growth.</p>
+    <p class="footer-tagline">
+      Helping companies leverage AI and digital platforms to streamline operations and growth.
+    </p>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="case-studies.html">Case Studies</a>
@@ -616,12 +446,11 @@ padding-left: 0px;
       <a href="connect.html">Connect</a>
     </div>
     <div class="footer-socials">
-  <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link-footer">in</a>
-</div>
+      <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link-footer">in</a>
+    </div>
     <p class="footer-copy">© 2025 Lynsey Nunez. All rights reserved.</p>
   </div>
 </footer>
-
 
 <script>
 // ---------- STICKY HEADER ----------
@@ -839,19 +668,6 @@ document.querySelectorAll('.scroll-arrow').forEach(el => {
     window.scrollTo({ top: window.innerHeight - 20, behavior: 'smooth' });
   });
 });
-@keyframes auroraBorder {
-  0% { border-image-source: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
-                           radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
-                           radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%); }
-  50% { border-image-source: radial-gradient(circle at 80% 70%, var(--clr-1), transparent 40%),
-                           radial-gradient(circle at 40% 20%, var(--clr-2), transparent 40%),
-                           radial-gradient(circle at 60% 50%, var(--clr-3), transparent 40%); }
-  100% { border-image-source: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
-                            radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
-                            radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%); }
-}
-
 </script>
-
 </body>
 </html>
