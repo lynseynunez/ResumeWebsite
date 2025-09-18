@@ -25,6 +25,25 @@ body {
 }
 
 /* ---------- header ---------- */
+:root {
+  --clr-1: #5271FF;
+  --clr-2: #9F32ED;
+  --clr-3: #E6198F;
+  --fs: clamp(3rem, 8vw, 7rem);
+}
+
+/* ---------- base / body ---------- */
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: #0e0e0e;
+  color: #fff;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: background-color 0.3s linear;
+}
+
+/* ---------- header ---------- */
 header {
   width: 100%;
   padding: 1rem 2rem;
@@ -32,18 +51,83 @@ header {
   top: 0;
   left: 0;
   z-index: 100;
-  background: transparent;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center; /* 👈 center instead of flex-end */
   align-items: center;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  background: transparent;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
 }
-header.scrolled {
-  background: #0e0e0e;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+
+
+header.hidden {
+  opacity: 0;
+  transform: translateY(-30px);
+  pointer-events: none;
 }
-header nav { display:flex; gap:1rem; }
-header nav a { white-space:nowrap; color:#fff; text-decoration:none; }
+
+header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+/* NEW bubbly nav link styling */
+header nav a {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(30, 30, 30, 0.7);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+header nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x,50%) var(--y,50%),
+    rgba(82,113,255,0.4),
+    rgba(159,50,237,0.3),
+    rgba(230,25,143,0.3)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+header nav a:hover::before {
+  opacity: 1;
+}
+
+header nav a:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(159,50,237,0.4);
+}
+
+header nav a span {
+  position: relative;
+  z-index: 1;
+}
+
+header nav a.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: floatLink 6s ease-in-out infinite;
+}
+
+@keyframes floatLink {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+
 
 /* ---------- Hero ---------- */
 .hero-container {
@@ -588,11 +672,14 @@ padding-left: 0px;
 </footer>
 
 <script>
-// ---------- STICKY HEADER ----------
-window.addEventListener('scroll', function() {
-  const header = document.querySelector('header');
-  if (window.scrollY > 50) header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
+// ---------- HEADER FADE OUT ON SCROLL ----------
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (window.scrollY > 120) {
+    header.classList.add("hidden");
+  } else {
+    header.classList.remove("hidden");
+  }
 });
 
 // ---------- INTERSECTION OBSERVER for reveals ----------
@@ -793,6 +880,19 @@ document.querySelectorAll('.scroll-arrow').forEach(el => {
     window.scrollTo({ top: window.innerHeight - 20, behavior: 'smooth' });
   });
 });
+// ---------- Header nav animation ----------
+const navLinks = document.querySelectorAll('header nav a');
+navLinks.forEach((link, i) => {
+  setTimeout(() => link.classList.add('visible'), i * 150);
+  link.addEventListener('mousemove', (e) => {
+    const rect = link.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    link.style.setProperty('--x', x + '%');
+    link.style.setProperty('--y', y + '%');
+  });
+});
+
 </script>
 
 </body>
