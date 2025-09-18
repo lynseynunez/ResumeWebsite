@@ -518,6 +518,48 @@ padding-left: 0px;
   font-size: 0.9rem;
   color: #888;
 }
+  /* ---------- UNIVERSAL RESPONSIVENESS ---------- */
+
+/* ---------- TABLET ---------- */
+@media (max-width: 1024px) {
+  /* Titles / hero */
+  .title { font-size: 4rem; letter-spacing: -2px; }
+  .hero { flex-direction: column; text-align: center; }
+  .hero-left, .hero-right { width: 100%; padding: 0; }
+  .subtitle { font-size: 1.2rem; width: 90%; margin: 0 auto; }
+
+  /* Grids */
+  .overview-grid,
+  .recommendations-grid { grid-template-columns: 1fr 1fr; }
+  .portfolio-grid { column-count: 2; }
+
+  /* Resume images */
+  .resume-images { flex-direction: column; gap: 1rem; }
+  .resume-image { width: 90%; margin: 0 auto; }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  /* Titles / hero */
+  .title { font-size: 2.5rem; letter-spacing: -1px; }
+  .subtitle { font-size: 1rem; width: 100%; padding: 0 1rem; text-align: center; }
+
+  /* Portfolio grid */
+  .portfolio-grid { column-count: 1; }
+
+  /* Filter buttons */
+  .filter-buttons { flex-direction: column; gap: 0.75rem; }
+  .filter-buttons button { width: 100%; max-width: 280px; margin: 0 auto; }
+
+  /* Footer */
+  .footer-links { flex-direction: column; gap: 0.75rem; }
+  .footer-links a { font-size: 0.9rem; }
+
+  /* Header nav */
+  header nav { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+  header nav a { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
+}
+
 </style>
 </head>
 <body>
