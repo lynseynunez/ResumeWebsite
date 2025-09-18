@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portfolio - Lynsey Nunez</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -22,6 +22,7 @@
       overflow-x: hidden;
     }
 
+    /* ---------- HEADER ---------- */
     header {
       width: 100%;
       padding: 1rem 2rem;
@@ -34,8 +35,13 @@
       align-items: center;
       background: transparent;
       transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity: 1;
     }
-    header.hidden { opacity: 0; transform: translateY(-30px); pointer-events: none; }
+    header.hidden {
+      opacity: 0;
+      transform: translateY(-30px);
+      pointer-events: none;
+    }
     header nav { display: flex; gap: 1rem; }
     header nav a {
       position: relative;
@@ -51,66 +57,68 @@
       opacity: 0;
       transform: translateY(-40px);
     }
-    header nav a::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(circle at var(--x,50%) var(--y,50%),
-        rgba(82,113,255,0.4),rgba(159,50,237,0.3),rgba(230,25,143,0.3));
-      opacity:0;
-      transition: opacity 0.3s ease;
-      z-index:0;
+    header nav a:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(159,50,237,0.4);
     }
-    header nav a:hover::before { opacity:1; }
-    header nav a:hover { transform:translateY(-6px); box-shadow:0 12px 25px rgba(159,50,237,0.4);}
-    header nav a span { position:relative; z-index:1;}
-    header nav a.visible { opacity:1; transform:translateY(0); animation:floatLink 6s ease-in-out infinite;}
-    @keyframes floatLink { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
+    header nav a span { position: relative; z-index: 1; }
+    header nav a.visible {
+      opacity: 1;
+      transform: translateY(0);
+      animation: floatLink 6s ease-in-out infinite;
+    }
+    @keyframes floatLink {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
+    /* ---------- HERO ---------- */
     .portfolio-hero-container {
       position: relative;
       width: 100%;
-      height: 60vh;
-      overflow: hidden;
+      height: 70vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding-top: 120px;
+      overflow: hidden;
+      text-align: center;
+      padding-top: 140px;
     }
     .portfolio-hero-container canvas {
-      position:absolute; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
     }
-    .portfolio-hero {
-      position:relative;
-      z-index:2;
-      text-align:center;
-    }
-    .portfolio-hero .title {
+    .portfolio-hero { position: relative; z-index: 2; }
+    .portfolio-hero h1 {
       font-size: var(--fs);
-      font-weight:700;
-      margin:0 0 2rem 0;
-      color: transparent;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
                   radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
                   radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      -webkit-background-clip:text;
-      background-clip:text;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       animation: auroraMove 12s ease-in-out infinite alternate;
     }
     @keyframes auroraMove {
-      0%{background-position:0% 0%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 100%}
+      0% { background-position: 0% 0% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 100% }
     }
 
+    .filter-description {
+      color: #ffffffcc;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
     .filter-buttons {
-      display:flex;
-      justify-content:center;
-      gap:1rem;
-      margin-bottom:3rem;
-      z-index:2;
-      position:relative;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
     .filter-buttons button {
       position: relative;
@@ -129,49 +137,76 @@
       box-shadow: 0 8px 20px rgba(159,50,237,0.4);
     }
     .filter-buttons button.active {
-      color: transparent;
+      color: #fff;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
                   radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
                   radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      -webkit-background-clip: text;
-      background-clip: text;
+      background-size: 200% 200%;
       animation: auroraMove 12s ease-in-out infinite alternate;
+      box-shadow: 0 0 20px rgba(159,50,237,0.6);
     }
 
+    /* ---------- PORTFOLIO GRID ---------- */
     .portfolio-grid {
       column-count: 4;
       column-gap: 1.5rem;
-      padding: 0 2rem 4rem;
+      padding: 2rem 3rem;
     }
     .portfolio-item {
-      display:inline-block;
-      width:100%;
-      margin-bottom:1.5rem;
-      break-inside:avoid;
-      border-radius:1rem;
-      overflow:hidden;
-      background:#1a1a1a;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      opacity:1;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      break-inside: avoid;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #1a1a1a;
+      transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
+      opacity: 1;
     }
-    .portfolio-item img {
-      width:100%;
-      display:block;
-      height:auto;
+    .portfolio-item.hidden {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+    .portfolio-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--hover-color, rgba(159,50,237,0.2)), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .portfolio-item:hover::before { opacity: 1; }
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px var(--hover-color);
+    }
+    .portfolio-item img,
+    .portfolio-item .info {
+      position: relative;
+      z-index: 2;
+      width: 100%;
     }
     .portfolio-item .info {
-      padding:1rem;
-      text-align:center;
+      padding: 1rem;
+      text-align: center;
     }
-    .portfolio-item .info h3 { margin:0; font-size:1.1rem; font-weight:600; }
-    .portfolio-item .info p { margin:0.5rem 0 0; font-size:0.95rem; color:#ccc; }
-    .portfolio-item.hidden {
-      opacity:0;
-      transform:scale(0.95);
-      pointer-events:none;
+    .portfolio-item .info h4 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .portfolio-item .info p {
+      margin: 0.3rem 0 0;
+      font-size: 0.9rem;
+      color: #ccc;
     }
 
-    /* footer styling same as index */
+    /* ---------- FOOTER ---------- */
     .site-footer {
       background: rgba(14,14,14,0.85);
       backdrop-filter: blur(10px);
@@ -194,10 +229,8 @@
     .site-footer::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
                   radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
                   radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
@@ -207,32 +240,34 @@
     }
     .footer-content { position: relative; z-index: 3; max-width: 1000px; margin: 0 auto; }
     .footer-name {
-      font-size: 2rem; font-weight:700; margin-bottom:0.5rem;
+      font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
                   radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
                   radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
       animation: auroraMove 12s ease-in-out infinite alternate;
     }
-    .footer-tagline { color:#ffffffcc; font-size:1rem; margin-bottom:2rem; }
+    .footer-tagline { color: #ffffffcc; font-size: 1rem; margin-bottom: 2rem; }
     .footer-links {
-      display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; margin-bottom:1.5rem;
+      display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem;
     }
-    .footer-links a { color:#ffffffcc; text-decoration:none; font-size:1rem; transition:color .3s ease; }
-    .footer-links a:hover { color:#fff; }
+    .footer-links a {
+      color: #ffffffcc; text-decoration: none; font-size: 1rem; transition: color .3s ease;
+    }
+    .footer-links a:hover { color: #fff; }
     .social-link-footer {
-      display:inline-block; margin:0 0.5rem; font-size:2rem; font-weight:700;
-      color:#ffffffcc; text-decoration:none !important;
+      display: inline-block; margin: 0 0.5rem; font-size: 2rem; font-weight: 700;
+      color: #ffffffcc; text-decoration: none !important;
       transition: transform .3s ease, color .3s ease;
     }
     .social-link-footer:hover {
-      transform:scale(1.3);
+      transform: scale(1.3);
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
                   radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
                   radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .footer-copy { margin-top:2rem; font-size:0.9rem; color:#888; }
+    .footer-copy { margin-top: 2rem; font-size: 0.9rem; color: #888; }
   </style>
 </head>
 <body>
@@ -242,7 +277,7 @@
     <a href="index.html">Home</a>
     <a href="case-studies.html">Case Studies</a>
     <a href="portfolio.html">Portfolio</a>
-    <a href="resume.html" download="LynseyNunezResume_DBA_2025.pdf">Resume</a>
+    <a href="LynseyNunezResume_DBA_2025.pdf" download>Resume</a>
     <a href="connect.html">Connect</a>
   </nav>
 </header>
@@ -251,6 +286,7 @@
   <canvas id="portfolioParticles"></canvas>
   <section class="portfolio-hero">
     <h1 class="title">Portfolio</h1>
+    <p class="filter-description">Explore my past website design projects by filtering between Agent and Team sites.</p>
     <div class="filter-buttons">
       <button data-filter="all" class="active">View All</button>
       <button data-filter="agent">Agent Site</button>
@@ -262,35 +298,35 @@
 <div class="portfolio-grid">
   <div class="portfolio-item" data-category="agent">
     <a href="https://livesonomamarin.com/" target="_blank"><img src="images/project1.jpg" alt="Michael Belluomini Real Estate"></a>
-    <div class="info"><h3>Michael Belluomini Real Estate</h3><p>Agent Site</p></div>
+    <div class="info"><h4>Michael Belluomini Real Estate</h4><p>Agent Site</p></div>
   </div>
   <div class="portfolio-item" data-category="team">
     <a href="https://www.ruizgrp.com/" target="_blank"><img src="images/project2.png" alt="Ruiz Group Real Estate"></a>
-    <div class="info"><h3>Ruiz Group Real Estate</h3><p>Team Site</p></div>
+    <div class="info"><h4>Ruiz Group Real Estate</h4><p>Team Site</p></div>
   </div>
   <div class="portfolio-item" data-category="agent">
     <a href="https://www.pinkrealestateagent.com/" target="_blank"><img src="images/project3.png" alt="Angela Duncan Real Estate"></a>
-    <div class="info"><h3>Angela Duncan Real Estate</h3><p>Agent Site</p></div>
+    <div class="info"><h4>Angela Duncan Real Estate</h4><p>Agent Site</p></div>
   </div>
   <div class="portfolio-item" data-category="agent">
     <a href="https://bensonsellsflorida.com/" target="_blank"><img src="images/project4.png" alt="Stephen Benson Real Estate"></a>
-    <div class="info"><h3>Stephen Benson Real Estate</h3><p>Agent Site</p></div>
+    <div class="info"><h4>Stephen Benson Real Estate</h4><p>Agent Site</p></div>
   </div>
   <div class="portfolio-item" data-category="agent">
     <a href="https://danbinng.com/" target="_blank"><img src="images/project5.png" alt="Dan Binng Real Estate"></a>
-    <div class="info"><h3>Dan Binng Real Estate</h3><p>Agent Site</p></div>
+    <div class="info"><h4>Dan Binng Real Estate</h4><p>Agent Site</p></div>
   </div>
   <div class="portfolio-item" data-category="team">
-    <a href="https://edyknowsaustin.com/" target="_blank"><img src="images/project6.png" alt="EKA Realty Group"></a>
-    <div class="info"><h3>EKA Realty Group</h3><p>Team Site</p></div>
+    <a href="https://edyknowsaustin.com/" target="_blank"><img src="images/project6.png" alt="Edy Knows Austin (EKA Realty Group)"></a>
+    <div class="info"><h4>Edy Knows Austin (EKA Realty Group)</h4><p>Team Site</p></div>
   </div>
   <div class="portfolio-item" data-category="agent">
     <a href="https://anastasiyarichards.com/" target="_blank"><img src="images/project7.png" alt="Anastasiya Richards Real Estate"></a>
-    <div class="info"><h3>Anastasiya Richards Real Estate</h3><p>Agent Site</p></div>
+    <div class="info"><h4>Anastasiya Richards Real Estate</h4><p>Agent Site</p></div>
   </div>
   <div class="portfolio-item" data-category="team">
     <a href="https://domainrealty.com/" target="_blank"><img src="images/project8.png" alt="Domain Realty"></a>
-    <div class="info"><h3>Domain Realty</h3><p>Team Site</p></div>
+    <div class="info"><h4>Domain Realty</h4><p>Team Site</p></div>
   </div>
 </div>
 
@@ -302,7 +338,7 @@
       <a href="index.html">Home</a>
       <a href="case-studies.html">Case Studies</a>
       <a href="portfolio.html">Portfolio</a>
-      <a href="resume.html" download="LynseyNunezResume_DBA_2025.pdf">Resume</a>
+      <a href="LynseyNunezResume_DBA_2025.pdf" download>Resume</a>
       <a href="connect.html">Connect</a>
     </div>
     <div class="footer-socials">
@@ -320,7 +356,7 @@
     else header.classList.remove("hidden");
   });
 
-  // Animate nav
+  // Nav animation
   const navLinks = document.querySelectorAll("header nav a");
   navLinks.forEach((link, i) => {
     setTimeout(() => link.classList.add("visible"), i * 150);
@@ -333,7 +369,7 @@
     });
   });
 
-  // Particle background
+  // Particles
   const canvas = document.getElementById("portfolioParticles");
   const ctx = canvas.getContext("2d");
   let w = canvas.width = window.innerWidth;
@@ -361,7 +397,7 @@
   }
   animateParticles();
 
-  // Filter logic with fade
+  // Filtering
   const buttons = document.querySelectorAll(".filter-buttons button");
   const items = document.querySelectorAll(".portfolio-item");
   buttons.forEach(btn => {
@@ -378,6 +414,26 @@
           setTimeout(() => { item.style.display = "none"; }, 400);
         }
       });
+    });
+  });
+
+  // Glow-follow
+  const portfolioItems = document.querySelectorAll(".portfolio-item");
+  portfolioItems.forEach(item => {
+    item.addEventListener("mousemove", (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      item.style.setProperty("--x", x + "%");
+      item.style.setProperty("--y", y + "%");
+
+      if (item.dataset.category === "agent") {
+        item.style.setProperty("--hover-color", "rgba(82,113,255,0.4)");
+      } else if (item.dataset.category === "team") {
+        item.style.setProperty("--hover-color", "rgba(230,25,143,0.4)");
+      } else {
+        item.style.setProperty("--hover-color", "rgba(159,50,237,0.4)");
+      }
     });
   });
 </script>
