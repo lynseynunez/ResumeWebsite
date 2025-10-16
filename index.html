@@ -6,14 +6,13 @@
 <title>Home | Lynsey Nunez Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="images/favicon1.png">
-<meta name="description" content="Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve outcomes. Explore my portfolio and case studies.">
-  <link rel="canonical" href="https://lynseynunez.com/" />
-<!-- Open Graph -->
-  <meta property="og:title" content="Lynsey Nunez | Business Analyst & Website Specialist" />
-  <meta property="og:description" content="Portfolio, case studies, and web design projects from Lynsey Nunez." />
-  <meta property="og:image" content="https://lynseynunez.com/images/preview.png" />
-  <meta property="og:url" content="https://lynseynunez.com/" />
-  <meta property="og:type" content="website" />
+<meta name="description" content="Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve outcomes.">
+<link rel="canonical" href="https://lynseynunez.com/" />
+<meta property="og:title" content="Lynsey Nunez | Business Analyst & Website Specialist" />
+<meta property="og:description" content="Business analyst and website specialist focused on process optimization, automation, and measurable business outcomes." />
+<meta property="og:image" content="https://lynseynunez.com/images/preview.png" />
+<meta property="og:url" content="https://lynseynunez.com/" />
+<meta property="og:type" content="website" />
 <script>
   if (window.location.pathname.endsWith("index.html")) {
     window.location.replace("/");
@@ -26,8 +25,6 @@
   --clr-3: #E6198F;
   --fs: clamp(3rem, 8vw, 7rem);
 }
-
-/* ---------- base / body ---------- */
 body {
   margin: 0;
   font-family: 'DM Sans', sans-serif;
@@ -37,16 +34,12 @@ body {
   overflow-x: hidden;
   transition: background-color 0.3s linear;
 }
-
-/* ---------- header ---------- */
 :root {
   --clr-1: #5271FF;
   --clr-2: #9F32ED;
   --clr-3: #E6198F;
   --fs: clamp(3rem, 8vw, 7rem);
 }
-
-/* ---------- base / body ---------- */
 body {
   margin: 0;
   font-family: 'DM Sans', sans-serif;
@@ -56,8 +49,6 @@ body {
   overflow-x: hidden;
   transition: background-color 0.3s linear;
 }
-
-/* ---------- header ---------- */
 header {
   width: 100%;
   padding: 1rem 2rem;
@@ -66,26 +57,21 @@ header {
   left: 0;
   z-index: 100;
   display: flex;
-  justify-content: center; /* 👈 center instead of flex-end */
+  justify-content: center;
   align-items: center;
   background: transparent;
   transition: opacity 0.6s ease, transform 0.6s ease;
   opacity: 1;
 }
-
-
 header.hidden {
   opacity: 0;
   transform: translateY(-30px);
   pointer-events: none;
 }
-
 header nav {
   display: flex;
   gap: 1rem;
 }
-
-/* NEW bubbly nav link styling */
 header nav a {
   position: relative;
   padding: 0.5rem 1rem;
@@ -100,7 +86,6 @@ header nav a {
   opacity: 0;
   transform: translateY(-40px);
 }
-
 header nav a::before {
   content: "";
   position: absolute;
@@ -115,63 +100,18 @@ header nav a::before {
   transition: opacity 0.3s ease;
   z-index: 0;
 }
+header nav a:hover::before { opacity: 1; }
+header nav a:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(159,50,237,0.4); }
+header nav a span { position: relative; z-index: 1; }
+header nav a.visible { opacity: 1; transform: translateY(0); animation: floatLink 6s ease-in-out infinite; }
+@keyframes floatLink { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-header nav a:hover::before {
-  opacity: 1;
-}
-
-header nav a:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(159,50,237,0.4);
-}
-
-header nav a span {
-  position: relative;
-  z-index: 1;
-}
-
-header nav a.visible {
-  opacity: 1;
-  transform: translateY(0);
-  animation: floatLink 6s ease-in-out infinite;
-}
-
-@keyframes floatLink {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-
-
-/* ---------- Hero ---------- */
-.hero-container {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  padding-bottom: 400px;
-}
-.hero-canvas {
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:1;
-  pointer-events:none;
-}
-.hero {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100%;
-  position:relative;
-  z-index:2;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  background-color: transparent;
-}
+.hero-container { position: relative; width: 100%; height: 100vh; overflow: hidden; padding-bottom: 400px; }
+.hero-canvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index:1; pointer-events:none; }
+.hero { display:flex; align-items:center; justify-content:center; height:100%; position:relative; z-index:2; transition: transform 0.5s ease, opacity 0.5s ease; background-color: transparent; }
 .hero-left { width:50%; height:100%; display:flex; align-items:center; justify-content:center; }
 .hero-image { width:100%; height:100%; object-fit:contain; }
 .hero-right { width:50%; display:flex; flex-direction:column; justify-content:center; z-index:2; position:relative; padding-right:40px; }
-
 .title {
   font-weight:700;
   font-size: var(--fs);
@@ -189,33 +129,9 @@ header nav a.visible {
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
 @keyframes auroraMove { 0%{background-position:0% 0%} 50%{background-position:100% 50%} 100%{background-position:0% 100%} }
-
-.subtitle {
-  font-size:1.6rem;
-  line-height:1.6;
-  margin-top:0.5rem;
-  color:#ffffffcc;
-  padding-right:40px;
-  text-align:justify;
-  width:85%;
-}
-
-.social-link { 
-display:inline-block; 
-margin-left:40px; 
-margin-top:1.5rem; 
-width:auto; 
-height:auto; 
-}
-.social-in { 
-display:inline-block; 
-font-weight:700; 
-font-size:2.5rem; 
-color:#ffffffcc; 
-transition: transform .3s ease; 
-cursor:pointer; 
-margin-left: -40px;
-}
+.subtitle { font-size:1.6rem; line-height:1.6; margin-top:0.5rem; color:#ffffffcc; padding-right:40px; text-align:justify; width:85%; }
+.social-link { display:inline-block; margin-left:40px; margin-top:1.5rem; width:auto; height:auto; }
+.social-in { display:inline-block; font-weight:700; font-size:2.5rem; color:#ffffffcc; transition: transform .3s ease; cursor:pointer; margin-left: -40px; }
 .social-link:hover .social-in {
   transform: scale(1.5);
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
@@ -223,26 +139,10 @@ margin-left: -40px;
               radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
   -webkit-background-clip:text; background-clip:text; color:transparent; animation: auroraMove 12s ease-in-out infinite alternate;
 }
-
-/* ---------- Scroll Arrow ---------- */
-.scroll-arrow {
-  position:absolute;
-  bottom:430px;
-  left:50%;
-  transform: translateX(-50%);
-  width:80px; height:80px;
-  z-index:3;
-  cursor:pointer;
-  transition: transform .5s ease, opacity .5s ease;
-}
+.scroll-arrow { position:absolute; bottom:430px; left:50%; transform: translateX(-50%); width:80px; height:80px; z-index:3; cursor:pointer; transition: transform .5s ease, opacity .5s ease; }
 .scroll-arrow svg { width:100%; height:100%; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; animation:bounce 1.5s infinite; }
-@keyframes bounce {
-  0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(10px); }
-  60% { transform: translateX(-50%) translateY(5px); }
-}
+@keyframes bounce { 0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(10px); } 60% { transform: translateX(-50%) translateY(5px); } }
 
-/* ---------- Overview / Bento ---------- */
 .overview-wrapper { position:relative; z-index:2; max-width:1200px; margin:-50px auto 0 auto; padding:0 40px 6rem 40px; }
 .overview { text-align:center; }
 .overview-title {
@@ -270,34 +170,13 @@ margin-left: -40px;
 .card-row2 { grid-column: span 6; }
 .card-row3 { grid-column: span 4; }
 
-/* ---------- Resume Section ---------- */
-.resume-section {
-  min-height: 100vh;
-  padding: 80px 40px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:20px;
-  padding-top:400px;
-}
+.resume-section { min-height: 100vh; padding: 80px 40px; display:flex; flex-direction:column; align-items:center; gap:20px; padding-top:400px; }
 .resume-images { display:flex; justify-content:center; width:90%; flex-wrap:nowrap; }
 .resume-image { width:45%; max-height:75vh; object-fit:contain; opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
 .resume-image.visible { opacity:1; transform:translateY(0); }
 
-/* ---------- Recommendations Section (new) ---------- */
-.recommendations-section {
-  position: relative;
-  min-height: 100vh;
-  padding: 120px 40px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  overflow:hidden;
-  background: transparent; /* body handles color fade */
-}
-.recommendations-canvas {
-  position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;
-}
+.recommendations-section { position: relative; min-height: 100vh; padding: 120px 40px; display:flex; flex-direction:column; align-items:center; overflow:hidden; background: transparent; }
+.recommendations-canvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
 .recommendations-title {
   font-size: 3.5rem;
   font-weight:700;
@@ -309,21 +188,9 @@ margin-left: -40px;
   -webkit-background-clip:text; background-clip:text;
   animation: auroraMove 12s ease-in-out infinite alternate;
   z-index:2;
-padding-left: 0px;
+  padding-left: 0px;
 }
-
-.recommendations-grid {
-  display:flex;
-  flex-wrap:wrap;
-  gap:2rem;
-  justify-content:center;
-  position:relative;
-  z-index:2;
-  max-width:1420px;
-  width:100%;
-}
-
-/* Card style for recommendations (photo, name, title, quote) */
+.recommendations-grid { display:flex; flex-wrap:wrap; gap:2rem; justify-content:center; position:relative; z-index:2; max-width:1420px; width:100%; }
 .recommendation-card {
   width: 400px;
   padding:1.25rem;
@@ -341,6 +208,8 @@ padding-left: 0px;
   align-items:center;
   line-height:1.3;
   gap:10px;
+  animation: floatCard 8s ease-in-out infinite;
+  animation-delay: .2s;
 }
 .recommendation-card::before {
   content:"";
@@ -353,20 +222,12 @@ padding-left: 0px;
   pointer-events:none;
   border-radius:1rem;
 }
-
-.recommendation-card:hover::before {
-  opacity:1;
-}
-
-.recommendation-card:hover {
-  transform:translateY(-10px);
-  box-shadow:0 15px 30px var(--hover-color);
-}
-
+.recommendation-card:hover::before { opacity:1; }
+.recommendation-card:hover { transform:translateY(-10px); box-shadow:0 15px 30px var(--hover-color); }
 .recommendations-title {
-  font-size: 5rem; /* match overview / resume titles */
+  font-size: 5rem;
   font-weight: 700;
-  line-height: 1.1; /* prevents letters from stacking */
+  line-height: 1.1;
   margin-bottom: 3rem;
   color: transparent;
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
@@ -383,28 +244,11 @@ padding-left: 0px;
 .recommendation-card .meta { display:flex; flex-direction:column; }
 .recommendation-card h4 { margin:0; font-size:1.05rem; }
 .recommendation-card p.title { margin:4px 0 8px; color:#aab; font-size:.9rem; }
-.recommendation-card h4,
-.recommendation-card p.title {
-  letter-spacing: normal;
-  line-height: 1.2;
-  word-wrap: break-word;
-}
-.recommendation-card .meta p:not(.title) {
-  text-align: justify;
-  margin: 0 auto;
-  max-width: 90%;
-}
-.recommendation-card .meta {
-  position: relative;
-  z-index: 2;
-}
-
-
-/* light float animation (subtle) */
+.recommendation-card h4, .recommendation-card p.title { letter-spacing: normal; line-height: 1.2; word-wrap: break-word; }
+.recommendation-card .meta p:not(.title) { text-align: justify; margin: 0 auto; max-width: 90%; }
+.recommendation-card .meta { position: relative; z-index: 2; }
 @keyframes floatCard { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-10px) } }
-.recommendation-card { animation: floatCard 8s ease-in-out infinite; animation-delay: .2s; }
 
-/* responsive adjustments */
 @media(max-width:1024px) {
   .overview-grid { grid-template-columns: repeat(6,1fr); }
   .card-row1-wide, .card-row1-small, .card-row2, .card-row3 { grid-column: span 6; }
@@ -425,20 +269,9 @@ padding-left: 0px;
   .title { font-size:3.5rem; }
   .overview-title { font-size:2.5rem; }
 }
-@media(max-width:1024px) {
-  .recommendations-title {
-    font-size: 4rem;
-  }
-}
-@media(max-width:480px) {
-  .recommendations-title {
-    font-size: 3rem;
-  }
-}
+@media(max-width:1024px) { .recommendations-title { font-size: 4rem; } }
+@media(max-width:480px) { .recommendations-title { font-size: 3rem; } }
 
-</style>
-
-<style>
 .site-footer {
   background: rgba(14,14,14,0.85);
   backdrop-filter: blur(10px);
@@ -472,12 +305,7 @@ padding-left: 0px;
   animation: auroraMove 12s ease-in-out infinite alternate;
   z-index: 2;
 }
-.footer-content {
-  position: relative;
-  z-index: 3;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+.footer-content { position: relative; z-index: 3; max-width: 1000px; margin: 0 auto; }
 .footer-name {
   font-size: 2rem;
   font-weight: 700;
@@ -490,34 +318,11 @@ padding-left: 0px;
   color: transparent;
   animation: auroraMove 12s ease-in-out infinite alternate;
 }
-.footer-tagline {
-  color: #ffffffcc;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-.footer-links a {
-  color: #ffffffcc;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: color .3s ease;
-}
+.footer-tagline { color: #ffffffcc; font-size: 1rem; margin-bottom: 2rem; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem; }
+.footer-links a { color: #ffffffcc; text-decoration: none; font-size: 1rem; transition: color .3s ease; }
 .footer-links a:hover { color: #fff; }
-.social-link-footer {
-  display: inline-block;
-  margin: 0 0.5rem;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffffcc;
-  text-decoration: none !important;
-  transition: transform .3s ease, color .3s ease;
-}
+.social-link-footer { display: inline-block; margin: 0 0.5rem; font-size: 2rem; font-weight: 700; color: #ffffffcc; text-decoration: none !important; transition: transform .3s ease, color .3s ease; }
 .social-link-footer:hover {
   transform: scale(1.3);
   background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
@@ -527,53 +332,37 @@ padding-left: 0px;
   background-clip: text;
   color: transparent;
 }
-.footer-copy {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: #888;
-}
-  /* ---------- UNIVERSAL RESPONSIVENESS ---------- */
+.footer-copy { margin-top: 2rem; font-size: 0.9rem; color: #888; }
 
-/* ---------- TABLET ---------- */
 @media (max-width: 1024px) {
-  /* Titles / hero */
   .title { font-size: 4rem; letter-spacing: -2px; }
   .hero { flex-direction: column; text-align: center; }
   .hero-left, .hero-right { width: 100%; padding: 0; }
   .subtitle { font-size: 1.2rem; width: 90%; margin: 0 auto; }
-
-  /* Grids */
-  .overview-grid,
-  .recommendations-grid { grid-template-columns: 1fr 1fr; }
+  .overview-grid, .recommendations-grid { grid-template-columns: 1fr 1fr; }
   .portfolio-grid { column-count: 2; }
-
-  /* Resume images */
   .resume-images { flex-direction: column; gap: 1rem; }
   .resume-image { width: 90%; margin: 0 auto; }
 }
-
-/* ---------- MOBILE ---------- */
 @media (max-width: 600px) {
-  /* Titles / hero */
   .title { font-size: 2.5rem; letter-spacing: -1px; }
   .subtitle { font-size: 1rem; width: 100%; padding: 0 1rem; text-align: center; }
-
-  /* Portfolio grid */
   .portfolio-grid { column-count: 1; }
-
-  /* Filter buttons */
   .filter-buttons { flex-direction: column; gap: 0.75rem; }
   .filter-buttons button { width: 100%; max-width: 280px; margin: 0 auto; }
-
-  /* Footer */
   .footer-links { flex-direction: column; gap: 0.75rem; }
   .footer-links a { font-size: 0.9rem; }
-
-  /* Header nav */
   header nav { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
   header nav a { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
 }
 
+/* hide blocked links globally */
+a[href="case-studies.html"],
+a[href="portfolio.html"],
+a[href="/case-studies"],
+a[href="/portfolio"],
+a[href="/case-studies/"],
+a[href="/portfolio/"] { display:none !important; }
 </style>
 </head>
 <body>
@@ -588,7 +377,6 @@ padding-left: 0px;
   </nav>
 </header>
 
-<!-- HERO -->
 <div class="hero-container">
   <canvas id="heroParticles" class="hero-canvas"></canvas>
   <section class="hero">
@@ -598,48 +386,29 @@ padding-left: 0px;
     <div class="hero-right">
       <h1 class="title">Lynsey Nunez</h1>
       <p class="subtitle">Helping companies leverage AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.</p>
-      <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link">
-        <span class="social-in">in</span>
-      </a>
+      <a href="https://www.linkedin.com/in/lynsey-nunez/" target="_blank" class="social-link"><span class="social-in">in</span></a>
     </div>
   </section>
-
   <div class="scroll-arrow" aria-hidden="true">
     <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
   </div>
 </div>
 
-<!-- OVERVIEW -->
 <div class="overview-wrapper">
   <section class="overview">
     <h2 class="overview-title">Driving Business Growth Through Technology</h2>
     <div class="overview-grid">
-      <div class="card card-row1-wide" style="--hover-color: var(--clr-1);">
-        <div class="card-content"><div class="card-icon">⚙️</div><h3>Process Optimization</h3><p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p></div>
-      </div>
-      <div class="card card-row1-small" style="--hover-color: var(--clr-2);">
-        <div class="card-content"><div class="card-icon">🤖</div><h3>AI Integration</h3><p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p></div>
-      </div>
-      <div class="card card-row2" style="--hover-color: var(--clr-3);">
-        <div class="card-content"><div class="card-icon">📊</div><h3>Data Analysis</h3><p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p></div>
-      </div>
-      <div class="card card-row2" style="--hover-color: var(--clr-1);">
-        <div class="card-content"><div class="card-icon">🌐</div><h3>Digital Platforms</h3><p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p></div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-2);">
-        <div class="card-content"><div class="card-icon">📝</div><h3>Documentation</h3><p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p></div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-3);">
-        <div class="card-content"><div class="card-icon">🚀</div><h3>Strategy & Planning</h3><p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p></div>
-      </div>
-      <div class="card card-row3" style="--hover-color: var(--clr-1);">
-        <div class="card-content"><div class="card-icon">🤝</div><h3>Collaboration</h3><p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p></div>
-      </div>
+      <div class="card card-row1-wide" style="--hover-color: var(--clr-1);"><div class="card-content"><div class="card-icon">⚙️</div><h3>Process Optimization</h3><p>Designing and improving workflows to reduce inefficiencies and enhance productivity across teams and departments.</p></div></div>
+      <div class="card card-row1-small" style="--hover-color: var(--clr-2);"><div class="card-content"><div class="card-icon">🤖</div><h3>AI Integration</h3><p>Leveraging AI tools to automate repetitive tasks, extract insights, and unlock smarter business decision-making.</p></div></div>
+      <div class="card card-row2" style="--hover-color: var(--clr-3);"><div class="card-content"><div class="card-icon">📊</div><h3>Data Analysis</h3><p>Transforming raw data into actionable insights that drive performance and uncover growth opportunities.</p></div></div>
+      <div class="card card-row2" style="--hover-color: var(--clr-1);"><div class="card-content"><div class="card-icon">🌐</div><h3>Digital Platforms</h3><p>Implementing and optimizing SaaS and CMS platforms to streamline collaboration and improve scalability.</p></div></div>
+      <div class="card card-row3" style="--hover-color: var(--clr-2);"><div class="card-content"><div class="card-icon">📝</div><h3>Documentation</h3><p>Creating clear, accessible resources for processes, training, and onboarding to ensure sustainable growth.</p></div></div>
+      <div class="card card-row3" style="--hover-color: var(--clr-3);"><div class="card-content"><div class="card-icon">🚀</div><h3>Strategy & Planning</h3><p>Building forward-looking roadmaps that align technology with business goals to maximize outcomes.</p></div></div>
+      <div class="card card-row3" style="--hover-color: var(--clr-1);"><div class="card-content"><div class="card-icon">🤝</div><h3>Collaboration</h3><p>Facilitating cross-functional alignment to bridge gaps between technical and business stakeholders.</p></div></div>
     </div>
   </section>
 </div>
 
-<!-- RESUME -->
 <div class="resume-section">
   <h2 class="overview-title" style="margin-bottom:3rem; text-align:center;">Experience &amp; Expertise</h2>
   <div class="resume-images">
@@ -648,64 +417,16 @@ padding-left: 0px;
   </div>
 </div>
 
-<!-- RECOMMENDATIONS (new) -->
 <div class="recommendations-section">
   <canvas id="recommendationsParticles" class="recommendations-canvas"></canvas>
   <h2 class="recommendations-title">Professional Recommendations</h2>
   <div class="recommendations-grid">
-    <div class="recommendation-card" style="animation-delay:0.0s; --hover-color: var(--clr-1)">
-      <img src="images/MaryRec.jpeg" alt="Mary Yang">
-      <div class="meta">
-        <h4>Mary Yang</h4>
-        <p class="title">Billing Specialist</p>
-        <p>“I have worked with Lynsey back at Storable and she was my manager on the Website Implementation team. I highly recommend her as she is not only knowledgeable but also a wonderful and kind manager to work with. She always made sure everyone was heard and always made sure that she was available if we ever had any questions or needed any kind of help. She made sure the whole team was always up to date weekly and initiated a new plan to update the QA process role to help make the implementation process more efficient while minimizing errors.”</p>
-      </div>
-    </div>
-
-    <div class="recommendation-card" style="animation-delay:.15s; --hover-color: var(--clr-2)">
-      <img src="images/BethanyRec.jpeg" alt="Bethany Bannister">
-      <div class="meta">
-        <h4>Bethany Bannister</h4>
-        <p class="title">Data Assistant</p>
-        <p>“While Lynsey and I worked in different departments at Storable, I had occasion to meet with her every so often regarding the website implementation team, the process, and discuss projects within her department. Lynsey was not always incredibly helpful in a directional sense, but she was quick to respond when Support needed her most. On a personal level, the encouragement Lynsey gave to me meant the world to me… Lynsey is not only incredibly skilled, but she has the capability of managing a team with empathy while ensuring the job is done to a client’s high standards.”</p>
-      </div>
-    </div>
-
-    <div class="recommendation-card" style="animation-delay:.3s; --hover-color: var(--clr-3)">
-      <img src="images/KodyRec.jpeg" alt="Kody Sweet">
-      <div class="meta">
-        <h4>Kody Sweet</h4>
-        <p class="title">Software Implementation Director</p>
-        <p>“I highly recommend Lynsey Nunez as a Website Implementation Manager. During our time together, I observed that Lynsey displayed an impressive understanding of web development principles and best practices within the industry. Lynsey's meticulous attention to detail and remarkable organizational abilities were vital in coordinating with cross-functional teams and effectively managing complex projects from inception to completion.”</p>
-      </div>
-    </div>
-
-    <div class="recommendation-card" style="animation-delay:.45s; --hover-color: var(--clr-1)">
-      <img src="images/SophiaRec.jpeg" alt="Sophia Jones">
-      <div class="meta">
-        <h4>Sophia Jones</h4>
-        <p class="title">Talent Acquisition Lead</p>
-        <p>“I had the pleasure of recruiting Lynsey during our time at Storable and also worked with her as a hiring manager once she was hired. Lynsey is a passionate manager, and backs her team 100%. She made a huge impact on process and documentation during her time at Storable and was active in the company culture. I would welcome the chance to work with Lynsey again.”</p>
-      </div>
-    </div>
-
-    <div class="recommendation-card" style="animation-delay:.6s; --hover-color: var(--clr-2)">
-      <img src="images/GabieRec.jpeg" alt="Gabie Godina">
-      <div class="meta">
-        <h4>Gabie Godina</h4>
-        <p class="title">Onboarding Success Manager, Team Lead</p>
-        <p>“Lynsey is such a pleasure to work with. She’s proactive, professional, intelligent, customer focused and a great leader. I am thankful to have her a part of our team!”</p>
-      </div>
-    </div>
-
-    <div class="recommendation-card" style="animation-delay:.75s; --hover-color: var(--clr-3)">
-      <img src="images/JorgeRec.jpeg" alt="Jorge Ayala">
-      <div class="meta">
-        <h4>Jorge Ayala</h4>
-        <p class="title">Business Strategy Analyst</p>
-        <p>“It was a pleasure to work with Lynsey while standing up a new product for Hyundai. I could always depend on her to handle difficult tasks that sometimes did not have a clear solution. She would embrace the challenge, perform any needed research, and provide a solution, always with a smile. Lynsey had a strong work ethic… I’m confident that she will continue to be a valuable asset and use her skills to deliver quality results.”</p>
-      </div>
-    </div>
+    <div class="recommendation-card" style="animation-delay:0.0s; --hover-color: var(--clr-1)"><img src="images/MaryRec.jpeg" alt="Mary Yang"><div class="meta"><h4>Mary Yang</h4><p class="title">Billing Specialist</p><p>“I have worked with Lynsey back at Storable and she was my manager on the Website Implementation team. I highly recommend her as she is not only knowledgeable but also a wonderful and kind manager to work with. She always made sure everyone was heard and always made sure that she was available if we ever had any questions or needed any kind of help. She made sure the whole team was always up to date weekly and initiated a new plan to update the QA process role to help make the implementation process more efficient while minimizing errors.”</p></div></div>
+    <div class="recommendation-card" style="animation-delay:.15s; --hover-color: var(--clr-2)"><img src="images/BethanyRec.jpeg" alt="Bethany Bannister"><div class="meta"><h4>Bethany Bannister</h4><p class="title">Data Assistant</p><p>“While Lynsey and I worked in different departments at Storable, I had occasion to meet with her every so often regarding the website implementation team, the process, and discuss projects within her department. Lynsey was not always incredibly helpful in a directional sense, but she was quick to respond when Support needed her most. On a personal level, the encouragement Lynsey gave to me meant the world to me… Lynsey is not only incredibly skilled, but she has the capability of managing a team with empathy while ensuring the job is done to a client’s high standards.”</p></div></div>
+    <div class="recommendation-card" style="animation-delay:.3s; --hover-color: var(--clr-3)"><img src="images/KodyRec.jpeg" alt="Kody Sweet"><div class="meta"><h4>Kody Sweet</h4><p class="title">Software Implementation Director</p><p>“I highly recommend Lynsey Nunez as a Website Implementation Manager. During our time together, I observed that Lynsey displayed an impressive understanding of web development principles and best practices within the industry. Lynsey's meticulous attention to detail and remarkable organizational abilities were vital in coordinating with cross-functional teams and effectively managing complex projects from inception to completion.”</p></div></div>
+    <div class="recommendation-card" style="animation-delay:.45s; --hover-color: var(--clr-1)"><img src="images/SophiaRec.jpeg" alt="Sophia Jones"><div class="meta"><h4>Sophia Jones</h4><p class="title">Talent Acquisition Lead</p><p>“I had the pleasure of recruiting Lynsey during our time at Storable and also worked with her as a hiring manager once she was hired. Lynsey is a passionate manager, and backs her team 100%. She made a huge impact on process and documentation during her time at Storable and was active in the company culture. I would welcome the chance to work with Lynsey again.”</p></div></div>
+    <div class="recommendation-card" style="animation-delay:.6s; --hover-color: var(--clr-2)"><img src="images/GabieRec.jpeg" alt="Gabie Godina"><div class="meta"><h4>Gabie Godina</h4><p class="title">Onboarding Success Manager, Team Lead</p><p>“Lynsey is such a pleasure to work with. She’s proactive, professional, intelligent, customer focused and a great leader. I am thankful to have her a part of our team!”</p></div></div>
+    <div class="recommendation-card" style="animation-delay:.75s; --hover-color: var(--clr-3)"><img src="images/JorgeRec.jpeg" alt="Jorge Ayala"><div class="meta"><h4>Jorge Ayala</h4><p class="title">Business Strategy Analyst</p><p>“It was a pleasure to work with Lynsey while standing up a new product for Hyundai. I could always depend on her to handle difficult tasks that sometimes did not have a clear solution. She would embrace the challenge, perform any needed research, and provide a solution, always with a smile. Lynsey had a strong work ethic… I’m confident that she will continue to be a valuable asset and use her skills to deliver quality results.”</p></div></div>
   </div>
 </div>
 
@@ -728,29 +449,18 @@ padding-left: 0px;
 </footer>
 
 <script>
-// ---------- HEADER FADE OUT ON SCROLL ----------
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
-  if (window.scrollY > 120) {
-    header.classList.add("hidden");
-  } else {
-    header.classList.remove("hidden");
-  }
+  if (window.scrollY > 120) header.classList.add("hidden"); else header.classList.remove("hidden");
 });
 
-// ---------- INTERSECTION OBSERVER for reveals ----------
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => { entry.target.classList.add('visible'); }, index * 150);
-    }
+    if (entry.isIntersecting) setTimeout(() => { entry.target.classList.add('visible'); }, index * 150);
   });
 }, { threshold: 0.12 });
-
-// observe cards, resume images, recommendation cards
 document.querySelectorAll('.card, .resume-image, .recommendation-card').forEach(el => observer.observe(el));
 
-// ---------- Mouse-follow glow for cards ----------
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => card.addEventListener('mousemove', (e) => {
   const rect = card.getBoundingClientRect();
@@ -760,7 +470,6 @@ cards.forEach(card => card.addEventListener('mousemove', (e) => {
   card.style.setProperty('--y', y + '%');
 }));
 
-// ---------- Mouse-follow glow for recommendation cards ----------
 const recCardsHover = document.querySelectorAll('.recommendation-card');
 recCardsHover.forEach(card => card.addEventListener('mousemove', (e) => {
   const rect = card.getBoundingClientRect();
@@ -770,7 +479,6 @@ recCardsHover.forEach(card => card.addEventListener('mousemove', (e) => {
   card.style.setProperty('--y', y + '%');
 }));
 
-// ---------- DOM references for fades & particles ----------
 const hero = document.querySelector('.hero');
 const scrollArrow = document.querySelector('.scroll-arrow');
 const heroContainer = document.querySelector('.hero-container');
@@ -778,10 +486,8 @@ const overviewWrapper = document.querySelector('.overview-wrapper');
 const resumeSection = document.querySelector('.resume-section');
 const recSection = document.querySelector('.recommendations-section');
 
-// ---------- SCROLL: hero fade, overview->resume fade, resume->rec fade ----------
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
-
   const heroFadeEnd = heroContainer.offsetHeight;
   if (scrollTop < heroFadeEnd) {
     const opacity = 1 - scrollTop / heroFadeEnd;
@@ -794,13 +500,10 @@ window.addEventListener('scroll', () => {
     hero.style.opacity = 0;
     scrollArrow.style.opacity = 0;
   }
-
   const fadeStart = overviewWrapper.offsetTop + overviewWrapper.offsetHeight - window.innerHeight / 2;
   const fadeEnd = resumeSection.offsetTop;
-
   const recFadeStart = resumeSection.offsetTop + resumeSection.offsetHeight - window.innerHeight / 2;
   const recFadeEnd = recSection ? recSection.offsetTop : recFadeStart + 300;
-
   if (scrollTop < fadeStart) {
     document.body.style.backgroundColor = 'black';
   } else if (scrollTop >= fadeStart && scrollTop <= fadeEnd) {
@@ -818,48 +521,33 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ---------- HERO PARTICLES ----------
 const canvas = document.getElementById('heroParticles');
 const ctx = canvas.getContext('2d');
 let particles = [];
 let w = canvas.width = window.innerWidth;
 let h = canvas.height = heroContainer.offsetHeight;
-
 const colors = ['#5271FF', '#9F32ED', '#E6198F'];
-
 window.addEventListener('resize', () => {
   w = canvas.width = window.innerWidth;
   h = canvas.height = heroContainer.offsetHeight;
   resizeRecCanvas();
 });
-
 for (let i = 0; i < 100; i++) {
-  particles.push({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    r: Math.random() * 2 + 1,
-    color: colors[Math.floor(Math.random() * colors.length)],
-    dx: (Math.random() - 0.5) / 2,
-    dy: (Math.random() - 0.5) / 2
-  });
+  particles.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 2 + 1, color: colors[Math.floor(Math.random() * colors.length)], dx: (Math.random() - 0.5) / 2, dy: (Math.random() - 0.5) / 2 });
 }
-
 function animateParticles() {
   ctx.clearRect(0, 0, w, h);
-
   const g = ctx.createLinearGradient(0,0,0,h);
   g.addColorStop(0, 'rgba(0,0,0,0)');
   g.addColorStop(1, 'rgba(0,0,0,0.7)');
   ctx.fillStyle = g;
   ctx.fillRect(0,0,w,h);
-
   particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fillStyle = p.color;
     ctx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
+    p.x += p.dx; p.y += p.dy;
     if (p.x < 0 || p.x > w) p.dx *= -1;
     if (p.y < 0 || p.y > h) p.dy *= -1;
   });
@@ -867,47 +555,34 @@ function animateParticles() {
 }
 animateParticles();
 
-// ---------- RECOMMENDATIONS PARTICLES ----------
 const recCanvas = document.getElementById('recommendationsParticles');
 const recCtx = recCanvas.getContext('2d');
 let recParticles = [];
 let rw = recCanvas.width = window.innerWidth;
 let rh = recCanvas.height = recSection ? recSection.offsetHeight : window.innerHeight;
-
 function resizeRecCanvas() {
   rw = recCanvas.width = window.innerWidth;
   rh = recCanvas.height = recSection ? recSection.offsetHeight : window.innerHeight;
   recParticles = [];
   for (let i = 0; i < 70; i++) {
-    recParticles.push({
-      x: Math.random() * rw,
-      y: Math.random() * rh,
-      r: Math.random() * 2 + 1,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      dx: (Math.random() - 0.5) / 2,
-      dy: (Math.random() - 0.5) / 2
-    });
+    recParticles.push({ x: Math.random() * rw, y: Math.random() * rh, r: Math.random() * 2 + 1, color: colors[Math.floor(Math.random() * colors.length)], dx: (Math.random() - 0.5) / 2, dy: (Math.random() - 0.5) / 2 });
   }
 }
 resizeRecCanvas();
 window.addEventListener('resize', resizeRecCanvas);
-
 function animateRecParticles() {
   recCtx.clearRect(0, 0, rw, rh);
-
   const g2 = recCtx.createLinearGradient(0,0,0,rh);
   g2.addColorStop(0, 'rgba(0,0,0,0.0)');
   g2.addColorStop(1, 'rgba(0,0,0,1)');
   recCtx.fillStyle = g2;
   recCtx.fillRect(0,0,rw,rh);
-
   recParticles.forEach(p => {
     recCtx.beginPath();
     recCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     recCtx.fillStyle = p.color;
     recCtx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
+    p.x += p.dx; p.y += p.dy;
     if (p.x < 0 || p.x > rw) p.dx *= -1;
     if (p.y < 0 || p.y > rh) p.dy *= -1;
   });
@@ -915,28 +590,21 @@ function animateRecParticles() {
 }
 animateRecParticles();
 
-// ---------- make recommendation cards appear staggered ----------
 const recCards = document.querySelectorAll('.recommendation-card');
 const recInObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      recCards.forEach((card, i) => {
-        setTimeout(() => card.classList.add('visible'), i * 160);
-      });
+      recCards.forEach((card, i) => { setTimeout(() => card.classList.add('visible'), i * 160); });
       recInObserver.disconnect();
     }
   });
 }, { threshold: 0.08 });
-
 if (recSection) recInObserver.observe(recSection);
 
-// (optional) arrow click to smooth-scroll down one viewport
 document.querySelectorAll('.scroll-arrow').forEach(el => {
-  el.addEventListener('click', () => {
-    window.scrollTo({ top: window.innerHeight - 20, behavior: 'smooth' });
-  });
+  el.addEventListener('click', () => { window.scrollTo({ top: window.innerHeight - 20, behavior: 'smooth' }); });
 });
-// ---------- Header nav animation ----------
+
 const navLinks = document.querySelectorAll('header nav a');
 navLinks.forEach((link, i) => {
   setTimeout(() => link.classList.add('visible'), i * 150);
@@ -944,11 +612,42 @@ navLinks.forEach((link, i) => {
     const rect = link.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-    link.style.setProperty('--x', x + '%');
-    link.style.setProperty('--y', y + '%');
+    link.style.setProperty('--x', x + '%'); link.style.setProperty('--y', y + '%');
   });
 });
 
+/* block clicks to restricted pages */
+document.addEventListener('click', function(e){
+  const a = e.target.closest('a[href]');
+  if(!a) return;
+  const url = new URL(a.getAttribute('href'), location.origin);
+  const p = url.pathname.replace(/\/+$/,'').toLowerCase();
+  if (p==='/case-studies' || p==='/case-studies.html' || p==='/portfolio' || p==='/portfolio.html') {
+    e.preventDefault();
+    location.assign('/');
+  }
+});
+
+/* service worker to intercept direct navigations */
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    self.addEventListener('install', e=>self.skipWaiting());
+    self.addEventListener('activate', e=>self.clients.claim());
+    self.addEventListener('fetch', e=>{
+      if (e.request.mode === 'navigate') {
+        const u = new URL(e.request.url);
+        const p = u.pathname.replace(/\\/+\$/,'').toLowerCase();
+        if (p === '/case-studies' || p === '/case-studies.html' || p === '/portfolio' || p === '/portfolio.html') {
+          e.respondWith(Response.redirect('/'));
+          return;
+        }
+      }
+    });
+  `;
+  const blob = new Blob([swCode], { type: 'text/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, { scope: '/' });
+}
 </script>
 
 </body>
