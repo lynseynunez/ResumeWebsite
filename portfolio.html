@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/favicon1.png">
   <meta name="description" content="Website design portfolio from Lynsey Nunez. Browse past agent and team site designs, built to deliver modern and scalable web experiences." />
   <link rel="canonical" href="https://lynseynunez.com/portfolio.html" />
-   <meta property="og:title" content="Portfolio | Lynsey Nunez" />
+  <meta property="og:title" content="Portfolio | Lynsey Nunez" />
   <meta property="og:description" content="View past website projects including agent and team real estate sites designed by Lynsey Nunez." />
   <meta property="og:image" content="https://lynseynunez.com/images/preview.png" />
   <meta property="og:url" content="https://lynseynunez.com/portfolio.html" />
@@ -30,7 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* ---------- HEADER ---------- */
     header {
       width: 100%;
       padding: 1rem 2rem;
@@ -69,7 +68,6 @@
       transform: translateY(-6px);
       box-shadow: 0 12px 25px rgba(159,50,237,0.4);
     }
-    header nav a span { position: relative; z-index: 1; }
     header nav a.visible {
       opacity: 1;
       transform: translateY(0);
@@ -80,7 +78,6 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* ---------- HERO ---------- */
     .portfolio-hero-container {
       position: relative;
       width: 100%;
@@ -121,39 +118,11 @@
       color: #ffffffcc;
       font-size: 1.2rem;
       margin-bottom: 2rem;
-    }
-    .filter-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .filter-buttons button {
-      position: relative;
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.75rem;
-      background: rgba(30,30,30,0.7);
-      color: #fff;
-      font-weight: 600;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-    }
-    .filter-buttons button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(159,50,237,0.4);
-    }
-    .filter-buttons button.active {
-      color: #fff;
-      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
-                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
-                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      background-size: 200% 200%;
-      animation: auroraMove 12s ease-in-out infinite alternate;
-      box-shadow: 0 0 20px rgba(159,50,237,0.6);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* ---------- PORTFOLIO GRID ---------- */
     .portfolio-grid {
       column-count: 4;
       column-gap: 1.5rem;
@@ -169,35 +138,12 @@
       overflow: hidden;
       background: #1a1a1a;
       transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
-      opacity: 1;
     }
-    .portfolio-item.hidden {
-      opacity: 0;
-      transform: scale(0.95);
-      pointer-events: none;
-    }
-    .portfolio-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 1rem;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--hover-color, rgba(159,50,237,0.2)), transparent 50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .portfolio-item:hover::before { opacity: 1; }
     .portfolio-item:hover {
       transform: translateY(-8px);
-      box-shadow: 0 15px 30px var(--hover-color);
+      box-shadow: 0 15px 30px rgba(159,50,237,0.4);
     }
-    .portfolio-item img,
-    .portfolio-item .info {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-    }
+    .portfolio-item img { width: 100%; display: block; }
     .portfolio-item .info {
       padding: 1rem;
       text-align: center;
@@ -213,7 +159,6 @@
       color: #ccc;
     }
 
-    /* ---------- FOOTER ---------- */
     .site-footer {
       background: rgba(14,14,14,0.85);
       backdrop-filter: blur(10px);
@@ -275,48 +220,6 @@
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     .footer-copy { margin-top: 2rem; font-size: 0.9rem; color: #888; }
-    /* ---------- UNIVERSAL RESPONSIVENESS ---------- */
-
-/* ---------- TABLET ---------- */
-@media (max-width: 1024px) {
-  /* Titles / hero */
-  .title { font-size: 4rem; letter-spacing: -2px; }
-  .hero { flex-direction: column; text-align: center; }
-  .hero-left, .hero-right { width: 100%; padding: 0; }
-  .subtitle { font-size: 1.2rem; width: 90%; margin: 0 auto; }
-
-  /* Grids */
-  .overview-grid,
-  .recommendations-grid { grid-template-columns: 1fr 1fr; }
-  .portfolio-grid { column-count: 2; }
-
-  /* Resume images */
-  .resume-images { flex-direction: column; gap: 1rem; }
-  .resume-image { width: 90%; margin: 0 auto; }
-}
-
-/* ---------- MOBILE ---------- */
-@media (max-width: 600px) {
-  /* Titles / hero */
-  .title { font-size: 2.5rem; letter-spacing: -1px; }
-  .subtitle { font-size: 1rem; width: 100%; padding: 0 1rem; text-align: center; }
-
-  /* Portfolio grid */
-  .portfolio-grid { column-count: 1; }
-
-  /* Filter buttons */
-  .filter-buttons { flex-direction: column; gap: 0.75rem; }
-  .filter-buttons button { width: 100%; max-width: 280px; margin: 0 auto; }
-
-  /* Footer */
-  .footer-links { flex-direction: column; gap: 0.75rem; }
-  .footer-links a { font-size: 0.9rem; }
-
-  /* Header nav */
-  header nav { flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-  header nav a { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
-}
-
   </style>
 </head>
 <body>
@@ -324,7 +227,6 @@
 <header>
   <nav>
     <a href="/">Home</a>
-    <a href="case-studies.html">Case Studies</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="LynseyNunezResume_DBA_2025.pdf" download>Resume</a>
     <a href="connect.html">Connect</a>
@@ -335,47 +237,14 @@
   <canvas id="portfolioParticles"></canvas>
   <section class="portfolio-hero">
     <h1 class="title">Portfolio</h1>
-    <p class="filter-description">Explore my past website design projects by filtering between Agent and Team sites.</p>
-    <div class="filter-buttons">
-      <button data-filter="all" class="active">View All</button>
-      <button data-filter="agent">Agent Site</button>
-      <button data-filter="team">Team Site</button>
-    </div>
+    <p class="filter-description"><em>Disclaimer: The following website examples are fictional mockups created solely for portfolio display. They are not affiliated with, endorsed by, or commissioned by any real business or employer. All branding, content, and designs were developed independently for demonstration purposes.</em></p>
   </section>
 </div>
 
 <div class="portfolio-grid">
-  <div class="portfolio-item" data-category="agent">
-    <a href="https://livesonomamarin.com/" target="_blank"><img src="images/project1.jpg" alt="Michael Belluomini Real Estate"></a>
-    <div class="info"><h4>Michael Belluomini Real Estate</h4><p>Agent Site</p></div>
-  </div>
-  <div class="portfolio-item" data-category="team">
-    <a href="https://www.ruizgrp.com/" target="_blank"><img src="images/project2.png" alt="Ruiz Group Real Estate"></a>
-    <div class="info"><h4>Ruiz Group Real Estate</h4><p>Team Site</p></div>
-  </div>
-  <div class="portfolio-item" data-category="agent">
-    <a href="https://www.pinkrealestateagent.com/" target="_blank"><img src="images/project3.png" alt="Angela Duncan Real Estate"></a>
-    <div class="info"><h4>Angela Duncan Real Estate</h4><p>Agent Site</p></div>
-  </div>
-  <div class="portfolio-item" data-category="agent">
-    <a href="https://bensonsellsflorida.com/" target="_blank"><img src="images/project4.png" alt="Stephen Benson Real Estate"></a>
-    <div class="info"><h4>Stephen Benson Real Estate</h4><p>Agent Site</p></div>
-  </div>
-  <div class="portfolio-item" data-category="agent">
-    <a href="https://danbinng.com/" target="_blank"><img src="images/project5.png" alt="Dan Binng Real Estate"></a>
-    <div class="info"><h4>Dan Binng Real Estate</h4><p>Agent Site</p></div>
-  </div>
-  <div class="portfolio-item" data-category="team">
-    <a href="https://edyknowsaustin.com/" target="_blank"><img src="images/project6.png" alt="Edy Knows Austin (EKA Realty Group)"></a>
-    <div class="info"><h4>Edy Knows Austin (EKA Realty Group)</h4><p>Team Site</p></div>
-  </div>
-  <div class="portfolio-item" data-category="agent">
-    <a href="https://anastasiyarichards.com/" target="_blank"><img src="images/project7.png" alt="Anastasiya Richards Real Estate"></a>
-    <div class="info"><h4>Anastasiya Richards Real Estate</h4><p>Agent Site</p></div>
-  </div>
-  <div class="portfolio-item" data-category="team">
-    <a href="https://domainrealty.com/" target="_blank"><img src="images/project8.png" alt="Domain Realty"></a>
-    <div class="info"><h4>Domain Realty</h4><p>Team Site</p></div>
+  <div class="portfolio-item">
+    <img src="images/BEAN%20%26%20BREW2.png" alt="Bean & Brew — Fictional Café Website Mockup">
+    <div class="info"><h4>Bean & Brew — Café Website Mockup</h4><p>Fictional concept for portfolio display</p></div>
   </div>
 </div>
 
@@ -385,7 +254,6 @@
     <p class="footer-tagline">Helping companies leverage AI and digital platforms to streamline operations and growth.</p>
     <div class="footer-links">
       <a href="/">Home</a>
-      <a href="case-studies.html">Case Studies</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="LynseyNunezResume_DBA_2025.pdf" download>Resume</a>
       <a href="connect.html">Connect</a>
@@ -398,27 +266,17 @@
 </footer>
 
 <script>
-  // Header fade
+  const header = document.querySelector("header");
   window.addEventListener("scroll", () => {
-    const header = document.querySelector("header");
     if (window.scrollY > 120) header.classList.add("hidden");
     else header.classList.remove("hidden");
   });
 
-  // Nav animation
   const navLinks = document.querySelectorAll("header nav a");
   navLinks.forEach((link, i) => {
     setTimeout(() => link.classList.add("visible"), i * 150);
-    link.addEventListener("mousemove", (e) => {
-      const rect = link.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      link.style.setProperty("--x", x + "%");
-      link.style.setProperty("--y", y + "%");
-    });
   });
 
-  // Particles
   const canvas = document.getElementById("portfolioParticles");
   const ctx = canvas.getContext("2d");
   let w = canvas.width = window.innerWidth;
@@ -445,46 +303,6 @@
     requestAnimationFrame(animateParticles);
   }
   animateParticles();
-
-  // Filtering
-  const buttons = document.querySelectorAll(".filter-buttons button");
-  const items = document.querySelectorAll(".portfolio-item");
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      buttons.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const filter = btn.getAttribute("data-filter");
-      items.forEach(item => {
-        if (filter === "all" || item.dataset.category === filter) {
-          item.classList.remove("hidden");
-          setTimeout(() => { item.style.display = "inline-block"; }, 400);
-        } else {
-          item.classList.add("hidden");
-          setTimeout(() => { item.style.display = "none"; }, 400);
-        }
-      });
-    });
-  });
-
-  // Glow-follow
-  const portfolioItems = document.querySelectorAll(".portfolio-item");
-  portfolioItems.forEach(item => {
-    item.addEventListener("mousemove", (e) => {
-      const rect = item.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      item.style.setProperty("--x", x + "%");
-      item.style.setProperty("--y", y + "%");
-
-      if (item.dataset.category === "agent") {
-        item.style.setProperty("--hover-color", "rgba(82,113,255,0.4)");
-      } else if (item.dataset.category === "team") {
-        item.style.setProperty("--hover-color", "rgba(230,25,143,0.4)");
-      } else {
-        item.style.setProperty("--hover-color", "rgba(159,50,237,0.4)");
-      }
-    });
-  });
 </script>
 
 </body>
