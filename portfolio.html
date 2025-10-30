@@ -6,220 +6,144 @@
   <title>Portfolio | Lynsey Nunez Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/favicon1.png">
-  <meta name="description" content="Website design portfolio from Lynsey Nunez. Browse past agent and team site designs, built to deliver modern and scalable web experiences." />
+  <meta name="description" content="Website design portfolio from Lynsey Nunez. Browse fictional website mockups designed for portfolio display." />
   <link rel="canonical" href="https://lynseynunez.com/portfolio.html" />
   <meta property="og:title" content="Portfolio | Lynsey Nunez" />
-  <meta property="og:description" content="View past website projects including agent and team real estate sites designed by Lynsey Nunez." />
+  <meta property="og:description" content="View website mockups designed by Lynsey Nunez." />
   <meta property="og:image" content="https://lynseynunez.com/images/preview.png" />
   <meta property="og:url" content="https://lynseynunez.com/portfolio.html" />
   <meta property="og:type" content="website" />
   <style>
-    :root {
-      --clr-1: #5271FF;
-      --clr-2: #9F32ED;
-      --clr-3: #E6198F;
-      --fs: clamp(3rem, 8vw, 7rem);
+    :root { --clr-1:#5271FF; --clr-2:#9F32ED; --clr-3:#E6198F; --fs:clamp(3rem,8vw,7rem); }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      font-family:'DM Sans',sans-serif;
+      background:#0e0e0e;
+      color:#fff;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
     }
 
-    body {
-      margin: 0;
-      font-family: 'DM Sans', sans-serif;
-      background: #0e0e0e;
-      color: #fff;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+    /* HEADER */
+    header{
+      width:100%;
+      padding:1rem 2rem;
+      position:fixed;
+      top:0; left:0;
+      z-index:100;
+      display:flex; justify-content:center; align-items:center;
+      background:transparent;
+      transition:opacity .6s ease, transform .6s ease;
+      opacity:1;
     }
+    header.hidden{ opacity:0; transform:translateY(-30px); pointer-events:none; }
+    header nav{ display:flex; gap:1rem; }
+    header nav a{
+      position:relative;
+      padding:.5rem 1rem;
+      border-radius:.75rem;
+      background:rgba(30,30,30,.7);
+      color:#fff; text-decoration:none;
+      font-weight:600; font-size:1rem;
+      transition:transform .3s ease, box-shadow .3s ease, opacity .4s ease;
+      opacity:0; transform:translateY(-40px);
+    }
+    header nav a.visible{ opacity:1; transform:translateY(0); }
+    header nav a:hover{ transform:translateY(-6px); box-shadow:0 12px 25px rgba(159,50,237,.4); }
 
-    header {
-      width: 100%;
-      padding: 1rem 2rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: transparent;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      opacity: 1;
+    /* HERO */
+    .portfolio-hero-container{
+      position:relative;
+      width:100%;
+      height:60vh;
+      min-height:420px;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; overflow:hidden;
+      padding-top:70px; /* breathing room under fixed header */
     }
-    header.hidden {
-      opacity: 0;
-      transform: translateY(-30px);
-      pointer-events: none;
+    .portfolio-hero-container canvas{
+      position:absolute; inset:0; width:100%; height:100%; z-index:0;
     }
-    header nav { display: flex; gap: 1rem; }
-    header nav a {
-      position: relative;
-      padding: 0.5rem 1rem;
-      border-radius: 0.75rem;
-      background: rgba(30,30,30,0.7);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-    header nav a:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 25px rgba(159,50,237,0.4);
-    }
-    header nav a.visible {
-      opacity: 1;
-      transform: translateY(0);
-      animation: floatLink 6s ease-in-out infinite;
-    }
-    @keyframes floatLink {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-
-    .portfolio-hero-container {
-      position: relative;
-      width: 100%;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      text-align: center;
-    }
-    .portfolio-hero-container canvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-    }
-    .portfolio-hero { position: relative; z-index: 2; }
-    .portfolio-hero h1 {
-      font-size: var(--fs);
-      font-weight: 700;
-      margin: 0 0 1rem 0;
+    .portfolio-hero{ position:relative; z-index:2; padding:0 1rem; }
+    .portfolio-hero h1{
+      font-size:var(--fs); font-weight:700; margin:0 0 1rem;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
                   radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
                   radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-background-clip:text; background-clip:text; color:transparent;
       animation: auroraMove 12s ease-in-out infinite alternate;
     }
-    @keyframes auroraMove {
-      0% { background-position: 0% 0% }
-      50% { background-position: 100% 50% }
-      100% { background-position: 0% 100% }
+    @keyframes auroraMove{
+      0%{background-position:0% 0%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 100%}
+    }
+    .filter-description{
+      color:#ffffffcc; font-size:1.1rem; max-width:900px;
+      margin:0 auto; line-height:1.5;
     }
 
-    .filter-description {
-      color: #ffffffcc;
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+    /* GRID WRAPPER (centers content) */
+    .portfolio-wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:2rem 1.5rem 4rem;
     }
 
-    .portfolio-grid {
-      column-count: 4;
-      column-gap: 1.5rem;
-      padding: 2rem 3rem;
-    }
-    .portfolio-item {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 1.5rem;
-      break-inside: avoid;
-      border-radius: 1rem;
-      overflow: hidden;
-      background: #1a1a1a;
-      transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease;
-    }
-    .portfolio-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba(159,50,237,0.4);
-    }
-    .portfolio-item img { width: 100%; display: block; }
-    .portfolio-item .info {
-      padding: 1rem;
-      text-align: center;
-    }
-    .portfolio-item .info h4 {
-      margin: 0;
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-    .portfolio-item .info p {
-      margin: 0.3rem 0 0;
-      font-size: 0.9rem;
-      color: #ccc;
+    /* TWO-COLUMN GRID */
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(320px, 1fr));
+      gap:1.5rem;
+      align-items:start;
     }
 
-    .site-footer {
-      background: rgba(14,14,14,0.85);
-      backdrop-filter: blur(10px);
-      padding: 3rem 2rem;
-      text-align: center;
-      position: relative;
-      z-index: 2;
+    .portfolio-item{
+      background:#1a1a1a; border-radius:1rem; overflow:hidden;
+      transition:transform .3s ease, box-shadow .3s ease;
     }
-    .site-footer::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 50%),
-                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 50%),
-                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 50%);
-      opacity: 0.1;
-      z-index: 1;
-      pointer-events: none;
-    }
-    .site-footer::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 3px;
+    .portfolio-item:hover{ transform:translateY(-8px); box-shadow:0 15px 30px rgba(159,50,237,.4); }
+    .portfolio-item img{ width:100%; display:block; height:auto; }
+    .portfolio-item .info{ padding:1rem; text-align:center; }
+    .portfolio-item .info h4{ margin:0; font-size:1.2rem; font-weight:700; }
+    .portfolio-item .info p{ margin:.35rem 0 0; font-size:.9rem; color:#ccc; }
+
+    /* FOOTER */
+    .site-footer{ background:rgba(14,14,14,.85); backdrop-filter:blur(10px); padding:3rem 2rem; text-align:center; position:relative; z-index:2; }
+    .site-footer::before{ content:""; position:absolute; inset:0; background:
+      radial-gradient(circle at 20% 30%, var(--clr-1), transparent 50%),
+      radial-gradient(circle at 80% 40%, var(--clr-2), transparent 50%),
+      radial-gradient(circle at 50% 80%, var(--clr-3), transparent 50%); opacity:.1; z-index:1; pointer-events:none; }
+    .site-footer::after{ content:""; position:absolute; top:0; left:0; width:100%; height:3px;
       background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
                   radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
                   radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      background-size: 200% 200%;
-      animation: auroraMove 12s ease-in-out infinite alternate;
-      z-index: 2;
+      background-size:200% 200%; animation: auroraMove 12s ease-in-out infinite alternate; z-index:2; }
+    .footer-content{ position:relative; z-index:3; max-width:1000px; margin:0 auto; }
+    .footer-name{ font-size:2rem; font-weight:700; margin-bottom:.5rem; background:
+      radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+      radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+      radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
+      -webkit-background-clip:text; background-clip:text; color:transparent; animation: auroraMove 12s ease-in-out infinite alternate; }
+    .footer-tagline{ color:#ffffffcc; font-size:1rem; margin-bottom:2rem; }
+    .footer-links{ display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; margin-bottom:1.5rem; }
+    .footer-links a{ color:#ffffffcc; text-decoration:none; font-size:1rem; transition:color .3s ease; }
+    .footer-links a:hover{ color:#fff; }
+    .social-link-footer{ display:inline-block; margin:0 .5rem; font-size:2rem; font-weight:700; color:#ffffffcc; text-decoration:none!important; transition:transform .3s ease,color .3s ease; }
+    .social-link-footer:hover{ transform:scale(1.3); background:
+      radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
+      radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
+      radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .footer-copy{ margin-top:2rem; font-size:.9rem; color:#888; }
+
+    /* MOBILE: stack gracefully */
+    @media (max-width: 900px){
+      .portfolio-grid{ grid-template-columns:1fr; }
+      .portfolio-hero-container{ height:48vh; min-height:360px; }
     }
-    .footer-content { position: relative; z-index: 3; max-width: 1000px; margin: 0 auto; }
-    .footer-name {
-      font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;
-      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
-                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
-                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      animation: auroraMove 12s ease-in-out infinite alternate;
-    }
-    .footer-tagline { color: #ffffffcc; font-size: 1rem; margin-bottom: 2rem; }
-    .footer-links {
-      display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem;
-    }
-    .footer-links a {
-      color: #ffffffcc; text-decoration: none; font-size: 1rem; transition: color .3s ease;
-    }
-    .footer-links a:hover { color: #fff; }
-    .social-link-footer {
-      display: inline-block; margin: 0 0.5rem; font-size: 2rem; font-weight: 700;
-      color: #ffffffcc; text-decoration: none !important;
-      transition: transform .3s ease, color .3s ease;
-    }
-    .social-link-footer:hover {
-      transform: scale(1.3);
-      background: radial-gradient(circle at 20% 30%, var(--clr-1), transparent 40%),
-                  radial-gradient(circle at 80% 40%, var(--clr-2), transparent 40%),
-                  radial-gradient(circle at 50% 80%, var(--clr-3), transparent 40%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
-    .footer-copy { margin-top: 2rem; font-size: 0.9rem; color: #888; }
   </style>
 </head>
 <body>
@@ -241,14 +165,23 @@
   </section>
 </div>
 
-<div class="portfolio-grid">
-  <div class="portfolio-item">
-    <img src="images/BEAN%20%26%20BREW2.png" alt="Bean & Brew — Fictional Café Website Mockup">
-    <div class="info"><h4>Bean & Brew — Café Website Mockup</h4><p>Fictional concept for portfolio display</p></div>
-  </div>
-  <div class="portfolio-item">
-    <img src="images/lunabo.png" alt="Luna Botanicals — Plant Studio Website Mockup">
-    <div class="info"><h4>Luna Botanicals — Plant Studio Mockup</h4><p>Fictional concept for portfolio display</p></div>
+<div class="portfolio-wrap">
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <img src="images/BEAN%20%26%20BREW2.png" alt="Bean & Brew — Fictional Café Website Mockup">
+      <div class="info">
+        <h4>Bean & Brew — Café Website Mockup</h4>
+        <p>Fictional concept for portfolio display</p>
+      </div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="images/lunabo.png" alt="Luna Botanicals — Plant Studio Website Mockup">
+      <div class="info">
+        <h4>Luna Botanicals — Plant Studio Mockup</h4>
+        <p>Fictional concept for portfolio display</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -270,43 +203,27 @@
 </footer>
 
 <script>
-  const header = document.querySelector("header");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 120) header.classList.add("hidden");
-    else header.classList.remove("hidden");
+  // Header fade
+  const headerEl = document.querySelector("header");
+  window.addEventListener("scroll",()=>{ if(window.scrollY>120) headerEl.classList.add("hidden"); else headerEl.classList.remove("hidden"); });
+
+  // Nav link reveal
+  document.querySelectorAll("header nav a").forEach((link,i)=>{
+    setTimeout(()=>link.classList.add("visible"), i*150);
   });
 
-  const navLinks = document.querySelectorAll("header nav a");
-  navLinks.forEach((link, i) => {
-    setTimeout(() => link.classList.add("visible"), i * 150);
-  });
-
-  const canvas = document.getElementById("portfolioParticles");
-  const ctx = canvas.getContext("2d");
-  let w = canvas.width = window.innerWidth;
-  let h = canvas.height = document.querySelector(".portfolio-hero-container").offsetHeight;
-  const colors = ["#5271FF", "#9F32ED", "#E6198F"];
-  let particles = [];
-  for (let i = 0; i < 80; i++) {
-    particles.push({
-      x: Math.random() * w, y: Math.random() * h,
-      r: Math.random() * 2 + 1,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      dx: (Math.random() - 0.5) / 2, dy: (Math.random() - 0.5) / 2
-    });
-  }
-  function animateParticles() {
-    ctx.clearRect(0,0,w,h);
-    particles.forEach(p => {
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = p.color; ctx.fill();
-      p.x += p.dx; p.y += p.dy;
-      if (p.x<0||p.x>w) p.dx*=-1;
-      if (p.y<0||p.y>h) p.dy*=-1;
-    });
-    requestAnimationFrame(animateParticles);
-  }
-  animateParticles();
+  // Simple particle background
+  const canvas=document.getElementById("portfolioParticles");
+  const ctx=canvas.getContext("2d");
+  function sizeCanvas(){ canvas.width=window.innerWidth; canvas.height=document.querySelector(".portfolio-hero-container").offsetHeight; }
+  sizeCanvas(); window.addEventListener("resize", sizeCanvas);
+  const colors=["#5271FF","#9F32ED","#E6198F"];
+  const particles=[...Array(80)].map(()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+1,c:colors[Math.floor(Math.random()*colors.length)],dx:(Math.random()-.5)/2,dy:(Math.random()-.5)/2}));
+  (function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=p.c; ctx.fill(); p.x+=p.dx; p.y+=p.dy; if(p.x<0||p.x>canvas.width) p.dx*=-1; if(p.y<0||p.y>canvas.height) p.dy*=-1; });
+    requestAnimationFrame(animate);
+  })();
 </script>
 
 </body>
