@@ -1,0 +1,31 @@
+title: Lynsey Nunez
+tagline: Digital Business Analyst | AI-Driven Process Optimization
+description: Digital Business Analyst who uses AI and digital platforms to streamline operations, optimize workflows, and improve business outcomes.
+url: https://lynseynunez.com
+lang: en
+
+author:
+  name: Lynsey Nunez
+  email: lynseyjuneee@gmail.com
+  phone: "602-670-3848"
+  location: Arizona
+  linkedin: https://www.linkedin.com/in/lynsey-nunez/
+
+resume_file: /LynseyNunezResume_DBA_2025.pdf
+
+permalink: pretty
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - images/project*.png
+  - images/project*.jpg
+  - images/BEAN*
+  - images/lunabo.png
+  - images/midnightmockup.png
+  - images/lynseyheadshotai.*
+  - images/favicon1.png
+  - images/Lynseyresumepg*.png
+  - images/*Rec.jpeg
+  - images/linkedinsvg.svg
+  - vendor
