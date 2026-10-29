@@ -1,7 +1,10 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://lynseynunez.com/</loc></url>
-  <url><loc>https://lynseynunez.com/case-studies.html</loc></url>
-  <url><loc>https://lynseynunez.com/portfolio.html</loc></url>
-  <url><loc>https://lynseynunez.com/connect.html</loc></url>
+{%- assign urls = "/,/resume/,/case-studies/,/portfolio/,/connect/" | split: "," %}
+{%- for u in urls %}
+  <url><loc>{{ u | absolute_url }}</loc></url>
+{%- endfor %}
 </urlset>
